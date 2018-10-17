@@ -1,0 +1,60 @@
+{
+  "asi"              : false,  // false: Do not tolerate missing semicolons
+  "bitwise"          : true,   // true: Prohibit bitwise operators
+  "boss"             : true,   // true: Tolerate assignments where comparisons would be expected
+  "browser"          : false,  // false: Do not tolerate "browser" globals. In the cloud, they do not exist.
+  "curly"            : true,   // true: Require {} for every new block or scope
+  "debug"            : false,  // false: Do not tolerate use of debugger statements
+  "devel"            : true,   // true: Tolerate console statements
+  "eqeqeq"           : true,   // true: Require triple equals (===) for comparison
+  "eqnull"           : true,   // true: Tolerate use of `== null`
+  "evil"             : false,  // false: Do not tolerate eval()
+  "expr"             : true,   // true: Allow using expressions in place of function or assignment calls
+  "forin"            : true,   // true: hasOwnProperty must be used to filter properties when inspecting object's keys in for loops
+  "freeze"           : true,   // true: Prohibit overriding prototypes of native objects
+  "latedef"          : true,   // true: Require variables/functions to be defined before being used
+  "maxcomplexity"    : false,  // false: No limit on cyclomatic complexity
+  "maxdepth"         : false,  // false: No limit on function nesting depth
+  "maxparams"        : false,  // false: No limit on function parameters
+  "maxstatements"    : false,  // false: No limit on function nesting depth
+  "multistr"         : true,   // true: Allow old-style multiline interpolation
+  "noarg"            : true,   // true: Prohibit use of `arguments.caller` and `arguments.callee`
+  "strict"           : false,  // false: Tolerate missing 'use strict' per project file
+  "sub"              : true,   // true: Tolerate bracket notation for properties/methods
+  "undef"            : true,   // true: Require all non-global variables to be declared (prevents global leaks)
+  "unused"           : true,   // true: Warn variables are declared and never used
+  "globals"          : {       // List of valid Moovweb-specific globals. true: read/write, false: read-only
+    "$"              : true,
+    "jQuery"         : true,
+    "document"       : false,
+    "mw"             : true,
+    "window"         : false,
+    "XMLHttpRequest" : false,
+    "$this"       : false,
+    "$root"       : false,
+    "$html"       : false,
+    "$head"       : false,
+    "$body"       : false,
+    "body"        : false,
+    "breakpoint"  : false,
+    "cheerio"     : false,
+    "ctx"         : false,
+    "env"         : false,
+    "fns"         : false,
+    "headers"     : false,
+    "routes"      : true,
+    "require"     : false,
+    "scoped$"     : false,
+    "tag"         : false,
+    "text"        : false,
+    "useMoovAsyncTransformer" : false,
+    "moovSkipUpstream"        : false,
+    "sendResponse"            : false,
+    "requestRawHeaders"       : false,
+    "requestRawBody"          : false,
+    "requestBody"             : false,
+    "https"                   : false,
+    "describe"                : false,
+    "it"                      : false
+  }
+}

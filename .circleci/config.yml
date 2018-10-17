@@ -1,0 +1,48 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:9.11
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-
+
+      - run:
+          command: |
+            yarn install
+
+      # deploy to production
+      - run: 
+          command: |
+            if [ $CIRCLE_BRANCH = 'master' ]; then
+              yarn run link -- dev
+              ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode default --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
+            fi
+            if [ $CIRCLE_BRANCH = 'v2' ]; then
+              yarn run link -- dev
+              ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode new-sdk --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
+            fi
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package.json" }}

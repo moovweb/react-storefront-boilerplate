@@ -1,0 +1,15 @@
+{
+  "short_name": "React Storefront",
+  "name": "React Storefront",
+  "icons": [
+    {
+      "src": "/icons/icon-300.png",
+      "type": "image/png",
+      "sizes": "300x300"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "theme_color": "#3367D6"
+}

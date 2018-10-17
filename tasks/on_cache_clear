@@ -1,0 +1,8 @@
+const fs = require('fs');
+
+try {
+    fs.unlinkSync('.moov/cache_db.json');
+    console.log('Upstream request cache cleared.');
+} catch(err) {
+    console.log('Upstream request cache not present.');
+}
