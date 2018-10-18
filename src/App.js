@@ -5,6 +5,8 @@ import NavTabs from 'react-storefront/NavTabs'
 import Pages from 'react-storefront/Pages'
 import SearchDrawer from 'react-storefront/SearchDrawer'
 import Helmet from 'react-helmet'
+import CategorySkeleton from './category/CategorySkeleton'
+import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import UpdateNotification from 'react-storefront/UpdateNotification'
 
@@ -33,6 +35,8 @@ export default class App extends Component {
         <NavTabs/>
         <Pages
           loadMasks={{
+            Category: CategorySkeleton,
+            Subcategory: SubcategorySkeleton,            
             Product: ProductSkeleton
           }}
           components={universal => ({

@@ -12,7 +12,7 @@ import Track from 'react-storefront/Track'
 @withStyles(theme => ({
   root: {
     listStyle: 'none',
-    padding: '20px 0'
+    padding: '10px 0'
   },
   thumb: {
     flex: 2,

@@ -15,7 +15,7 @@ import { Hbox } from 'react-storefront/Box'
     marginLeft: '10px'
   }
 }))
-@inject(({ app }) => ({ product: app.product }))
+@inject(({ app }) => ({ product: app.loadingProduct }))
 @observer
 export default class ProductSkeleton extends Component {
   render() {
@@ -42,7 +42,7 @@ export default class ProductSkeleton extends Component {
           <Space flex="1"/>
         </Row>
         <BlankRow/>
-        <ImageSwitcher classes={{ image: classes.image }}/>
+        <ImageSwitcher classes={{ image: classes.image }} product={product}/>
         <BlankRow/>
         <Row height="24px">
           <Space/>

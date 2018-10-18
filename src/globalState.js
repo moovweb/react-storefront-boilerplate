@@ -6,19 +6,43 @@ export default () => ({
         text: "Category 1",
         items: [{
           text: "Subcategory 1",
-          url: "/s/1"
+          url: "/s/1",
+          state: JSON.stringify({
+            loadingSubcategory: {
+              id: "loading-1",
+              name: 'Subcategory 1'
+            }
+          })
         }, {
           text: "Subcategory 2",
-          url: "/s/2"
+          url: "/s/2",
+          state: JSON.stringify({
+            loadingSubcategory: {
+              id: "loading-2",
+              name: 'Subcategory 2'
+            }
+          })
         }]
       }, {
         text: "Category 2",
         items: [{
           text: "Subcategory 1",
-          url: "/s/1"
+          url: "/s/1",
+          state: JSON.stringify({
+            loadingSubcategory: {
+              id: "loading-1",
+              name: 'Subcategory 1'
+            }
+          })
         }, {
           text: "Subcategory 2",
-          url: "/s/2"
+          url: "/s/2",
+          state: JSON.stringify({
+            loadingSubcategory: {
+              id: "loading-2",
+              name: 'Subcategory 2'
+            }
+          })
         }]
       }]
     }]
@@ -35,6 +59,6 @@ export default () => ({
       { text: 'Category 8', url: '/c/8', prefetch: 'visible' },
       { text: 'Category 9', url: '/c/9', prefetch: 'visible' },
       { text: 'Category 10', url: '/c/10', prefetch: 'visible' }
-    ]
+    ].map(item => ({ ...item, state: JSON.stringify({ loadingCategory: { name: item.text, id: item.text }})}))
   }
 })

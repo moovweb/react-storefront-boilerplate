@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { inject, observer } from 'mobx-react'
-import Link from 'react-storefront/Link'
+import SubcategoryLink from 'react-storefront/SubcategoryLink'
 import Typography from '@material-ui/core/Typography'
 import Container from 'react-storefront/Container'
 import Row from 'react-storefront/Row'
@@ -59,10 +59,10 @@ export default class App extends Component {
             <ResponsiveTiles cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}>
               { category.subcategories.map((subcategory, i) => (
                 <div key={subcategory.id}>
-                  <Link prefetch="visible" className={classes.link} to={`/s/${subcategory.id}`}>
+                  <SubcategoryLink prefetch="visible" className={classes.link} subcategory={subcategory}>
                     <Image lazy={i > 3} className={classes.image} aspectRatio={50} src={subcategory.image} alt={category.name}/>
                     <Typography className={classes.subcategoryName} variant="subheading">{subcategory.name}</Typography>
-                  </Link>
+                  </SubcategoryLink>
                 </div>
               ))}
             </ResponsiveTiles>
