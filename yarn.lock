@@ -898,15 +898,9 @@ babel-plugin-minify-type-constructors@^0.3.0:
   dependencies:
     babel-helper-is-void-0 "^0.3.0"
 
-babel-plugin-moov@^3.3.1:
-  version "3.3.1"
-  resolved "https://npm-proxy.fury.io/moovweb/~/d/babel-plugin-moov/babel-plugin-moov-3.3.1#8067fcff076fa8b9858aa2d84f10ba731ead5feb"
-  dependencies:
-    babel-core "^6.26.0"
-
-babel-plugin-react-storefront@^4.0.0-0:
-  version "4.0.0-0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-storefront/-/babel-plugin-react-storefront-4.0.0-0.tgz#fab447ed0365f0275c900b907a80aad51d2acc5a"
+babel-plugin-react-storefront@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-storefront/-/babel-plugin-react-storefront-4.0.1.tgz#df0751a101c34f1fa7f6780349c3370fe2068288"
   dependencies:
     babel-core "^6.26.0"
 
@@ -7347,9 +7341,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-storefront@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-4.0.0.tgz#c6eff29e603edfac80909b2c2ef3e628339fd090"
+react-storefront@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-4.0.1.tgz#3fd8ad654d0b378f3a57a67afc8f9a05833a3991"
   dependencies:
     babel-eslint "^8.2.3"
     babel-minify-webpack-plugin "^0.3.1"
@@ -7362,6 +7356,7 @@ react-storefront@^4.0.0:
     eslint-plugin-import "^2.12.0"
     eslint-plugin-jsx-a11y "^5.1.1"
     eslint-plugin-react "^7.8.2"
+    file-loader "^1.1.11"
     html-webpack-plugin "^3.2.0"
     isomorphic-unfetch "^2.0.0"
     js-cookie "^2.2.0"
@@ -9431,6 +9426,10 @@ webpack-bundle-analyzer@^2.13.1:
     mkdirp "^0.5.1"
     opener "^1.4.3"
     ws "^4.0.0"
+
+webpack-flush-chunks@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/webpack-flush-chunks/-/webpack-flush-chunks-1.2.3.tgz#fcc6cbb39f8b7ff6544d535787b48530e2bbeafb"
 
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   version "1.1.0"
