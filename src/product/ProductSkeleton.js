@@ -19,7 +19,10 @@ import { Hbox } from 'react-storefront/Box'
 @observer
 export default class ProductSkeleton extends Component {
   render() {
-    const { product, classes } = this.props
+    let { product, classes } = this.props
+
+    if (!product) product = {}
+
     return (
       <Skeleton>
         <BlankRow/>
