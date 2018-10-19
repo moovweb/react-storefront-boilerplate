@@ -9,3 +9,4 @@ host_map.js
 yarn-error.log
 .cache
 /.moov
+/moov_config.json
