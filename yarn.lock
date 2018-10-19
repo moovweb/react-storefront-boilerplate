@@ -899,8 +899,8 @@ babel-plugin-minify-type-constructors@^0.3.0:
     babel-helper-is-void-0 "^0.3.0"
 
 babel-plugin-react-storefront@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-storefront/-/babel-plugin-react-storefront-4.0.1.tgz#df0751a101c34f1fa7f6780349c3370fe2068288"
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-storefront/-/babel-plugin-react-storefront-4.0.3.tgz#e4283321ae4b1cf6c4c40e8d39a51b7a77ad4f92"
   dependencies:
     babel-core "^6.26.0"
 

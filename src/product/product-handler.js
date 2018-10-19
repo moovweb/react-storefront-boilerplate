@@ -9,7 +9,7 @@ export default function productHandler({ id }, request, response) {
       id,
       url: `/p/${id}`,
       name: `Product ${id}`,
-      price: 99.99,
+      basePrice: 99.99,
       rating: id % 5,
       reviewCount: id * 10,
       description: 'This is the product description. Vivamus accumsan non felis eu condimentum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris sodales tincidunt mi vel lacinia. Cras ultricies magna eu viverra interdum. Sed dapibus lectus eu purus scelerisque cursus. Fusce faucibus feugiat elit sed posuere. Phasellus ac diam enim.',
@@ -29,13 +29,13 @@ export default function productHandler({ id }, request, response) {
         'Keep up the good work, nailed it'
       ],
       size: {
-        options: ['XS', 'S', 'M', 'L', 'XL'].map(option => ({ id: option, text: option })),
+        options: ['XS', 'S', 'M', 'L', 'XL'].map((option, i) => ({ id: option, text: option, disabled: i === 4, price: i <= 2 ? 99.99 : 109.99 })),
       },
       color: {
         options: [
           { text: 'Candy Apple Red', id: 'd32f2f', image: 'http://via.placeholder.com/350/d32f2f/d32f2f' },
           { text: 'Forest Green', id: '388E3C', image: 'http://via.placeholder.com/350/388E3C/388E3C' },
-          { text: 'Azure Blue', id: '1565c0', image: 'http://via.placeholder.com/350/1565c0/1565c0' },
+          { text: 'Azure Blue', id: '1565c0', image: 'http://via.placeholder.com/350/1565c0/1565c0', disabled: true },
         ],
         selected: { text: 'Candy Apple Red', id: 'd32f2f', image: 'http://via.placeholder.com/350/d32f2f/d32f2f' }
       },

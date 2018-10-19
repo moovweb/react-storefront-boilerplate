@@ -76,11 +76,11 @@ export default class Product extends Component {
             </Row>
             <Row>
               <Typography variant="body1" className={classnames(classes.label)}>Color</Typography>
-              <ButtonSelector name="color" model={product.color} showSelectedText/>
+              <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
             </Row>
             <Row className={classes.size}>
               <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
-              <ButtonSelector name="size" model={product.size}/>
+              <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
             </Row>
             <Row>
               <Hbox>
