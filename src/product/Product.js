@@ -78,10 +78,6 @@ export default class Product extends Component {
               <Typography variant="body1" className={classnames(classes.label)}>Color</Typography>
               <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
             </Row>
-            <Row className={classes.size}>
-              <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
-              <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
-            </Row>
             <Row>
               <Hbox>
                 <div style={{ marginRight: '15px' }}>Quantity:</div>
@@ -90,7 +86,15 @@ export default class Product extends Component {
             </Row>
             <AddToCartButton product={product} docked confirmation="This item has been added to your cart."/>
             <TabPanel>
-              <CmsSlot label="Description">{product.description}</CmsSlot>
+              <div label="Size">
+                <Row className={classes.size}>
+                  <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
+                  <ButtonSelector model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
+                </Row>
+              </div>
+              <CmsSlot label="Description">
+                {product.description}
+              </CmsSlot>
               <CmsSlot label="Specs">{product.specs}</CmsSlot>
               <div label="Reviews">
                 {product.reviews.map((review, i) => (
