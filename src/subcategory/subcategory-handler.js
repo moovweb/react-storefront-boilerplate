@@ -3,17 +3,22 @@ import { withGlobalState } from 'react-storefront/router'
 
 const pageSize = 10
 
-export default function subcategoryHandler({ id='0', filters, sort, page=0, format }, request, response) {
+export default function subcategoryHandler({ c='0', id='0', filters, sort = 'rating', page=0, format }, request, response) {
   page = parseInt(page)
   
-  if (page && format === 'json') {
+  if (page > 0 && format === 'json') {
     // handle click on "Show More"
-    return { items: createProducts(pageSize, parseInt(page) * pageSize) }
+    return { items: createProducts(pageSize, parseInt(page) * pageSize, { categoryId: c, subcategoryId: id }) }
   } else {
     // handle initial landing
     return withGlobalState(request, globalState, { 
       title: `React Storefront - Subcategory #${id}`,
       page: 'Subcategory',
+      breadcrumbs: [
+        { text: 'Home', url: '/' },
+        { text: `Category ${c}`, url: `/c/${c}` },
+        { text: `Subcategory ${id}` }
+      ],
       subcategory: {
         id, 
         name: `Subcategory ${id}`,
@@ -40,24 +45,24 @@ export default function subcategoryHandler({ id='0', filters, sort, page=0, form
           { name: 'Most Popular', code: 'pop' },
           { name: 'Highest Rated', code: 'rating' }
         ],
-        items: createProducts((page + 1) * pageSize)
+        items: createProducts((page + 1) * pageSize, 0, { categoryId: c, subcategoryId: id })
       }
     })
   }
 } 
 
-function createProducts(count, start=0) {
+function createProducts(count, start=0, { categoryId, subcategoryId }) {
   const items = []
 
   for (let i=1; i<=count; i++) {
     const id = start + i
     items.push({ 
       id: id.toString(), 
-      url: `/p/${id}`,
+      url: `/p/${id}?c=${encodeURIComponent(categoryId)}&s=${encodeURIComponent(subcategoryId)}`,
       name: `Product ${id}`, 
-      price: 99.99, 
+      basePrice: 99.99, 
       rating: i%5, 
-      thumbnail: `http://via.placeholder.com/128x128?index=${id}` 
+      thumbnail: `http://via.placeholder.com/256x256?text=${encodeURIComponent('Product ' + i)}` 
     })
   }
 

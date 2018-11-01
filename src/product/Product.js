@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Container from 'react-storefront/Container'
 import { observer, inject } from 'mobx-react'
-import { withStyles } from '@material-ui/core'
+import { withStyles, Hidden } from '@material-ui/core'
 import ImageSwitcher from 'react-storefront/ImageSwitcher'
 import { price } from 'react-storefront/format'
 import QuantitySelector from 'react-storefront/QuantitySelector'
@@ -18,18 +18,40 @@ import ButtonSelector from 'react-storefront/ButtonSelector'
 import TabPanel from 'react-storefront/TabPanel'
 import CmsSlot from 'react-storefront/CmsSlot'
 import classnames from 'classnames'
+import Breadcrumbs from 'react-storefront/Breadcrumbs'
 
-@withStyles(theme => ({
+export const styles = theme => ({
   root: {
     paddingBottom: '50px'
   },
-  imageSwitcher: {
-    height: 'calc(100vh - 280px)',
-    width:  `calc(100% + ${theme.margins.container*2}px)`,
-    margin: `0 -${theme.margins.container}px`
+  mainContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column'
+    }
   },
-  rating: {
-    marginLeft: '10px'
+  imageSwitcher: {
+    width: '400px',
+    height: '473px',
+    margin: '0 30px 0 0',
+    
+    [theme.breakpoints.up('md')]: {
+      width: '600px',
+      height: '673px',
+    },
+    
+    [theme.breakpoints.down('xs')]: {
+      margin: `0 -${theme.margins.container}px`,
+      width: '100vw',
+      height: 'auto',
+    }
+  },
+  selectionControls: {
+    flex: 0,
+    [theme.breakpoints.up('sm')]: {
+      flex: 1,
+    }
   },
   label: {
     marginBottom: '10px'
@@ -38,15 +60,13 @@ import classnames from 'classnames'
     padding: '10px',
     marginBottom: '10px'
   }
-}))
+})
+
+@withStyles(styles)
 @withAmp
 @inject(({ app }) => ({ product: app.product }))
 @observer
 export default class Product extends Component { 
-
-  renderReview(review) {
-    return ;
-  }
 
   render() {
     const { product, classes } = this.props
@@ -61,34 +81,42 @@ export default class Product extends Component {
           <input type="hidden" name="id" value={product.id}/>
           <input type="hidden" name="name" value={product.name}/>
 
+          <Breadcrumbs/>
+
           <Container className={classes.root}>
+            <Hidden smUp implementation="css">
+              <Header product={product}/>
+            </Hidden>
             <Row>
-              <Typography variant="title" component="h1">{product.name}</Typography>
+              <div className={classes.mainContainer}>
+                <ImageSwitcher classes={{ root: classes.imageSwitcher }} product={product} indicators/>
+                <div className={classes.selectionControls}>
+                  <Hidden xsDown implementation="css">
+                    <Header product={product}/>
+                  </Hidden>
+                  <Row>
+                    <Typography variant="body1" className={classnames(classes.label)}>Color X</Typography>
+                    <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
+                  </Row>
+                  <Row className={classes.size}>
+                    <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
+                    <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
+                  </Row>
+                  <Row>
+                    <Hbox>
+                      <div style={{ marginRight: '15px' }}>Quantity:</div>
+                      <QuantitySelector product={product}/>
+                    </Hbox>
+                  </Row>
+                  <Hidden implementation="css" smUp>
+                    <AddToCartButton product={product} docked confirmation="This item has been added to your cart."/>
+                  </Hidden>
+                  <Hidden implementation="css" xsDown>
+                    <AddToCartButton product={product} confirmation="This item has been added to your cart."/>
+                  </Hidden>
+                </div>
+              </div>
             </Row>
-            <Row>
-              <Hbox>
-                <Typography variant="subheading">{price(product.price)}</Typography>
-                <Rating product={product} className={classes.rating}/>
-              </Hbox>
-            </Row>
-            <Row>
-              <ImageSwitcher classes={{ root: classes.imageSwitcher }} product={product} indicators/>
-            </Row>
-            <Row>
-              <Typography variant="body1" className={classnames(classes.label)}>Color</Typography>
-              <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
-            </Row>
-            <Row className={classes.size}>
-              <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
-              <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
-            </Row>
-            <Row>
-              <Hbox>
-                <div style={{ marginRight: '15px' }}>Quantity:</div>
-                <QuantitySelector product={product}/>
-              </Hbox>
-            </Row>
-            <AddToCartButton product={product} docked confirmation="This item has been added to your cart."/>
             <TabPanel>
               <CmsSlot label="Description">{product.description}</CmsSlot>
               <CmsSlot label="Specs">{product.specs}</CmsSlot>
@@ -101,6 +129,39 @@ export default class Product extends Component {
           </Container>
         </AmpForm>
       </AmpState>
+    )
+  }
+
+}
+
+@withStyles(theme => ({
+  title: {
+    [theme.breakpoints.up('sm')]: {
+      marginTop: '0'
+    }
+  },
+  rating: {
+    marginLeft: '10px'
+  }
+}))
+@observer
+export class Header extends Component {
+
+  render() {
+    const { product, classes } = this.props
+
+    return (
+      <div>
+        <Row className={classes.title}>
+          <Typography variant="title" component="h1">{product.name}</Typography>
+        </Row>
+        <Row>
+          <Hbox>
+            <Typography variant="subheading">{price(product.price)}</Typography>
+            <Rating product={product} className={classes.rating}/>
+          </Hbox>
+        </Row>
+      </div>
     )
   }
 

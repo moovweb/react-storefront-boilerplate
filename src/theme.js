@@ -10,6 +10,13 @@ const theme = createTheme({
       container: 15,
       row: 15
     }
+  },
+  overrides: {
+    RSFLoadMask: {
+      fullscreen: {
+        height: `calc(100vh - 181px)`
+      }
+    }
   }
 });
 

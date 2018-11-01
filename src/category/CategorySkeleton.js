@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { withStyles } from '@material-ui/core'
+import { withStyles, withWidth } from '@material-ui/core'
 import { Skeleton, BlankRow, Row, Space, Content, Tiles } from 'react-storefront/Skeleton'
 import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import Container from 'react-storefront/Container'
+
+const cols = { xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }
 
 @withStyles(theme => ({
   image: {
@@ -11,6 +14,7 @@ import Breadcrumbs from 'react-storefront/Breadcrumbs'
     paddingTop: '50%'
   }
 }))
+@withWidth()
 @inject(({ app }) => ({ category: app.loadingCategory, app }))
 @observer
 export default class CategorySkeleton extends Component {
@@ -20,49 +24,48 @@ export default class CategorySkeleton extends Component {
     if (!category) category = {}
 
     return (
-      <Skeleton>
-        <Row height="40px">
-          <Content>
-            <Breadcrumbs items={[{ text: 'Home', url: '/' }, { text: category.name }]}/>
-          </Content>
-        </Row>
-        <BlankRow/>
-        <Row>
-          <Space/>
-          <Content>
-            <Typography variant="title" component="h1" className={classes.header}>{category.name}</Typography>
-          </Content>
-          <Space flex="1"/>
-        </Row>
-        <BlankRow height="20px"/>
-        <Row height="20px">
-          <Space />
-          <Content flex="1"/>
-          <Space/>
-        </Row>
-        <BlankRow height="20px"/>
-        <Row>
-          <Tiles style={{ flex: 1 }} cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}>
-            { this.renderSubcategories() }
-          </Tiles>
-        </Row>
-      </Skeleton>
+      <div>
+        <Breadcrumbs items={[{ text: 'Home', url: '/' }, { text: category.name }]}/>
+        <Container>
+          <Skeleton>
+            <BlankRow/>
+            <Row>
+              <Content>
+                <Typography variant="title" component="h1" className={classes.header}>{category.name}</Typography>
+              </Content>
+              <Space flex="1"/>
+            </Row>
+            <BlankRow height="20px"/>
+            <Row height="20px">
+              <Content flex="1"/>
+            </Row>
+            <BlankRow height="20px"/>
+            <Row>
+              <Tiles style={{ flex: 1 }} cols={cols}>
+                { this.renderSubcategories() }
+              </Tiles>
+            </Row>
+          </Skeleton>
+        </Container>
+      </div>
     )
   }
 
   renderSubcategories() {
     const subcategories = []
-    const { classes } = this.props
+    const { classes, width } = this.props
+    const count = cols[width] * 3
 
-    for (let i=0; i<6; i++) {
+    for (let i=0; i<count; i++) {
       subcategories.push(<Subcategory key={i} classes={classes}/>)
     }
 
     return subcategories
   }
+
 }
 
-const Subcategory = ({ classes, key }) => (
+const Subcategory = ({ classes }) => (
   <div style={{ flex: 1 }}>
     <Content className={classes.image}/>
     <BlankRow height="10px"/>

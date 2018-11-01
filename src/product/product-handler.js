@@ -1,13 +1,19 @@
 import globalState from '../globalState'
 import { withGlobalState } from 'react-storefront/router'
 
-export default function productHandler({ id }, request, response) {
+export default function productHandler({ id, c, s }, request, response) {
   return withGlobalState(request, globalState, { 
     title: `Product ${id}`,
     page: 'Product',
+    breadcrumbs: [
+      { text: 'Home', url: '/' },
+      { text: `Category ${c}`, url: `/c/${c}` },
+      { text: `Subcategory ${s}`, url: `/s/${s}?c=${c}` },
+      { text: `Product ${id}` },
+    ],
     product: {
       id,
-      url: `/p/${id}`,
+      url: request.path + request.search,
       name: `Product ${id}`,
       basePrice: 99.99,
       rating: id % 5,
@@ -40,14 +46,14 @@ export default function productHandler({ id }, request, response) {
         selected: { text: 'Candy Apple Red', id: 'd32f2f', image: 'http://via.placeholder.com/350/d32f2f/d32f2f' }
       },
       images: [
-        "http://via.placeholder.com/400x400/d32f2f/ffffff",
-        "http://via.placeholder.com/400x350/d32f2f/ffffff",
-        "http://via.placeholder.com/350x400/d32f2f/ffffff",
+        `http://via.placeholder.com/600x600/d32f2f/ffffff?text=${encodeURIComponent('Product Image 1')}`,
+        `http://via.placeholder.com/600x350/d32f2f/ffffff?text=${encodeURIComponent('Product Image 2')}`,
+        `http://via.placeholder.com/350x600/d32f2f/ffffff?text=${encodeURIComponent('Product Image 3')}`,
       ],
       thumbnails: [
-        "http://via.placeholder.com/40x40/d32f2f/ffffff",
-        "http://via.placeholder.com/40x35/d32f2f/ffffff",
-        "http://via.placeholder.com/35x40/d32f2f/ffffff"
+        `http://via.placeholder.com/60x60/d32f2f/ffffff?text=${encodeURIComponent('Product Image 1')}`,
+        `http://via.placeholder.com/60x35/d32f2f/ffffff?text=${encodeURIComponent('Product Image 2')}`,
+        `http://via.placeholder.com/35x60/d32f2f/ffffff?text=${encodeURIComponent('Product Image 3')}`
       ]
     }
   })

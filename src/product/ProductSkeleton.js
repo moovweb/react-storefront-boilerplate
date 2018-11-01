@@ -1,65 +1,125 @@
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { withStyles } from '@material-ui/core';
+import { withStyles, Hidden } from '@material-ui/core'
 import { Skeleton, BlankRow, Row, Space, Content, ImageSwitcher } from 'react-storefront/Skeleton'
+import { Header, styles } from './Product'
+import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import Container from 'react-storefront/Container'
+import withWidth, { isWidthDown } from '@material-ui/core/withWidth'
+import classnames from 'classnames'
+import QuantitySelector from 'react-storefront/QuantitySelector'
 import Typography from '@material-ui/core/Typography'
-import Rating from 'react-storefront/Rating'
-import { price } from 'react-storefront/format'
-import { Hbox } from 'react-storefront/Box'
+import AddToCartButton from 'react-storefront/AddToCartButton'
 
-@withStyles(() => ({
-  image: {
-    height: 'calc(100vh - 353px)'
+@withStyles(theme => ({
+  ...styles(theme),
+  imageSwitcherNoMargin: {
+    margin: 0
   },
-  rating: {
-    marginLeft: '10px'
+  color: {
+    height: '46px',
+    width: '46px'
+  },
+  size: {
+    height: '40px',
+    width: '60px'
   }
 }))
 @inject(({ app }) => ({ product: app.loadingProduct }))
+@withWidth()
 @observer
 export default class ProductSkeleton extends Component {
   render() {
-    let { product, classes } = this.props
+    let { product, classes, width } = this.props
 
     if (!product) product = {}
 
     return (
-      <Skeleton>
-        <BlankRow/>
-        <Row>
-          <Space/>
-          <Content>
-            <Typography variant="title" component="h1">{product.name}</Typography>
-          </Content>
-          <Space flex="1" minWidth="15px"/>
-        </Row>
-        <BlankRow/>
-        <Row height="24px">
-          <Space/>
-          <Content>
-            <Hbox>
-              <Typography variant="subheading">{price(product.price)}</Typography>
-              <Rating product={product} className={classes.rating}/>
-            </Hbox>
-          </Content>
-          <Space flex="1"/>
-        </Row>
-        <BlankRow/>
-        <ImageSwitcher classes={{ image: classes.image }} product={product}/>
-        <BlankRow/>
-        <Row height="24px">
-          <Space/>
-          <Content flex="1"/>
-          <Space/>
-        </Row>
-        <BlankRow/>
-        <Row height="24px">
-          <Space/>
-          <Content flex="1"/>
-          <Space/>
-        </Row>
-        <BlankRow height="100px"/>
-      </Skeleton>
+      <div>
+        <Breadcrumbs/>
+        <Container>
+          <Hidden smUp implementation="css">
+            <Header product={product}/>
+            <BlankRow/>
+          </Hidden>
+          <Skeleton>
+            <BlankRow/>
+            <div className={classes.mainContainer} style={{ alignItems: 'stretch' }}>
+              <Row alignItems="stretch">
+                <div>
+                  <ImageSwitcher 
+                    classes={{ 
+                      root: classnames(classes.imageSwitcher, classes.imageSwitcherNoMargin) 
+                    }} 
+                    product={product}
+                  />
+                </div>
+                { isWidthDown('xs', width) ? null : (
+                  <Space width="30px" height="auto"/> 
+                )}
+              </Row>
+              <div className={classes.selectionControls} style={{ display: 'flex', flexDirection: 'column' }}>
+                <Hidden xsDown implementation="css">
+                  <Content>
+                    <Header product={product}/>
+                  </Content>
+                </Hidden>
+                <Row>
+                  <Content>
+                    <Typography variant="body1">Color</Typography>
+                  </Content>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow height="10px"/>
+                <Row>
+                  <Content className={classes.color}/>
+                  <Space width="10px"/>
+                  <Content className={classes.color}/>
+                  <Space width="10px"/>
+                  <Content className={classes.color}/>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow height="45px"/>
+                <Row>
+                  <Content>
+                    <Typography variant="body1">Size</Typography>
+                  </Content>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow height="10px"/>
+                <Row>
+                  <Content className={classes.size}/>
+                  <Space width="10px"/>
+                  <Content className={classes.size}/>
+                  <Space width="10px"/>
+                  <Content className={classes.size}/>
+                  <Space width="10px"/>
+                  <Content className={classes.size}/>
+                  <Space width="10px"/>
+                  <Content className={classes.size}/>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow/>
+                <Row>
+                  <Content>
+                    <Typography variant="body1" style={{paddingRight: 15}}>Quantity:</Typography>
+                  </Content>
+                  <QuantitySelector product={product}/>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow/>
+                <Row>
+                  <Content>
+                    <AddToCartButton disabled/>
+                  </Content>
+                  <Space flex="1"/>
+                </Row>
+                <BlankRow flex="1"/>
+              </div>
+            </div>
+          </Skeleton>
+        </Container>
+      </div>
     )
   }
 }

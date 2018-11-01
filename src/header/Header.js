@@ -36,6 +36,11 @@ import PromoBanner from 'react-storefront/PromoBanner'
     color: theme.palette.action.active
   },
 
+  promo: {
+    maxHeight: '64px',
+    backgroundColor: '#81d4fa'
+  },
+
   large: {
     fontSize: '28px'
   }
@@ -55,7 +60,7 @@ export default class Header extends Component {
       </Link>
     )
 
-    const promo = `https://placehold.it/375x46/81d4fa/fff?text=${encodeURIComponent('25% OFF EVERYTHING')}`
+    const promo = `https://placehold.it/375x64/81d4fa/fff?text=${encodeURIComponent('25% OFF EVERYTHING')}`
 
     return (
       <div>
@@ -72,7 +77,7 @@ export default class Header extends Component {
           </IconButton>
           <CartButton classes={{ icon: classes.icon }}/>
         </AppBar>
-        <PromoBanner src={promo} />
+        <PromoBanner className={classes.promo} src={promo} />
       </div>
     )
   }
