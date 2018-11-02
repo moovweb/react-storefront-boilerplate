@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Container from 'react-storefront/Container'
@@ -33,8 +33,8 @@ export const styles = theme => ({
   },
   imageSwitcher: {
     width: '400px',
-    height: '473px',
-    margin: '0 30px 0 0',
+    height: '433px',
+    margin: `0 ${theme.margins.container*2}px 0 0`,
     
     [theme.breakpoints.up('md')]: {
       width: '600px',
@@ -43,8 +43,7 @@ export const styles = theme => ({
     
     [theme.breakpoints.down('xs')]: {
       margin: `0 -${theme.margins.container}px`,
-      width: '100vw',
-      height: 'auto',
+      width: '100vw'
     }
   },
   selectionControls: {
@@ -95,7 +94,7 @@ export default class Product extends Component {
                     <Header product={product}/>
                   </Hidden>
                   <Row>
-                    <Typography variant="body1" className={classnames(classes.label)}>Color X</Typography>
+                    <Typography variant="body1" className={classnames(classes.label)}>Color</Typography>
                     <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
                   </Row>
                   <Row className={classes.size}>

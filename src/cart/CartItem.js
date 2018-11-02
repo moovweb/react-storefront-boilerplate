@@ -37,7 +37,7 @@ export default class CartItem extends Component {
         </Hbox>
         <Row>
           <Track event="removedFromCart" product={product}>
-            <Button size="small" variant="raised" onClick={this.remove}>Remove from Cart</Button>
+            <Button size="small" variant="contained" onClick={this.remove}>Remove from Cart</Button>
           </Track>
         </Row>
       </div>

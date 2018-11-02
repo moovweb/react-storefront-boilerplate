@@ -12,6 +12,7 @@ import HeaderLogo from 'react-storefront/HeaderLogo'
 import Hidden from '@material-ui/core/Hidden'
 import Menu from 'react-storefront/Menu'
 import PromoBanner from 'react-storefront/PromoBanner'
+import SearchField from 'react-storefront/SearchField'
 
 @withStyles(theme => ({
   root: {
@@ -41,6 +42,10 @@ import PromoBanner from 'react-storefront/PromoBanner'
     backgroundColor: '#81d4fa'
   },
 
+  searchField: {
+    alignSelf: 'center'
+  },
+
   large: {
     fontSize: '28px'
   }
@@ -64,17 +69,22 @@ export default class Header extends Component {
 
     return (
       <div>
-        <AppBar classes={{ root: classes.root }}>
+        <AppBar classes={{ root: classes.root }} responsive>
           <Menu useExpanders/>
           <Hidden mdUp implementation="css">{ storeFinder }</Hidden>
           <HeaderLogo>
             <Logo />
           </HeaderLogo>
           <div style={{ flex: 1 }}/>
+          <Hidden smDown implementation="css">
+            <SearchField className={classes.searchField}/>
+          </Hidden>
           <Hidden smDown implementation="css">{ storeFinder }</Hidden>
-          <IconButton aria-label="Search" color="inherit"  classes={{label: classes.large }} onClick={this.onSearchClick}>
-            <Search className={classes.icon}/>
-          </IconButton>
+          <Hidden mdUp implementation="css">
+            <IconButton aria-label="Search" color="inherit"  classes={{label: classes.large }} onClick={this.onSearchClick}>
+              <Search className={classes.icon}/>
+            </IconButton>
+          </Hidden>
           <CartButton classes={{ icon: classes.icon }}/>
         </AppBar>
         <PromoBanner className={classes.promo} src={promo} />

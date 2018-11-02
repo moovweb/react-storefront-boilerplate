@@ -14,7 +14,10 @@ import AddToCartButton from 'react-storefront/AddToCartButton'
 @withStyles(theme => ({
   ...styles(theme),
   imageSwitcherNoMargin: {
-    margin: 0
+    margin: 0,
+    [theme.breakpoints.down('xs')]: {
+      margin: `0 -${theme.margins.container}px`
+    }
   },
   color: {
     height: '46px',
@@ -40,10 +43,11 @@ export default class ProductSkeleton extends Component {
         <Container>
           <Hidden smUp implementation="css">
             <Header product={product}/>
-            <BlankRow/>
           </Hidden>
           <Skeleton>
-            <BlankRow/>
+            <Hidden xsDown implementation="css">
+              <BlankRow/>
+            </Hidden>
             <div className={classes.mainContainer} style={{ alignItems: 'stretch' }}>
               <Row alignItems="stretch">
                 <div>
@@ -53,6 +57,7 @@ export default class ProductSkeleton extends Component {
                     }} 
                     product={product}
                   />
+                  <BlankRow/>
                 </div>
                 { isWidthDown('xs', width) ? null : (
                   <Space width="30px" height="auto"/> 

@@ -1,64 +1,62 @@
-export default () => ({
-  menu: {
-    levels: [{
-      root: true,
-      items: [{
-        text: "Category 1",
-        items: [{
-          text: "Subcategory 1",
-          url: "/s/1",
-          state: JSON.stringify({
-            loadingSubcategory: {
-              id: "loading-1",
-              name: 'Subcategory 1'
-            }
-          })
-        }, {
-          text: "Subcategory 2",
-          url: "/s/2",
-          state: JSON.stringify({
-            loadingSubcategory: {
-              id: "loading-2",
-              name: 'Subcategory 2'
-            }
-          })
-        }]
-      }, {
-        text: "Category 2",
-        items: [{
-          text: "Subcategory 1",
-          url: "/s/1",
-          state: JSON.stringify({
-            loadingSubcategory: {
-              id: "loading-1",
-              name: 'Subcategory 1'
-            }
-          })
-        }, {
-          text: "Subcategory 2",
-          url: "/s/2",
-          state: JSON.stringify({
-            loadingSubcategory: {
-              id: "loading-2",
-              name: 'Subcategory 2'
-            }
-          })
-        }]
-      }]
-    }]
-  },
-  tabs: {
-    items: [
-      { text: 'Category 1', url: '/c/1', prefetch: 'visible' },
-      { text: 'Category 2', url: '/c/2', prefetch: 'visible' },
-      { text: 'Category 3', url: '/c/3', prefetch: 'visible' },
-      { text: 'Category 4', url: '/c/4', prefetch: 'visible' },
-      { text: 'Category 5', url: '/c/5', prefetch: 'visible' },
-      { text: 'Category 6', url: '/c/6', prefetch: 'visible' },
-      { text: 'Category 7', url: '/c/7', prefetch: 'visible' },
-      { text: 'Category 8', url: '/c/8', prefetch: 'visible' },
-      { text: 'Category 9', url: '/c/9', prefetch: 'visible' },
-      { text: 'Category 10', url: '/c/10', prefetch: 'visible' }
-    ].map(item => ({ ...item, state: JSON.stringify({ loadingCategory: { name: item.text, id: item.text }})}))
+/**
+ * Creates mock menu entries.  You can remove this in a real app
+ */
+function createMenu() {
+  const menu = {
+    root: true,
+    items: []
   }
-})
+
+  for (let c=1; c<=10; c++) {
+    const text = `Category ${c}`
+
+    const category = {
+      text,
+      prefetch: 'visible',
+      url: `/c/${c}`,
+      state: JSON.stringify({ 
+        loadingCategory: { name: text, id: text },
+        breadcrumbs: [
+          { url: '/', text: 'Home' },
+          { text: `Category ${c}` }
+        ]
+      }),
+      items: []
+    }
+
+    menu.items.push(category)
+
+    for (let s=1; s<=10; s++) {
+      const text = `Subcategory ${s}`
+
+      category.items.push({
+        text,
+        url: `/s/${s}?c=${c}`,
+        state: JSON.stringify({ 
+          loadingSubcategory: { name: text, id: text },
+          breadcrumbs: [
+            { url: '/', text: 'Home' },
+            { url: `/c/${c}`, text: `Category ${c}` },
+            { text: '`Subcategory ${s}' }
+          ]
+        })
+      })
+    }
+  }
+
+  return menu
+}
+
+/**
+ * Returns data for the main Menu and NavTabs components
+ */
+export default () => {
+  const menu = createMenu()
+
+  return {
+    menu: {
+     levels: [menu]
+    },
+    tabs: menu
+  }
+}
