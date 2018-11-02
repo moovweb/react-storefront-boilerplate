@@ -56,7 +56,7 @@ export default class ProductItem extends Component {
                 <Image lazy={index >= 4 && index < 10} aspectRatio={100} alt="product" src={product.thumbnail}/>
               </div>
               <div>
-                <Typography variant="subheading" className={classes.name}>
+                <Typography variant="subtitle1" className={classes.name}>
                   {product.name}
                 </Typography>
                 <Rating product={product} className={classes.rating}/>

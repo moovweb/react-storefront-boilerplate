@@ -31,7 +31,7 @@ export default class CategorySkeleton extends Component {
             <BlankRow/>
             <Row>
               <Content>
-                <Typography variant="title" component="h1" className={classes.header}>{category.name}</Typography>
+                <Typography variant="h6" component="h1" className={classes.header}>{category.name}</Typography>
               </Content>
               <Space flex="1"/>
             </Row>

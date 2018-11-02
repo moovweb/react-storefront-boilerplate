@@ -1,6 +1,9 @@
 import createTheme from 'react-storefront/createTheme'
 
 const theme = createTheme({
+  typography: {
+    useNextVariants: true,
+  },
   palette: {
     addToCart: {
       background: 'green',

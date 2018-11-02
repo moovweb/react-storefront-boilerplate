@@ -94,11 +94,11 @@ export default class Product extends Component {
                     <Header product={product}/>
                   </Hidden>
                   <Row>
-                    <Typography variant="body1" className={classnames(classes.label)}>Color</Typography>
+                    <Typography className={classnames(classes.label)}>Color</Typography>
                     <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
                   </Row>
                   <Row className={classes.size}>
-                    <Typography variant="body1" className={classnames(classes.label)}>Size</Typography>
+                    <Typography className={classnames(classes.label)}>Size</Typography>
                     <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
                   </Row>
                   <Row>
@@ -152,11 +152,11 @@ export class Header extends Component {
     return (
       <div>
         <Row className={classes.title}>
-          <Typography variant="title" component="h1">{product.name}</Typography>
+          <Typography variant="h6" component="h1">{product.name}</Typography>
         </Row>
         <Row>
           <Hbox>
-            <Typography variant="subheading">{price(product.price)}</Typography>
+            <Typography variant="subtitle1">{price(product.price)}</Typography>
             <Rating product={product} className={classes.rating}/>
           </Hbox>
         </Row>

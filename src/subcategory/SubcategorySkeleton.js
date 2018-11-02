@@ -45,7 +45,7 @@ export default class SubcategorySkeleton extends Component {
                 <Vbox className={classes.sidebar}>
                   <BlankRow height="15px"/>
                   <Content>
-                    <Typography variant="subheading">Filter</Typography>
+                    <Typography variant="subtitle1">Filter</Typography>
                   </Content>
                   <BlankRow flex="1"/>
                 </Vbox>
@@ -54,7 +54,7 @@ export default class SubcategorySkeleton extends Component {
                 <BlankRow height="20px"/>
                 <Row>
                   <Content>
-                    <Typography variant="title" component="h1" className={classes.header}>{subcategory.name}</Typography>
+                    <Typography variant="h6" component="h1" className={classes.header}>{subcategory.name}</Typography>
                   </Content>
                   <Space flex="1"/>
                 </Row>

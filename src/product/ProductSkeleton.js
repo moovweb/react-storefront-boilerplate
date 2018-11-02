@@ -71,7 +71,7 @@ export default class ProductSkeleton extends Component {
                 </Hidden>
                 <Row>
                   <Content>
-                    <Typography variant="body1">Color</Typography>
+                    <Typography>Color</Typography>
                   </Content>
                   <Space flex="1"/>
                 </Row>
@@ -87,7 +87,7 @@ export default class ProductSkeleton extends Component {
                 <BlankRow height="45px"/>
                 <Row>
                   <Content>
-                    <Typography variant="body1">Size</Typography>
+                    <Typography>Size</Typography>
                   </Content>
                   <Space flex="1"/>
                 </Row>
@@ -107,7 +107,7 @@ export default class ProductSkeleton extends Component {
                 <BlankRow/>
                 <Row>
                   <Content>
-                    <Typography variant="body1" style={{paddingRight: 15}}>Quantity:</Typography>
+                    <Typography style={{paddingRight: 15}}>Quantity:</Typography>
                   </Content>
                   <QuantitySelector product={product}/>
                   <Space flex="1"/>

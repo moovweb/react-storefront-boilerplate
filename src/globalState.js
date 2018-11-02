@@ -37,7 +37,7 @@ function createMenu() {
           breadcrumbs: [
             { url: '/', text: 'Home' },
             { url: `/c/${c}`, text: `Category ${c}` },
-            { text: '`Subcategory ${s}' }
+            { text: `Subcategory ${s}` }
           ]
         })
       })

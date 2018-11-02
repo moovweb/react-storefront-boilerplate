@@ -17,10 +17,10 @@ export default class Home extends Component {
     return (
       <Container> 
         <Row>
-          <Typography variant="display1">React Storefront</Typography>
+          <Typography variant="h4">React Storefront</Typography>
         </Row>
         <Row>
-          <Typography variant="subheading">
+          <Typography variant="subtitle1">
             <CmsSlot>{ app.welcomeMessage }</CmsSlot>
           </Typography>
         </Row>

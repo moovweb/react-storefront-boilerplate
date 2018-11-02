@@ -16,7 +16,7 @@ export default class Cart extends Component {
     return (
       <Container>
         <Row>
-          <Typography variant="title">Cart</Typography>
+          <Typography variant="h6">Cart</Typography>
         </Row>
         <Row>
           { cart.items.length ? (
@@ -24,7 +24,7 @@ export default class Cart extends Component {
               <CartItem key={i} product={product}/>
             ))
           ) : (
-            <Typography variant="body2">There are no items in your cart.</Typography>
+            <Typography variant="body1">There are no items in your cart.</Typography>
           )}
         </Row>
         <CheckoutButton docked/>

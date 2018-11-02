@@ -60,8 +60,8 @@ export default class Subcategory extends Component {
               </Vbox>
             </Hidden>
             <Vbox flex="1">
-              <Typography variant="title" component="h1" className={classes.header}>{subcategory.name}</Typography>
-              <Typography variant="body1" className={classes.description}>{subcategory.description}</Typography>
+              <Typography variant="h6" component="h1" className={classes.header}>{subcategory.name}</Typography>
+              <Typography className={classes.description}>{subcategory.description}</Typography>
 
               <Hidden smUp implementation="css">
                 <Hbox split>

@@ -28,7 +28,7 @@ export default class CartItem extends Component {
             <img alt="product" src={product.thumbnails[0]}/>
           </div>
           <div className={classes.info}>
-            <Typography variant="subheading">{product.name}</Typography>
+            <Typography variant="subtitle1">{product.name}</Typography>
             <Typography className={classes.price}>{ price(product.price) }</Typography>
             <Row>
               <QuantitySelector product={product}/>

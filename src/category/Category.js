@@ -50,10 +50,10 @@ export default class App extends Component {
         <Breadcrumbs/>
         <Container>
           <Row>
-            <Typography variant="title" component="h1">{category.name}</Typography>
+            <Typography variant="h6" component="h1">{category.name}</Typography>
           </Row>
           <Row>
-            <Typography variant="subheading" component="h2">{category.description}</Typography>
+            <Typography variant="subtitle1" component="h2">{category.description}</Typography>
           </Row> 
           <Row>
             <ResponsiveTiles cols={{ xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }}>
@@ -61,7 +61,7 @@ export default class App extends Component {
                 <div key={subcategory.id}>
                   <SubcategoryLink prefetch="visible" className={classes.link} subcategory={subcategory}>
                     <Image lazy={i > 3} className={classes.image} aspectRatio={50} src={subcategory.image} alt={category.name}/>
-                    <Typography className={classes.subcategoryName} variant="subheading">{subcategory.name}</Typography>
+                    <Typography className={classes.subcategoryName} variant="subtitle1">{subcategory.name}</Typography>
                   </SubcategoryLink>
                 </div>
               ))}

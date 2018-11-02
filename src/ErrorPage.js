@@ -12,7 +12,7 @@ export default class ErrorPage extends Component {
       return (
         <Container>
           <Row>
-            <Typography variant="title">Error</Typography>
+            <Typography variant="h6">Error</Typography>
           </Row>
           <Row>
             <Typography>An unknown error occurred while attempting to process your request.  Please try again later.</Typography>
