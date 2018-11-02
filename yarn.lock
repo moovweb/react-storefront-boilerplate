@@ -7410,9 +7410,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-storefront@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-4.4.1.tgz#91e3032c608be4714c0f1bfee468a22d268f00c9"
+react-storefront@^4.7.0:
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-4.6.2.tgz#61934a5f16235f68b48b99db8aa155bc184413e5"
   dependencies:
     babel-eslint "^8.2.3"
     babel-minify-webpack-plugin "^0.3.1"
@@ -7442,7 +7442,7 @@ react-storefront@^4.4.1:
     react-highlighter "^0.4.2"
     react-pinch-zoom-pan "^1.4.5"
     react-swipeable-views "^0.12.13"
-    react-visibility-sensor "^3.11.0"
+    react-visibility-sensor "^3.14.0"
     redbox-react "^1.6.0"
     remotedev "^0.2.7"
     resize-observer-polyfill "^1.5.0"
@@ -7520,9 +7520,9 @@ react-universal-component@^2.9.0:
     hoist-non-react-statics "^2.2.1"
     prop-types "^15.5.10"
 
-react-visibility-sensor@^3.11.0:
-  version "3.11.0"
-  resolved "https://registry.yarnpkg.com/react-visibility-sensor/-/react-visibility-sensor-3.11.0.tgz#2da089ccb18b33ec3539914b300b120684aff2e0"
+react-visibility-sensor@^3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/react-visibility-sensor/-/react-visibility-sensor-3.14.0.tgz#4518590defe507963a32bc9356c5007676060486"
   dependencies:
     create-react-class "^15.5.1"
     prop-types "^15.5.4"

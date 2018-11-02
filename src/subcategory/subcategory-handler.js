@@ -57,7 +57,7 @@ function createProducts(count, start=0) {
       name: `Product ${id}`, 
       price: 99.99, 
       rating: i%5, 
-      thumbnail: `http://via.placeholder.com/128x128?index=${id}` 
+      thumbnail: `http://via.placeholder.com/128x128?i=${id}&n=thumb${id}` 
     })
   }
 
