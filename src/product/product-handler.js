@@ -13,7 +13,7 @@ export default function productHandler({ id, c, s }, request, response) {
     ],
     product: {
       id,
-      url: request.path + request.search,
+      url: request.path.replace(/\.json/, '') + request.search,
       name: `Product ${id}`,
       basePrice: 99.99,
       rating: id % 5,

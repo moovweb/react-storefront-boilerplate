@@ -8,7 +8,6 @@ import Helmet from 'react-helmet'
 import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
-import UpdateNotification from 'react-storefront/UpdateNotification'
 
 @withStyles(theme => ({
   '@global': {
@@ -50,7 +49,6 @@ export default class App extends Component {
           })}
         />
         <SearchDrawer/>
-        <UpdateNotification/>
       </div>
     )
   }

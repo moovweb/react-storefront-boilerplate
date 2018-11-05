@@ -43,7 +43,8 @@ import SearchField from 'react-storefront/SearchField'
   },
 
   searchField: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginRight: '10px'
   },
 
   large: {
@@ -65,7 +66,7 @@ export default class Header extends Component {
       </Link>
     )
 
-    const promo = `https://placehold.it/375x64/81d4fa/fff?text=${encodeURIComponent('25% OFF EVERYTHING')}`
+    const promo = `https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent('25% OFF EVERYTHING')}`
 
     return (
       <div>

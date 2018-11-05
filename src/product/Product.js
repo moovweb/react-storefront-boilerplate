@@ -37,8 +37,8 @@ export const styles = theme => ({
     margin: `0 ${theme.margins.container*2}px 0 0`,
     
     [theme.breakpoints.up('md')]: {
-      width: '600px',
-      height: '673px',
+      width: '500px',
+      height: '573px',
     },
     
     [theme.breakpoints.down('xs')]: {

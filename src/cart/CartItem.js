@@ -1,17 +1,37 @@
 import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core'
+import { withStyles, Paper, IconButton } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
 import QuantitySelector from 'react-storefront/QuantitySelector'
 import { price } from 'react-storefront/format'
 import { Hbox } from 'react-storefront/Box'
 import { observer, inject } from 'mobx-react'
-import Button from '@material-ui/core/Button'
 import Track from 'react-storefront/Track'
+import Image from 'react-storefront/Image'
+import CloseIcon from '@material-ui/icons/Close'
+import ProductLink from 'react-storefront/ProductLink'
 
 @withStyles(theme => ({
+  root: {
+    flex: 1,
+    padding: `${theme.margins.container}px 40px ${theme.margins.container}px ${theme.margins.container}px`,
+    marginBottom: `${theme.margins.container}px`,
+    position: 'relative'
+  },
   thumb: {
-    marginRight: `${theme.margins.container}px`
+    marginRight: `${theme.margins.container}px`,
+    width: '200px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100px'
+    }
+  },
+  label: {
+    marginRight: '5px'
+  },
+  remove: {
+    position: 'absolute',
+    top: 0,
+    right: 0
   }
 }))
 @inject(({ app }) => ({ cart: app.cart }))
@@ -22,25 +42,34 @@ export default class CartItem extends Component {
     const { classes, product } = this.props
     
     return (
-      <div>
+      <Paper className={classes.root}>
         <Hbox alignItems="flex-start">
           <div className={classes.thumb}>
-            <img alt="product" src={product.thumbnails[0]}/>
+            <Image src={product.images[0]} fill aspectRatio={100}/>
           </div>
           <div className={classes.info}>
-            <Typography variant="subtitle1">{product.name}</Typography>
+            <ProductLink product={product}>
+              <Typography variant="subtitle1">{product.name}</Typography>
+            </ProductLink>
             <Typography className={classes.price}>{ price(product.price) }</Typography>
+            { product.size.selected && (
+              <Hbox>
+                <Typography className={classes.label}>Size:</Typography>
+                <Typography>{product.size.selected.text}</Typography>
+              </Hbox>
+            )}
             <Row>
+              <Typography>Quantity:</Typography>
               <QuantitySelector product={product}/>
             </Row>
           </div>
         </Hbox>
-        <Row>
-          <Track event="removedFromCart" product={product}>
-            <Button size="small" variant="contained" onClick={this.remove}>Remove from Cart</Button>
-          </Track>
-        </Row>
-      </div>
+        <Track event="removedFromCart" product={product}>
+          <IconButton className={classes.remove} onClick={this.remove}>
+            <CloseIcon/>
+          </IconButton>
+        </Track>
+      </Paper>
     )
   }
 

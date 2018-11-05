@@ -5,7 +5,6 @@ import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
 import CmsSlot from 'react-storefront/CmsSlot'
 import withAmp from 'react-storefront/amp/withAmp'
-import Link from 'react-storefront/Link'
 
 @withAmp
 @inject('app')
@@ -23,9 +22,6 @@ export default class Home extends Component {
           <Typography variant="subtitle1">
             <CmsSlot>{ app.welcomeMessage }</CmsSlot>
           </Typography>
-        </Row>
-        <Row>
-          <Typography>Want to reuse your PWA header and menu in adapt pages?  <Link server to="/financial">Here's an example</Link>.</Typography>
         </Row>
       </Container> 
     )
