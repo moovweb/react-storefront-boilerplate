@@ -6,7 +6,7 @@
 moov_main.js
 moov_main.js.map
 host_map.js
-yarn-error.log
+/*.log
 .cache
 /.moov
 /moov_config.json
