@@ -28,17 +28,17 @@ jobs:
 
       - run:
           command: |
-            yarn install
+            npm install
 
       # deploy to production
       - run: 
           command: |
             if [ $CIRCLE_BRANCH = 'master' ]; then
-              yarn run link -- dev
+              npm run link -- dev
               ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode default --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
             fi
             if [ $CIRCLE_BRANCH = 'v2' ]; then
-              yarn run link -- dev
+              npm run link -- dev
               ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode new-sdk --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
             fi
 
