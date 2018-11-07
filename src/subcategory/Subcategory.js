@@ -13,6 +13,7 @@ import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import { Hbox, Vbox } from 'react-storefront/Box'
 import Hidden from '@material-ui/core/Hidden'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import LoadMask from 'react-storefront/LoadMask'
 
 @withStyles(theme => ({
   header: {
@@ -35,7 +36,7 @@ import Breadcrumbs from 'react-storefront/Breadcrumbs'
   },
   sidebar: {
     marginRight: `${theme.margins.container * 2}px`,
-    marginTop: `${theme.margins.container}px`,
+    marginTop: `${theme.margins.container - 5}px`,
     width: '200px'
   }
 }), { name: 'RSFSubcategory' })
@@ -56,10 +57,13 @@ export default class Subcategory extends Component {
           <Hbox alignItems="flex-start">
             <Hidden xsDown implementation="css">
               <Vbox className={classes.sidebar}>
-                <Filter title="Filter" model={subcategory} margins={false} expandAll refreshOnChange/>
+                <Filter model={subcategory} margins={false} expandAll refreshOnChange/>
               </Vbox>
             </Hidden>
-            <Vbox flex="1">
+            <Vbox flex="1" style={{ position: 'relative' }}>
+              { subcategory.loading && (
+                <LoadMask transparent show align="top"/> 
+              )}
               <Typography variant="h6" component="h1" className={classes.header}>{subcategory.name}</Typography>
               <Typography className={classes.description}>{subcategory.description}</Typography>
 

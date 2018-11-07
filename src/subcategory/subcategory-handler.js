@@ -3,10 +3,10 @@ import { withGlobalState } from 'react-storefront/router'
 
 const pageSize = 10
 
-export default function subcategoryHandler({ c='0', id='0', filters, sort = 'rating', page=0, format }, request, response) {
+export default function subcategoryHandler({ c='0', id='0', filters, sort = 'rating', page, format }, request, response) {
   page = parseInt(page)
   
-  if (page > 0 && format === 'json') {
+  if (page != null && format === 'json') {
     // handle click on "Show More"
     return { items: createProducts(pageSize, parseInt(page) * pageSize, { categoryId: c, subcategoryId: id }) }
   } else {
@@ -62,7 +62,7 @@ function createProducts(count, start=0, { categoryId, subcategoryId }) {
       name: `Product ${id}`, 
       basePrice: 99.99, 
       rating: i%5, 
-      thumbnail: `http://via.placeholder.com/256x256?text=${encodeURIComponent('Product ' + i)}` 
+      thumbnail: `http://via.placeholder.com/256x256?text=${encodeURIComponent(`Product ${id}`)}` 
     })
   }
 

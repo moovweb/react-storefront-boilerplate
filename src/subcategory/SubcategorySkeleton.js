@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { inject, observer } from 'mobx-react'
 import { withStyles, Hidden, withWidth } from '@material-ui/core'
 import { Skeleton, BlankRow, Row, Space, Content, Tiles } from 'react-storefront/Skeleton'
@@ -43,11 +43,25 @@ export default class SubcategorySkeleton extends Component {
             <Hbox alignItems="stretch">
               <Hidden xsDown implementation="css">
                 <Vbox className={classes.sidebar}>
-                  <BlankRow height="15px"/>
-                  <Content>
-                    <Typography variant="subtitle1">Filter</Typography>
-                  </Content>
-                  <BlankRow flex="1"/>
+                  <BlankRow height="22px"/>
+                  <Row>
+                    <Content><Typography variant="subtitle1">Color</Typography></Content>
+                    <Space flex="1"/>
+                  </Row>
+                  <FilterOption/>
+                  <FilterOption/>
+                  <FilterOption/>
+                  <BlankRow height="31px"/>
+                  <Row>
+                    <Content><Typography variant="subtitle1">Size</Typography></Content>
+                    <Space flex="1"/>
+                  </Row>
+                  <FilterOption/>
+                  <FilterOption/>
+                  <FilterOption/>
+                  <Row flex="1">
+                    <Space flex="1"/>
+                  </Row>
                 </Vbox>
               </Hidden>
               <Vbox flex="1">
@@ -115,7 +129,7 @@ export default class SubcategorySkeleton extends Component {
   }
 }
 
-const Product = ({ classes, key }) => (
+const Product = ({ classes }) => (
   <div style={{ flex: 1 }}>
     <Content className={classes.productImage}/>
     <BlankRow height="10px"/>
@@ -126,4 +140,11 @@ const Product = ({ classes, key }) => (
     <Content height="16px"/>
     <BlankRow height="30px"/>
   </div>
+)
+
+const FilterOption = () => (
+  <Fragment>
+    <BlankRow height="30px"/>
+    <Row height="16px"><Content flex="1"/><Space width="30px"/></Row>
+  </Fragment>
 )

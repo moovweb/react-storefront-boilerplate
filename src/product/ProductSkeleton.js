@@ -84,7 +84,7 @@ export default class ProductSkeleton extends Component {
                   <Content className={classes.color}/>
                   <Space flex="1"/>
                 </Row>
-                <BlankRow height="45px"/>
+                <BlankRow height="48px"/>
                 <Row>
                   <Content>
                     <Typography>Size</Typography>
