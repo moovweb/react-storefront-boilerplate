@@ -4,7 +4,7 @@ import { withGlobalState } from 'react-storefront/router'
 const pageSize = 10
 
 export default function subcategoryHandler({ c='0', id='0', filters, sort = 'rating', page, format }, request, response) {
-  page = parseInt(page)
+  page = page == null ? null : parseInt(page)
   
   if (page != null && format === 'json') {
     // handle click on "Show More"
