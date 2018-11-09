@@ -33,7 +33,7 @@ export const styles = theme => ({
   },
   imageSwitcher: {
     width: '400px',
-    height: '433px',
+    height: '473px',
     margin: `0 ${theme.margins.container*2}px 0 0`,
     
     [theme.breakpoints.up('md')]: {
@@ -43,7 +43,8 @@ export const styles = theme => ({
     
     [theme.breakpoints.down('xs')]: {
       margin: `0 -${theme.margins.container}px`,
-      width: '100vw'
+      width: '100vw',
+      height: 'calc(100vw + 74px)'
     }
   },
   selectionControls: {

@@ -19,6 +19,15 @@ import AddToCartButton from 'react-storefront/AddToCartButton'
       margin: `0 -${theme.margins.container}px`
     }
   },
+  imageSwitcher: {
+    width: '400px',
+    height: '473px',
+
+    [theme.breakpoints.up('md')]: {
+      width: '500px',
+      height: '573px'
+    }
+  },
   color: {
     height: '46px',
     width: '46px'
