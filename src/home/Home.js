@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 import Container from 'react-storefront/Container'
 import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
@@ -8,6 +8,7 @@ import withAmp from 'react-storefront/amp/withAmp'
 
 @withAmp
 @inject('app')
+@observer
 export default class Home extends Component { 
 
   render() {
