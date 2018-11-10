@@ -16,7 +16,9 @@ import AddToCartButton from 'react-storefront/AddToCartButton'
   imageSwitcherNoMargin: {
     margin: 0,
     [theme.breakpoints.down('xs')]: {
-      margin: `0 -${theme.margins.container}px`
+      margin: `0 -${theme.margins.container}px`,
+      width: '100vw',
+      height: 'calc(100vw + 73px)',
     }
   },
   imageSwitcher: {

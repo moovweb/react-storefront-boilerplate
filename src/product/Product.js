@@ -44,7 +44,7 @@ export const styles = theme => ({
     [theme.breakpoints.down('xs')]: {
       margin: `0 -${theme.margins.container}px`,
       width: '100vw',
-      height: 'calc(100vw + 74px)'
+      height: 'calc(100vw + 73px)'
     }
   },
   selectionControls: {
