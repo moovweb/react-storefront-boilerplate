@@ -7099,9 +7099,9 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-storefront@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-5.0.0.tgz#075b75df9a04fb790b71470d066dc046d2926004"
+react-storefront@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-5.0.1.tgz#57215ba69cc23246be41002a2b309302981b0970"
   dependencies:
     babel-eslint "^8.2.3"
     babel-minify-webpack-plugin "^0.3.1"
