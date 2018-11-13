@@ -41,12 +41,12 @@ import LoadMask from 'react-storefront/LoadMask'
   }
 }), { name: 'RSFSubcategory' })
 @withAmp
-@inject(({ app }) => ({ subcategory: app.subcategory, app }))
+@inject(({ app }) => ({ subcategory: app.subcategory }))
 @observer
 export default class Subcategory extends Component { 
 
   render() {
-    const { classes, subcategory, app } = this.props
+    const { classes, subcategory } = this.props
 
     if (!subcategory) return null
 
