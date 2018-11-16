@@ -11,7 +11,7 @@
   },
   "layers": ["minify-js", "minify-css", "live-reload"],
   "host_map": [
-    "$.www.moovweb.com => origin.moovweb.com"
+    "$.moovweb.cloud => origin.moovweb.com"
   ],
   "static_paths": {
     "/manifest.json": "/manifest.json",
