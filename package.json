@@ -18,7 +18,7 @@
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-plugin-react-storefront": "^5.0.4",
+    "babel-plugin-react-storefront": "^5.1.0",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -56,7 +56,7 @@
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.5",
-    "react-storefront": "^5.0.4",
+    "react-storefront": "^5.1.0",
     "react-svg-loader": "^2.1.0",
     "react-transition-group": "^2.5.0",
     "react-universal-component": "^2.9.0",
@@ -80,6 +80,7 @@
     "start:prod": "npm run link local && npm run build && npm run moov --no-build",
     "start:sw": "npm run link local && MOOV_SW=true npm run moov",
     "start:windows": "moovsdk start",
-    "start:windows:prod": "npm run build && moovsdk start --no-build"
+    "start:windows:prod": "npm run build && moovsdk start --no-build",
+    "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*"
   }
 }
