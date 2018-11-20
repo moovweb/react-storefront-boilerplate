@@ -5,6 +5,8 @@
   "CanAccessRequestHeaderAndBody": true,
   "ReqHeaderChangeAllowed": true,
   "RespHeaderChangeAllowed": true,
+  "EdgeRequestChangeAllowed": true,
+  "EdgeResponseChangeAllowed": true,
   "taskrunner": {
     "on_project_start_command": "node ./tasks/on_project_start",
     "on_deploy_command": "node ./tasks/on_deploy"
@@ -16,7 +18,7 @@
   "static_paths": {
     "/manifest.json": "/manifest.json",
     "/pwa/*": "/pwa/*",
-    "/service-worker.js": "/service-worker.js",
+    "/service-worker.js*": "/service-worker.js",
     "/workbox-*": "/workbox-*",
     "/icons/*": "/icons/*",
     "/robots.txt": "/robots.txt"
