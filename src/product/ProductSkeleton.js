@@ -5,7 +5,6 @@ import { Skeleton, BlankRow, Row, Space, Content, ImageSwitcher } from 'react-st
 import { Header, styles } from './Product'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import Container from 'react-storefront/Container'
-import withWidth, { isWidthDown } from '@material-ui/core/withWidth'
 import classnames from 'classnames'
 import QuantitySelector from 'react-storefront/QuantitySelector'
 import Typography from '@material-ui/core/Typography'
@@ -37,14 +36,19 @@ import AddToCartButton from 'react-storefront/AddToCartButton'
   size: {
     height: '40px',
     width: '60px'
+  },
+  imageSpacer: {
+    display: 'none',
+    [theme.breakpoints.down('xs')]: {
+      display: 'block'
+    }
   }
 }))
 @inject(({ app }) => ({ product: app.loadingProduct }))
-@withWidth()
 @observer
 export default class ProductSkeleton extends Component {
   render() {
-    let { product, classes, width } = this.props
+    let { product, classes } = this.props
 
     if (!product) product = {}
 
@@ -70,9 +74,7 @@ export default class ProductSkeleton extends Component {
                   />
                   <BlankRow/>
                 </div>
-                { isWidthDown('xs', width) ? null : (
-                  <Space width="30px" height="auto"/> 
-                )}
+                <Space width="30px" height="auto" className={classes.imageSpacer}/> 
               </Row>
               <div className={classes.selectionControls} style={{ display: 'flex', flexDirection: 'column' }}>
                 <Hidden xsDown implementation="css">
