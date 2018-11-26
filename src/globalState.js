@@ -7,42 +7,59 @@ function createMenu() {
     items: []
   }
 
-  for (let c=1; c<=10; c++) {
-    const text = `Category ${c}`
+  // for (let c=1; c<=10; c++) {
+  //   const text = `Category ${c}`
 
-    const category = {
-      text,
-      prefetch: 'visible',
-      url: `/c/${c}`,
-      state: JSON.stringify({ 
-        loadingCategory: { name: text, id: text },
-        breadcrumbs: [
-          { url: '/', text: 'Home' },
-          { text: `Category ${c}` }
-        ]
-      }),
-      items: []
-    }
-
-    menu.items.push(category)
-
-    for (let s=1; s<=10; s++) {
-      const text = `Subcategory ${s}`
-
-      category.items.push({
-        text,
-        url: `/s/${s}?c=${c}`,
-        state: JSON.stringify({ 
-          loadingSubcategory: { name: text, id: text },
-          breadcrumbs: [
-            { url: '/', text: 'Home' },
-            { url: `/c/${c}`, text: `Category ${c}` },
-            { text: `Subcategory ${s}` }
-          ]
-        })
-      })
-    }
+  const text = 'Shopify Collections';
+  const category = {
+    text,
+    prefetch: 'visible',
+    url: '/c/shopify',
+    state: JSON.stringify({ 
+      loadingCategory: { name: text, id: text },
+      breadcrumbs: [
+        { url: '/', text: 'Home' },
+        { text }
+      ]
+    }),
+    items: []
   }
+
+  menu.items.push(category);
+
+  //   const category = {
+  //     text,
+  //     prefetch: 'visible',
+  //     url: `/c/${c}`,
+  //     state: JSON.stringify({ 
+  //       loadingCategory: { name: text, id: text },
+  //       breadcrumbs: [
+  //         { url: '/', text: 'Home' },
+  //         { text: `Category ${c}` }
+  //       ]
+  //     }),
+  //     items: []
+  //   }
+
+  //   menu.items.push(category)
+
+  //   for (let s=1; s<=10; s++) {
+  //     const text = `Subcategory ${s}`
+
+  //     category.items.push({
+  //       text,
+  //       url: `/s/${s}?c=${c}`,
+  //       state: JSON.stringify({ 
+  //         loadingSubcategory: { name: text, id: text },
+  //         breadcrumbs: [
+  //           { url: '/', text: 'Home' },
+  //           { url: `/c/${c}`, text: `Category ${c}` },
+  //           { text: `Subcategory ${s}` }
+  //         ]
+  //       })
+  //     })
+  //   }
+  // }
 
   return menu
 }
