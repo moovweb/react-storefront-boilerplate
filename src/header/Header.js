@@ -70,9 +70,14 @@ export default class Header extends Component {
 
     return (
       <div>
-        <AppBar classes={{ root: classes.root }} responsive>
-          <Menu useExpanders/>
+        <AppBar classes={{ root: classes.root }} menuAlign="right">
+          <Menu align="right" useExpanders/>
           <Hidden mdUp implementation="css">{ storeFinder }</Hidden>
+          <Hidden mdUp implementation="css">
+            <IconButton aria-label="Search" color="inherit"  classes={{label: classes.large }} onClick={this.onSearchClick}>
+              <Search className={classes.icon}/>
+            </IconButton>
+          </Hidden>
           <HeaderLogo>
             <Logo />
           </HeaderLogo>
@@ -81,11 +86,6 @@ export default class Header extends Component {
             <SearchField className={classes.searchField}/>
           </Hidden>
           <Hidden smDown implementation="css">{ storeFinder }</Hidden>
-          <Hidden mdUp implementation="css">
-            <IconButton aria-label="Search" color="inherit"  classes={{label: classes.large }} onClick={this.onSearchClick}>
-              <Search className={classes.icon}/>
-            </IconButton>
-          </Hidden>
           <CartButton classes={{ icon: classes.icon }}/>
         </AppBar>
         <PromoBanner className={classes.promo} src={promo} />
