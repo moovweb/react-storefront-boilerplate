@@ -47,7 +47,7 @@
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
     "mobx-state-tree": "^2.0.5",
-    "moov_builder": "^3.0.10",
+    "moov_builder": "^3.0.12",
     "moovsdk": "^7.1.0",
     "mst-middlewares": "^2.0.1",
     "prop-types": "^15.6.1",
