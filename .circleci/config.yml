@@ -28,7 +28,9 @@ jobs:
               extra_args="--mode ${CIRCLE_BRANCH} --create"
             fi
 
-            npm run link -- "${env}" ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev \
+            npm run link -- "${env}"
+            
+            ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev \
               --user-email=${MOOV_EMAIL} \
               --user-password=${MOOV_PASSWORD} \
               --ignore-live \
