@@ -25,7 +25,7 @@ jobs:
               extra_args="--mode default"
             else
               env="dev"
-              extra_args="--mode ${CIRCLE_BRANCH} --create"
+              extra_args="--mode ${CIRCLE_BRANCH}"
             fi
 
             npm run link -- "${env}"
