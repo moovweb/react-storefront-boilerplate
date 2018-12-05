@@ -3,7 +3,7 @@
 // or use your own style guide.
 //
 module.exports = {
-  extends: 'react-app',
+  extends: 'plugin:react-storefront/recommended',
   plugins: [
     'react-storefront',
   ],
