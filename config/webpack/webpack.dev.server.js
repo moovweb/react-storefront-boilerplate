@@ -12,7 +12,7 @@ module.exports = dev(
   //
   // {
   //   eslintConfig: {
-  //     extends: 'moov',
+  //     extends: 'plugin:react-storefront/recommended',
   //     plugins: [
   //       'react-storefront',
   //     ],
