@@ -58,7 +58,7 @@
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.5",
-    "react-storefront": "^5.1.1",
+    "react-storefront": "^5.2.4-9",
     "react-svg-loader": "^2.1.0",
     "react-transition-group": "^2.5.0",
     "react-universal-component": "^2.9.0",
@@ -68,7 +68,7 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "scripts": {
-    "analyze": "node ./tasks/on_analyze",
+    "analyze": "ANALYZE=true npm run build",
     "build": "node ./tasks/on_deploy",
     "cache:clear": "node ./tasks/on_cache_clear",
     "clean": "rm -rf pwa/build pwa/dist build/assets/* scripts/build/* && mkdir -p build/assets/pwa",
