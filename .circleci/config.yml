@@ -10,8 +10,8 @@ jobs:
       # To force clear all cached assets, increment the "v" version in both lines below.
       - restore_cache:
           keys:
-          - v4-dependencies-{{ checksum "package.json" }}
-          - v4-dependencies- # Fallback to using the latest cache if no exact match is found
+          - v5-dependencies-{{ checksum "package.json" }}
+          - v5-dependencies- # Fallback to using the latest cache if no exact match is found
 
       - run:
           name: Install npm dependencies
@@ -39,6 +39,6 @@ jobs:
               ${extra_args}
 
       - save_cache:
-          key: v4-dependencies-{{ checksum "package.json" }}
+          key: v5-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
