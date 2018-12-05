@@ -1,48 +1,44 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/node:11
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+      - image: circleci/node:8.11.0
     steps:
       - checkout
 
-      # Download and cache dependencies
+      # Restore any previously-cached ./node_modules/ directories.
+      # To force clear all cached assets, increment the "v" version in both lines below.
       - restore_cache:
           keys:
           - v4-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v4-dependencies-
+          - v4-dependencies- # Fallback to using the latest cache if no exact match is found
 
       - run:
+          name: Install npm dependencies
+          command: npm version && npm install
+      
+      - run:
+          name: Deploy to production
           command: |
-            npm version
-            npm install
-
-      # deploy to production
-      - run: 
-          command: |
-            if [ $CIRCLE_BRANCH = 'master' ]; then
-              npm run link -- demo
-              ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode default --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
+            if [ "${CIRCLE_BRANCH}" = "master" ]; then
+              env="demo"
+              extra_args="--mode default"
             else
-              npm run link -- dev
-              ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev --mode $CIRCLE_BRANCH --create --user-email=${MOOV_EMAIL} --user-password=${MOOV_PASSWORD} --ignore-live --deploy-id $(git rev-parse HEAD) --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)"
+              env="dev"
+              extra_args="--mode ${CIRCLE_BRANCH}"
             fi
 
+            npm run link -- "${env}"
+            
+            ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev \
+              --user-email=${MOOV_EMAIL} \
+              --user-password=${MOOV_PASSWORD} \
+              --ignore-live \
+              --deploy-id $(git rev-parse HEAD) \
+              --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)" \
+              ${extra_args}
+
       - save_cache:
+          key: v4-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-          key: v3-dependencies-{{ checksum "package.json" }}

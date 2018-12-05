@@ -69,9 +69,9 @@ Update the host map in moov_config-prod.json.  The customer will need to create 
 
 Edit the name in package.json.  Use `<customer>-pwa`.
 
-### Moov Console
+### Moovweb Console
 
-Create the development environment in https://console.moovweb.com/:
+Create the development environment in the [Moovweb Console](https://console.moovweb.com):
 
 1. Click "Create New Project"
 2. Enter a name and select "Single Domain".  We suggest `<customer>-pwa-dev`
