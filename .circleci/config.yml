@@ -16,7 +16,6 @@ jobs:
       - run:
           name: Install npm dependencies
           command: |
-            npm i -g npm@6.4.1
             npm version && npm install
       
       - run:
