@@ -1,11 +1,8 @@
 version: 2
-dependencies:
-  pre:
-    - npm install -g npm@6.4.1
 jobs:
   build:
     docker:
-      - image: circleci/node:8.11.0
+      - image: circleci/node:8.11.3
     steps:
       - checkout
 
@@ -13,13 +10,13 @@ jobs:
       # To force clear all cached assets, increment the "v" version in both lines below.
       - restore_cache:
           keys:
-          - v5-dependencies-{{ checksum "package.json" }}
-          - v5-dependencies- # Fallback to using the latest cache if no exact match is found
+          - v6-dependencies-{{ checksum "package.json" }}
+          - v6-dependencies- # Fallback to using the latest cache if no exact match is found
 
       - run:
           name: Install npm dependencies
           command: |
-            npm version && npm install && npm rebuild node-sass
+            npm install -g npm@latest && npm version && npm install && npm rebuild node-sass
       
       - run:
           name: Deploy to production
@@ -43,6 +40,6 @@ jobs:
               ${extra_args}
 
       - save_cache:
-          key: v5-dependencies-{{ checksum "package.json" }}
+          key: v6-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
