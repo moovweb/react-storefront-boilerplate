@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Install npm dependencies
           command: |
-            npm version && npm install
+            npm version && npm install && npm rebuild node-sass
       
       - run:
           name: Deploy to production
@@ -38,8 +38,8 @@ jobs:
               --user-email=${MOOV_EMAIL} \
               --user-password=${MOOV_PASSWORD} \
               --ignore-live \
-              --deploy-id $(git rev-parse HEAD) \
-              --notes "$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)" \
+              --deploy-id=$(git rev-parse HEAD) \
+              --notes="$(git rev-parse --abbrev-ref HEAD) - $(git log -1 --pretty=%B)" \
               ${extra_args}
 
       - save_cache:
