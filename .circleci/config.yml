@@ -25,7 +25,7 @@ jobs:
               env="demo"
               extra_args="--mode default"
             else
-              env="dev"
+              env="demo"
               extra_args="--mode ${CIRCLE_BRANCH} --create"
             fi
 
