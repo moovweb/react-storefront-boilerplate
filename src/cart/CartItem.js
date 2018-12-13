@@ -52,7 +52,7 @@ export default class CartItem extends Component {
               <Typography variant="subtitle1">{product.name}</Typography>
             </ProductLink>
             <Typography className={classes.price}>{ price(product.price) }</Typography>
-            { product.size.selected && (
+            { product.size && product.size.selected && (
               <Hbox>
                 <Typography className={classes.label}>Size:</Typography>
                 <Typography>{product.size.selected.text}</Typography>

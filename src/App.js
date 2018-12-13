@@ -9,6 +9,8 @@ import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import 'js-cookie'
+import { getCart } from 'react-storefront-extensions/shopify'
+import { observer, inject } from 'mobx-react'
 
 @withStyles(theme => ({
   '@global': {
@@ -23,13 +25,18 @@ import 'js-cookie'
     }
   }
 }))
+@inject(({ app }) => ({ cart: app.cart }))
+@observer
 export default class App extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     // DO we have a session?
     const sessionId = window.Cookies.get('sessionid');
     if (!sessionId) {
-      fetch('/session');
+      await fetch('/session');
     }
+    getCart().then(items => {
+      this.props.cart.setItems(items);
+    })
   }
   render() {
     return (

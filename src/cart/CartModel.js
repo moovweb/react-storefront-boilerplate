@@ -17,6 +17,9 @@ const CartModel = types.compose(CartModelBase, types
     }
   }))
   .actions(self => ({
+    setItems(items) {
+      self.items = items
+    },
     afterCreate() {
       console.log('after create in cart was called');
       // persist cart to local storage

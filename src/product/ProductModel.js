@@ -6,7 +6,7 @@ const ProductModel = types.compose(ProductModelBase,
     // additional product fields go here
     specs: types.maybe(types.string),
     reviews: types.optional(types.array(types.string), []),
-    // variants: 
+    variantId: types.maybe(types.string)
   })
 )
 
