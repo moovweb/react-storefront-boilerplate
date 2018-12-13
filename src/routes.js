@@ -52,7 +52,7 @@ export default new Router()
     fromClient({ page: 'Subcategory' }),
     fromServer('./subcategory/subcategory-handler'),
   )
-  .get('/powerlink', 
+  .get('/powerlink/*to', 
     fromServer('./powerlink')
   )
   .error((e, params, request, response) => {
