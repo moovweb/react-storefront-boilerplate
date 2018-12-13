@@ -5875,9 +5875,10 @@ moment@^2.22.1:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
-moov_builder@^3.0.7:
-  version "3.0.9"
-  resolved "https://npm-proxy.fury.io/moovweb/~/d/moov_builder/moov_builder-3.0.9#e83d7e03dafe316588eedd073d6172cd3c450f95"
+moov_builder@^3.0.10:
+  version "3.0.12"
+  resolved "https://npm-proxy.fury.io/moovweb/~/d/moov_builder/moov_builder-3.0.12#afb718dd22b1e8653031f209f410896209067a15"
+  integrity sha1-r7cY3SKx6GUwMfIJ9BCJYgkGehU=
   dependencies:
     alias-regex-webpack-plugin "^0.1.2"
     browser-sync "^2.12.8"
