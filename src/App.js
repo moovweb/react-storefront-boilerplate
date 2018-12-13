@@ -8,6 +8,7 @@ import Helmet from 'react-helmet'
 import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
+import 'js-cookie'
 
 @withStyles(theme => ({
   '@global': {
@@ -23,7 +24,13 @@ import ProductSkeleton from './product/ProductSkeleton'
   }
 }))
 export default class App extends Component {
-
+  componentDidMount() {
+    // DO we have a session?
+    const sessionId = window.Cookies.get('sessionid');
+    if (!sessionId) {
+      fetch('/session');
+    }
+  }
   render() {
     return (
       <div>

@@ -10,7 +10,6 @@ import withAmp from 'react-storefront/amp/withAmp'
 @inject('app')
 @observer
 export default class Home extends Component { 
-
   render() {
     const { app } = this.props
 

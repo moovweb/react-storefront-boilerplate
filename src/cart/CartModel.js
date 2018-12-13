@@ -2,6 +2,7 @@ import { types } from "mobx-state-tree"
 import CartModelBase from 'react-storefront/model/CartModelBase'
 import ProductModel from '../product/ProductModel'
 import persist from 'react-storefront/persist'
+import { addToCart } from 'react-storefront-extensions/shopify'
 
 const CartModel = types.compose(CartModelBase, types
   .model("CartModel", {
@@ -17,8 +18,12 @@ const CartModel = types.compose(CartModelBase, types
   }))
   .actions(self => ({
     afterCreate() {
+      console.log('after create in cart was called');
       // persist cart to local storage
       persist('cart', self)
+    },
+    add(product) {
+      addToCart(product)
     }
   }))
 )
