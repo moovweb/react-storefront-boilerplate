@@ -1,13 +1,20 @@
-export default function powerLink({ to }, request, response) {
+export default function powerLink(params, request, response) {
   response.set('content-type', 'application/javascript')
 
-  const url = `${to}${request.search}${request.search.indexOf('?') === -1 ? '?' : '&'}powerlink`
-
   response.send(`
+    var links = Array.from(document.querySelectorAll('a[data-rsf-power-link]')).map(function(link) {
+      var powerlink = link.getAttribute('href');
+      powerlink += (powerlink.indexOf('?') === -1 ? '?' : '&') + 'powerlink'
+      link.setAttribute('href', powerlink);
+      return link.getAttribute('href')
+    });
+
     var el = document.createElement('iframe');
-    el.setAttribute('src', 'https://${request.hostname}/pwa/install-service-worker.html?powerlink=${encodeURIComponent(url)}');
+
+    el.setAttribute('src', '${request.protocol}//${request.hostname}${[80, 443].indexOf(request.port) === -1 ? (':' + request.port) : ''}/pwa/install-service-worker.html?preload=' + encodeURIComponent(JSON.stringify(links)));
     el.setAttribute('style', 'height:1px;width:1px;');
     el.setAttribute('frameborder', '0');
+    
     document.body.appendChild(el);
   `)
 }
