@@ -37,7 +37,6 @@ import ProductLink from 'react-storefront/ProductLink'
 @inject(({ app }) => ({ cart: app.cart }))
 @observer
 export default class CartItem extends Component {
-  
   render() {
     const { classes, product } = this.props
     
@@ -60,7 +59,7 @@ export default class CartItem extends Component {
             )}
             <Row>
               <Typography>Quantity:</Typography>
-              <QuantitySelector product={product}/>
+              <QuantitySelector product={product} onChange={this.changeQuantity} />
             </Row>
           </div>
         </Hbox>
@@ -71,6 +70,10 @@ export default class CartItem extends Component {
         </Track>
       </Paper>
     )
+  }
+
+  changeQuantity = quantity => {
+    this.props.cart.changeQuantity(this.props.product, quantity);
   }
 
   remove = () => {

@@ -2,7 +2,7 @@ import { types, clone, detach } from "mobx-state-tree"
 import CartModelBase from 'react-storefront/model/CartModelBase'
 import ProductModel from '../product/ProductModel'
 import persist from 'react-storefront/persist'
-import { addToCart, removeFromCart } from 'react-storefront-extensions/shopify'
+import { addToCart, removeFromCart, updateCart } from 'react-storefront-extensions/shopify'
 
 const CartModel = types.compose(CartModelBase, types
   .model("CartModel", {
@@ -19,6 +19,10 @@ const CartModel = types.compose(CartModelBase, types
   .actions(self => ({
     setItems(items) {
       self.items = items
+    },
+    changeQuantity(product, quantity) {
+      product.quantity = quantity
+      updateCart(product)
     },
     afterCreate() {
       console.log('after create in cart was called');
