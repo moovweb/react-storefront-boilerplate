@@ -34,7 +34,7 @@ export default class App extends Component {
     if (!sessionId) {
       await fetch('/session');
     }
-    getCart().then(items => {
+    getCart(sessionId).then(items => {
       this.props.cart.setItems(items);
     })
   }

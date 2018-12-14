@@ -26,7 +26,6 @@ const CartModel = types.compose(CartModelBase, types
     },
     afterCreate() {
       console.log('after create in cart was called');
-      // persist cart to local storage
       persist('cart', self)
     },
     add(product) {
