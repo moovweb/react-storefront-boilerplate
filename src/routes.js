@@ -41,6 +41,10 @@ export default new Router()
     fromClient({ page: 'Checkout' }),
     fromServer('./checkout/checkout-handler')
   )
+  .post('/order',
+    fromClient({ page: 'Confirmation' }),
+    fromServer('./checkout/order-handler')
+  )
   .get('/search/suggest',
     fromServer('./search/suggest-handler'),
   )

@@ -59,6 +59,7 @@ export default class App extends Component {
             Product: universal(import('./product/Product')),
             Cart: universal(import('./cart/Cart')),
             Checkout: universal(import('./checkout/Checkout')),
+            Confirmation: universal(import('./checkout/Confirmation')),
             Error: universal(import('./ErrorPage'))
           })}
         />

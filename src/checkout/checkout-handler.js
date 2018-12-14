@@ -1,5 +1,3 @@
-export default function checkoutHandler() {
-  return {
-    ...require('../globalState')
-  }
-}
+export default function checkoutHandler(params, request, response) {
+  return {};
+} 
