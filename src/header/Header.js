@@ -72,15 +72,13 @@ export default class Header extends Component {
       <div>
         <AppBar classes={{ root: classes.root }} responsive>
           <Menu useExpanders/>
-          <Hidden mdUp implementation="css">{ storeFinder }</Hidden>
           <HeaderLogo>
-            <Logo />
+            <img src="https://cdn.shopify.com/s/files/1/0200/7466/files/shopify-logo6a_800x.png?v=1515190687" width={100} />
           </HeaderLogo>
           <div style={{ flex: 1 }}/>
           <Hidden smDown implementation="css">
             <SearchField className={classes.searchField}/>
           </Hidden>
-          <Hidden smDown implementation="css">{ storeFinder }</Hidden>
           <Hidden mdUp implementation="css">
             <IconButton aria-label="Search" color="inherit"  classes={{label: classes.large }} onClick={this.onSearchClick}>
               <Search className={classes.icon}/>
@@ -88,7 +86,6 @@ export default class Header extends Component {
           </Hidden>
           <CartButton classes={{ icon: classes.icon }}/>
         </AppBar>
-        <PromoBanner className={classes.promo} src={promo} />
       </div>
     )
   }
