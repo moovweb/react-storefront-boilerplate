@@ -4,6 +4,9 @@ import { fetchSubcategory } from 'react-storefront-extensions/shopify'
 
 export default function subcategoryHandler({ c='0', id='0', filters }, request, response) {
   return fetchSubcategory(id, filters).then(subcategory => {
+    if (filters) {
+      return subcategory;
+    }
     return withGlobalState(request, globalState, { 
       title: subcategory.name,
       page: 'Subcategory',

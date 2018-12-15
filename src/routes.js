@@ -46,7 +46,7 @@ export default new Router()
     fromServer('./checkout/order-handler')
   )
   .get('/search/suggest',
-    fromServer('./search/suggest-handler'),
+    fromServer('./search/suggest-handler')
   )
   .get('/search',
     // Note: Search results and subcategory views are often the same.  In practice you may need to implement 
