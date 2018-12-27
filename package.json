@@ -65,12 +65,13 @@
     "react-universal-component": "^2.9.0",
     "remotedev": "^0.2.7",
     "rxjs-compat": "^6.3.3",
-    "uglifyjs-webpack-plugin": "^1.2.3",
-    "webpack": "^3.11.0",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^3.1.2",
     "webpack-flush-chunks": "^1.2.3"
   },
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
+    "build-client": "webpack --config config/webpack/webpack.prod.client.js",
     "build": "node ./tasks/on_deploy",
     "cache:clear": "node ./tasks/on_cache_clear",
     "clean": "rm -rf pwa/build pwa/dist build/assets/* scripts/build/* && mkdir -p build/assets/pwa",
