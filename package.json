@@ -8,7 +8,7 @@
   "dependencies": {
     "moov_perf": "1.2.5",
     "moov_rewriter": "^3.2.3",
-    "moov_stdlib": "2.6.31"
+    "moov_stdlib": "^2.6.33"
   },
   "devDependencies": {
     "@material-ui/core": "^3.3.2",
@@ -61,7 +61,7 @@
     "react-jss": "^8.3.5",
     "react-storefront": "^5.6.0",
     "react-svg-loader": "^2.1.0",
-    "react-transition-group": "^2.5.0",
+    "react-transition-group": "^2.5.0", 
     "react-universal-component": "^2.9.0",
     "remotedev": "^0.2.7",
     "rxjs-compat": "^6.3.3",

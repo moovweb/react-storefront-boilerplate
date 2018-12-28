@@ -1,6 +1,6 @@
 console.error = console.warn = console.log;
 
-const index = require('react-storefront/platform').default
+const index = require('react-storefront-moov-xdn').default
 
 require('../src/analytics')
 
