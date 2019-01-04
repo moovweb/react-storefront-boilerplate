@@ -7,11 +7,11 @@ import ProductModel from './product/ProductModel'
 
 const AppModel = types.compose(AppModelBase, 
   types.model("AppModel", {
-    welcomeMessage: types.maybe(types.string),
+    welcomeMessage: types.maybeNull(types.string),
     cart: types.optional(CartModel, {}),
-    category: types.maybe(CategoryModel),
-    subcategory: types.maybe(SubcategoryModel),
-    product: types.maybe(ProductModel)
+    category: types.maybeNull(CategoryModel),
+    subcategory: types.maybeNull(SubcategoryModel),
+    product: types.maybeNull(ProductModel)
   })
 )
 

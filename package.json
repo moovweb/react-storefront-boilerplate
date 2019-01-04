@@ -60,7 +60,7 @@
     "lodash": "^4.17.5",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
-    "mobx-state-tree": "^2.0.5",
+    "mobx-state-tree": "^3.10.0",
     "moov_builder": "^3.0.12",
     "moovsdk": "^7.1.0",
     "mst-middlewares": "^2.0.1",

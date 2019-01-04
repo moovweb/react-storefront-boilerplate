@@ -71,14 +71,14 @@ export default class Subcategory extends Component {
                 <Hbox split>
                   <FilterButton model={subcategory} className={classes.headerButton}/>
                   <div style={{ width: '15px' }}></div>
-                  <SortButton variant="drawer" model={subcategory} className={classes.headerButton}/>
+                  <SortButton model={subcategory} className={classes.headerButton}/>
                 </Hbox>
               </Hidden>
               
               <Hbox>
                 <Typography variant="caption" className={classes.total}>{ subcategory.total } total items</Typography>
                 <Hidden xsDown implementation="css">
-                  <SortButton variant="menu" model={subcategory} className={classes.headerButton}  style={{ marginLeft: '10px'}}/>
+                  <SortButton model={subcategory} className={classes.headerButton}  style={{ marginLeft: '10px'}}/>
                 </Hidden>
               </Hbox>
 
