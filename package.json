@@ -14,8 +14,9 @@
     "@material-ui/core": "^3.3.2",
     "@material-ui/icons": "^3.0.1",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^7.1.4",
     "babel-minify-webpack-plugin": "^0.3.1",
     "babel-plugin-react-storefront": "^5.1.0",
@@ -29,6 +30,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.16.0",
     "core-js": "^2.5.7",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.9.0",
     "eslint-config-moov": "0.0.3",
     "eslint-config-react-app": "^3.0.5",
@@ -40,6 +43,10 @@
     "eslint-plugin-react-storefront": "0.0.7",
     "file-loader": "^1.1.11",
     "history": "^4.7.2",
+    "jest": "^23.6.0",
+    "jest-environment-jsdom": "^23.4.0",
+    "jest-fetch-mock": "^2.1.0",
+    "jest-junit": "^5.2.0",
     "js-cookie": "^2.2.0",
     "jss": "^9.8.0",
     "jss-global": "^3.0.0",
@@ -70,6 +77,8 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "scripts": {
+    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/*",
+    "test:ci": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit",
     "analyze": "node ./tasks/on_analyze",
     "build": "node ./tasks/on_deploy",
     "cache:clear": "node ./tasks/on_cache_clear",
@@ -86,5 +95,24 @@
     "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*"
+  },
+  "jest": {
+    "testEnvironment": "./test/config/jsdom",
+    "setupFiles": [
+      "./test/config/setup.js"
+    ],
+    "snapshotSerializers": [
+      "./test/config/snapshotSerializer"
+    ],
+    "collectCoverage": true,
+    "transformIgnorePatterns": [
+      "node_modules/(?!moov)"
+    ],
+    "testURL": "http://localhost",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|svg)$": "../test/config/assetMock.js",
+      "^moov-pwa-analytics$": "moov-pwa-analytics/src",
+      "^moov-pwa-analytics/(.*)$": "moov-pwa-analytics/src/$1"
+    }
   }
 }
