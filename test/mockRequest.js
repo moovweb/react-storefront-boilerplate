@@ -1,5 +1,5 @@
 import { Response } from 'react-storefront/router'
-import createRequest from 'react-storefront/platform/createRequest'
+import createRequest from 'react-storefront-moov-xdn/createRequest'
 
 export default function mockRequest({ protocol="https", hostname='localhost', method="GET", path="/", headers={}, body={} } = {}) {
   global.env = {
