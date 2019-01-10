@@ -70,7 +70,7 @@
     "webpack-flush-chunks": "^1.2.3"
   },
   "scripts": {
-    "analyze": "node ./tasks/on_analyze",
+    "analyze": "ANALYZE=true npm run build",
     "build": "node ./tasks/on_deploy",
     "cache:clear": "node ./tasks/on_cache_clear",
     "clean": "rm -rf pwa/build pwa/dist build/assets/* scripts/build/* && mkdir -p build/assets/pwa",
