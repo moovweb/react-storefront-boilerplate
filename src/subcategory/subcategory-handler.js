@@ -38,7 +38,7 @@ export default function subcategoryHandler({ c='0', id='0', filters, sort = 'rat
       page: 'Subcategory',
       breadcrumbs: [
         { text: 'Home', url: '/' },
-        { text: `Category ${c}`, url: `/c/${c}` },
+        { text: `Category ${c}`, url: `/c/${c}`, state: JSON.stringify({ loadingCategory: { name: `Category ${c}` }}) },
         { text: `Subcategory ${id}` }
       ],
       subcategory: {
