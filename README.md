@@ -10,13 +10,21 @@ First, install the dependencies:
 npm install
 ```
 
-## Running
+## Running (Moovweb XDN SDK)
 
 ```
 npm start
 ```
 
-This builds and starts your application on [https://localhost:8080](https://localhost:8080).  Once the build is complete, your browser will automatically open and display the application.
+This builds and starts your application on [https://localhost:8080](https://localhost:8080) using the Moovweb XDN SDK.  Once the build is complete, your browser will automatically open and display the application.
+
+## Running (Express)
+
+You can also run you app using express:
+
+```
+npm start:express
+```
 
 ## Windows
 
