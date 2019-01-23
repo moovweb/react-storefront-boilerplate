@@ -10,3 +10,4 @@ host_map.js
 .cache
 /.moov
 /moov_config.json
+/coverage
