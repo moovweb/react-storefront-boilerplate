@@ -1,3 +1,6 @@
+// Creates an express server to host the app in development when running via npm run start:express
+// You can delete this file if you use moovsdk to run your app (npm start)
+
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'

@@ -10,7 +10,7 @@ const paths = {
   dotenv: resolveApp('.env'),
   src: resolveApp('src'),
   srcClient: resolveApp('src/client'),
-  srcServer: resolveApp('src/expressServer'),
+  srcServer: resolveApp('src/express'),
   srcShared: resolveApp('src/shared'),
   publicPath: '/pwa/',
 }

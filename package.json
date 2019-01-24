@@ -100,7 +100,7 @@
     "moov": "moovsdk start",
     "start": "npm run link local && npm run moov",
     "debug": "npm run link local && node --inspect node_modules/moovsdk/sdk.js start",
-    "start:express": "node scripts/express",
+    "start:express": "node express",
     "start:playback": "npm start --replay-upstream-requests",
     "start:prod": "npm run link local && npm run build && npm run moov -- --no-build",
     "start:sw": "npm run link local && MOOV_SW=true npm run moov",

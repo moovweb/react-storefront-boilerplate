@@ -1,10 +1,13 @@
+// The main entry point when running the app via express (npm run start:express)
+// You can delete this file if you use moovsdk to run your app (npm start)
+
 const webpack = require('webpack')
 const nodemon = require('nodemon')
 const webpackConfig = require('../config/webpack/webpack.config')(process.env.NODE_ENV || 'development')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const express = require('express')
 const paths = require('../config/paths')
-const { logMessage, compilerPromise } = require('./utils')
+const { logMessage, compilerPromise } = require('../scripts/utils')
 
 const app = express()
 const PORT = process.env.PORT || 8500
@@ -52,8 +55,6 @@ const start = async () => {
       watchOptions,
     })
   )
-
-  // app.use('/static', express.static(paths.clientBuild))
 
   app.listen(WEBPACK_PORT)
 

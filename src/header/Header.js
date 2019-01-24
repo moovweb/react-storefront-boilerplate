@@ -88,7 +88,7 @@ export default class Header extends Component {
           <Hidden smDown implementation="css">{ storeFinder }</Hidden>
           <CartButton classes={{ icon: classes.icon }}/>
         </AppBar>
-        <PromoBanner className={classes.promo} src={promo} />
+        <PromoBanner className={classes.promo} src={promo} style={{ height: '64px' }} />
       </div>
     )
   }
