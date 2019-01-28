@@ -63,7 +63,7 @@
     "jss-global": "^3.0.0",
     "jss-nested": "^6.0.1",
     "lodash": "^4.17.5",
-    "mobx": "^4.1.0",
+    "mobx": "^4.8.0",
     "mobx-react": "^5.0.0",
     "mobx-state-tree": "^3.10.0",
     "moov_builder": "^4.0.0-alpha.1",
@@ -108,6 +108,7 @@
     "start:sw": "npm run link local && MOOV_SW=true npm run moov",
     "start:windows": "moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
-    "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*"
+    "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
+    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
   }
 }
