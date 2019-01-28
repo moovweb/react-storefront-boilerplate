@@ -7,7 +7,7 @@ const webpackConfig = require('../config/webpack/webpack.config')(process.env.NO
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const express = require('express')
 const paths = require('../config/paths')
-const { logMessage, compilerPromise } = require('../scripts/utils')
+const { logMessage, compilerPromise } = require('./utils')
 
 const app = express()
 const PORT = process.env.PORT || 8500
