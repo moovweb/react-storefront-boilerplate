@@ -7,7 +7,6 @@ import ProductItem from './ProductItem'
 import FilterButton from 'react-storefront/FilterButton'
 import Filter from 'react-storefront/Filter'
 import SortButton from 'react-storefront/SortButton'
-import withAmp from 'react-storefront-extensions/amp/withAmp'
 import ShowMore from 'react-storefront/ShowMore'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import { Hbox, Vbox } from 'react-storefront/Box'
@@ -40,7 +39,6 @@ import LoadMask from 'react-storefront/LoadMask'
     width: '200px'
   }
 }), { name: 'RSFSubcategory' })
-@withAmp
 @inject(({ app }) => ({ subcategory: app.subcategory }))
 @observer
 export default class Subcategory extends Component { 
