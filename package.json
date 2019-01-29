@@ -46,6 +46,8 @@
     "chalk": "^2.4.2",
     "core-js": "^2.5.7",
     "cors": "^2.8.5",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "eslint": "^5.9.0",
     "eslint-config-moov": "0.0.3",
     "eslint-config-react-app": "^3.0.5",
@@ -59,6 +61,10 @@
     "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "history": "^4.7.2",
+    "jest": "^23.6.0",
+    "jest-environment-jsdom": "^23.4.0",
+    "jest-fetch-mock": "^2.1.0",
+    "jest-junit": "^5.2.0",
     "js-cookie": "^2.2.0",
     "jss": "^9.8.0",
     "jss-global": "^3.0.0",
@@ -92,23 +98,43 @@
   },
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
-    "build-client": "webpack --config config/webpack/webpack.prod.client.js",
+    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/*",
+    "test:ci": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
     "build": "node ./tasks/on_deploy",
     "cache:clear": "node ./tasks/on_cache_clear",
     "clean": "rm -rf pwa/build pwa/dist build/assets/* scripts/build/* && mkdir -p build/assets/pwa",
     "chrome": "open -a \"Google Chrome\" --args --ignore-certificate-errors",
     "deploy": "npm run clean && f() { npm run link $@ && moovsdk deploy moovweb react-storefront-boilerplate-$@ --ignore-live --deploy-id=\"`git rev-parse HEAD`\" --notes=\"`git log -1 --pretty=format:%s`\" && npm run link -- local; }; f",
     "link": "f() { ln -sf moov_config-$@.json moov_config.json; }; f",
-    "moov": "moovsdk start",
-    "start": "npm run link local && npm run moov",
+    "start": "npm run link local && moovsdk start",
     "debug": "npm run link local && node --inspect node_modules/moovsdk/sdk.js start",
     "start:express": "node express",
     "start:playback": "npm start --replay-upstream-requests",
-    "start:prod": "npm run link local && npm run build && npm run moov -- --no-build",
-    "start:sw": "npm run link local && MOOV_SW=true npm run moov",
-    "start:windows": "moovsdk start",
+    "start:prod": "npm run link local && npm run build && moovsdk start --no-build",
+    "start:sw": "npm run link local && MOOV_SW=true moovsdk start",
+    "link:windows": "IF NOT EXIST moov_config.json mklink moov_config.json moov_config-local.json",
+    "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
     "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
+  },
+  "jest": {
+    "testEnvironment": "./test/config/jsdom",
+    "setupFiles": [
+      "./test/config/setup.js"
+    ],
+    "snapshotSerializers": [
+      "./test/config/snapshotSerializer"
+    ],
+    "collectCoverage": true,
+    "transformIgnorePatterns": [
+      "node_modules/(?!moov)"
+    ],
+    "testURL": "http://localhost",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|svg)$": "../test/config/assetMock.js",
+      "^moov-pwa-analytics$": "moov-pwa-analytics/src",
+      "^moov-pwa-analytics/(.*)$": "moov-pwa-analytics/src/$1"
+    }
   }
 }

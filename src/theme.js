@@ -1,13 +1,16 @@
 import createTheme from 'react-storefront/createTheme'
+import red from '@material-ui/core/colors/red'
 
 const theme = createTheme({
   typography: {
     useNextVariants: true,
   },
   palette: {
-    addToCart: {
-      background: 'green',
-      contrastText: 'white'
+    secondary: {
+      main: red[700],
+      light: red[600],
+      dark: red[800],
+      contrasText: '#fff'
     },
     spacing: {
       container: 15,

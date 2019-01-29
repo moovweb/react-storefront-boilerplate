@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home should render 1`] = `
+<TestProvider>
+  <Provider router={{...}} app={{...}} history={{...}}>
+    <MuiThemeProviderOld theme={{...}}>
+      <inject-c-with-app-history>
+        <c app={{...}} history={{...}}>
+          <HelmetWrapper defer={true} encodeSpecialCharacters={true}>
+            <SideEffect(NullComponent) defer={true} encodeSpecialCharacters={true} link={{...}}>
+              <NullComponent defer={true} encodeSpecialCharacters={true} link={{...}} />
+            </SideEffect(NullComponent)>
+          </HelmetWrapper>
+          <inject-Home-with-app app={{...}} history={{...}}>
+            <Home app={{...}} history={{...}}>
+              <WithStyles(b)>
+                <b classes={{...}} inset={true}>
+                  <div className="RSFContainer-root-1 RSFContainer-inset-2">
+                    <WithStyles(b)>
+                      <b classes={{...}}>
+                        <div className="RSFRow-root-3">
+                          <WithStyles(Typography) variant="h4">
+                            <Typography variant="h4" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <h4 className="MuiTypography-root-4 MuiTypography-h4-19">
+                                React Storefront
+                              </h4>
+                            </Typography>
+                          </WithStyles(Typography)>
+                        </div>
+                      </b>
+                    </WithStyles(b)>
+                    <WithStyles(b)>
+                      <b classes={{...}}>
+                        <div className="RSFRow-root-3">
+                          <WithStyles(Typography) variant="subtitle1">
+                            <Typography variant="subtitle1" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
+                              <h6 className="MuiTypography-root-4 MuiTypography-subtitle1-22">
+                                <WithStyles(b)>
+                                  <b classes={{...}} />
+                                </WithStyles(b)>
+                              </h6>
+                            </Typography>
+                          </WithStyles(Typography)>
+                        </div>
+                      </b>
+                    </WithStyles(b)>
+                  </div>
+                </b>
+              </WithStyles(b)>
+            </Home>
+          </inject-Home-with-app>
+        </c>
+      </inject-c-with-app-history>
+    </MuiThemeProviderOld>
+  </Provider>
+</TestProvider>
+`;

@@ -7,8 +7,8 @@ export default function productHandler({ id, c, s }, request, response) {
     page: 'Product',
     breadcrumbs: [
       { text: 'Home', url: '/' },
-      { text: `Category ${c}`, url: `/c/${c}` },
-      { text: `Subcategory ${s}`, url: `/s/${s}?c=${c}` },
+      { text: `Category ${c}`, url: `/c/${c}`, state: { loadingCategory: { name: `Category ${c}` }} },
+      { text: `Subcategory ${s}`, url: `/s/${s}?c=${c}`, state: { loadingSubcategory: { id: s, name: `Subcategory ${c}` }} },
       { text: `Product ${id}` },
     ],
     product: {
