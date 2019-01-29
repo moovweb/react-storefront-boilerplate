@@ -1,25 +1,28 @@
 module.exports = function (api) {
+  const modules = api.env().match(/client/) ? false : 'commonjs'
+  api.cache(true)
+
   return {
-    presets: [
+    "presets": [
       ["@babel/env", {
-        targets: {
-          browsers: "> 1%"
+        "targets": {
+          "browsers": "> 1%"
         },
-        useBuiltIns: "usage",
-        forceAllTransforms: true,
-        modules: api.env().match(/server/) ? 'commonjs' : false
+        "useBuiltIns": "usage",
+        "forceAllTransforms": true,
+        "modules": modules
       }],
       "@babel/react"
     ],
-    env: {
+    "env": {
       "development-server": {
-        plugins: ['react-storefront']
+        "plugins": ['react-storefront']
       },
       "production-server": {
-        plugins: ['react-storefront']
+        "plugins": ['react-storefront']
       }
     },
-    plugins: [
+    "plugins": [
       ["@babel/plugin-transform-runtime", {
         "regenerator": true
       }],
@@ -27,10 +30,9 @@ module.exports = function (api) {
       ["@babel/plugin-proposal-decorators", {
         "legacy": true
       }],
-      "@babel/plugin-syntax-dynamic-import",
       "@babel/plugin-proposal-object-rest-spread",
       "@babel/plugin-proposal-class-properties",
-      "universal-import"
+      "@babel/plugin-syntax-dynamic-import"
     ]
   }
 }

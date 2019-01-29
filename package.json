@@ -37,10 +37,13 @@
     "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.2",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
+    "babel-jest": "^24.0.0",
     "babel-loader": "^8.0.0",
     "babel-minify-webpack-plugin": "^0.3.1",
-    "babel-plugin-react-storefront": "^5.1.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-react-storefront": "^6.0.0",
     "babel-plugin-universal-import": "^3.1.2",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
@@ -61,8 +64,8 @@
     "express": "^4.16.4",
     "file-loader": "^2.0.0",
     "history": "^4.7.2",
-    "jest": "^23.6.0",
-    "jest-environment-jsdom": "^23.4.0",
+    "jest": "^24.0.0",
+    "jest-environment-jsdom": "^24.0.0",
     "jest-fetch-mock": "^2.1.0",
     "jest-junit": "^5.2.0",
     "js-cookie": "^2.2.0",
@@ -128,7 +131,7 @@
     ],
     "collectCoverage": true,
     "transformIgnorePatterns": [
-      "node_modules/(?!moov)"
+      "/node_modules/(?!react-storefront/).*"
     ],
     "testURL": "http://localhost",
     "moduleNameMapper": {
