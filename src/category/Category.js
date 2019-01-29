@@ -5,12 +5,10 @@ import Typography from '@material-ui/core/Typography'
 import Container from 'react-storefront/Container'
 import Row from 'react-storefront/Row'
 import { withStyles } from '@material-ui/core'
-import withAmp from 'react-storefront/amp/withAmp'
 import Image from 'react-storefront/Image'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 
-@withAmp
 @withStyles(theme => ({
   subcategories: {
     listStyle: 'none',

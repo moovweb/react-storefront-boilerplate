@@ -7,7 +7,6 @@ import ProductItem from './ProductItem'
 import FilterButton from 'react-storefront/FilterButton'
 import Filter from 'react-storefront/Filter'
 import SortButton from 'react-storefront/SortButton'
-import withAmp from 'react-storefront/amp/withAmp'
 import ShowMore from 'react-storefront/ShowMore'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import { Hbox, Vbox } from 'react-storefront/Box'
@@ -40,7 +39,6 @@ import LoadMask from 'react-storefront/LoadMask'
     width: '200px'
   }
 }), { name: 'RSFSubcategory' })
-@withAmp
 @inject(({ app }) => ({ subcategory: app.subcategory }))
 @observer
 export default class Subcategory extends Component { 
@@ -71,14 +69,14 @@ export default class Subcategory extends Component {
                 <Hbox split>
                   <FilterButton model={subcategory} className={classes.headerButton}/>
                   <div style={{ width: '15px' }}></div>
-                  <SortButton variant="drawer" model={subcategory} className={classes.headerButton}/>
+                  <SortButton model={subcategory} className={classes.headerButton}/>
                 </Hbox>
               </Hidden>
               
               <Hbox>
                 <Typography variant="caption" className={classes.total}>{ subcategory.total } total items</Typography>
                 <Hidden xsDown implementation="css">
-                  <SortButton variant="menu" model={subcategory} className={classes.headerButton}  style={{ marginLeft: '10px'}}/>
+                  <SortButton model={subcategory} className={classes.headerButton}  style={{ marginLeft: '10px'}}/>
                 </Hidden>
               </Hbox>
 

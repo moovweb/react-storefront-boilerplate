@@ -10,7 +10,6 @@ import QuantitySelector from 'react-storefront/QuantitySelector'
 import AddToCartButton from 'react-storefront/AddToCartButton'
 import Row from 'react-storefront/Row'
 import { Hbox } from 'react-storefront/Box'
-import withAmp from 'react-storefront/amp/withAmp'
 import AmpState from 'react-storefront/amp/AmpState'
 import AmpForm from 'react-storefront/amp/AmpForm'
 import Rating from 'react-storefront/Rating'
@@ -63,7 +62,6 @@ export const styles = theme => ({
 })
 
 @withStyles(styles)
-@withAmp
 @inject(({ app }) => ({ product: app.product }))
 @observer
 export default class Product extends Component { 
