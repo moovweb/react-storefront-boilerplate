@@ -1,6 +1,5 @@
 module.exports = function (api) {
   const modules = api.env().match(/client/) ? false : 'commonjs'
-  api.cache(true)
 
   return {
     "presets": [
