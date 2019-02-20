@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   // Configuration settings and secrets such as API keys should be stored
   // in a blob via the Moov Console: https://console.moovweb.com/
 

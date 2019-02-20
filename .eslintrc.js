@@ -14,5 +14,10 @@ module.exports = {
     ecmaFeatures: {
       legacyDecorators: true
     }
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };
