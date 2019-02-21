@@ -28,9 +28,7 @@ exports[`Home should render 1`] = `
                       <WithStyles(Typography) variant="subtitle1">
                         <Typography variant="subtitle1" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} noWrap={false} paragraph={false}>
                           <h6 className="MuiTypography-root-4 MuiTypography-subtitle1-22">
-                            <WithStyles(b)>
-                              <b classes={{...}} />
-                            </WithStyles(b)>
+                            test-branch
                           </h6>
                         </Typography>
                       </WithStyles(Typography)>

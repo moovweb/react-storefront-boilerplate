@@ -19,7 +19,7 @@ export default class Home extends Component {
         </Row>
         <Row>
           <Typography variant="subtitle1">
-            <CmsSlot>{ app.welcomeMessage }</CmsSlot>
+            test-branch
           </Typography>
         </Row>
       </Container> 
