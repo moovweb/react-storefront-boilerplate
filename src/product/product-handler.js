@@ -39,22 +39,22 @@ export default function productHandler({ id, c, s }, request, response) {
       },
       color: {
         options: [
-          { text: 'Neutral Gray', id: 'cccccc', image: 'http://via.placeholder.com/350/cccccc/cccccc' },
-          { text: 'Candy Apple Red', id: 'd32f2f', image: 'http://via.placeholder.com/350/d32f2f/d32f2f' },
-          { text: 'Forest Green', id: '388E3C', image: 'http://via.placeholder.com/350/388E3C/388E3C' },
-          { text: 'Azure Blue', id: '1565c0', image: 'http://via.placeholder.com/350/1565c0/1565c0', disabled: true },
+          { text: 'Neutral Gray', id: 'cccccc', image: 'https://via.placeholder.com/350/cccccc/cccccc' },
+          { text: 'Candy Apple Red', id: 'd32f2f', image: 'https://via.placeholder.com/350/d32f2f/d32f2f' },
+          { text: 'Forest Green', id: '388E3C', image: 'https://via.placeholder.com/350/388E3C/388E3C' },
+          { text: 'Azure Blue', id: '1565c0', image: 'https://via.placeholder.com/350/1565c0/1565c0', disabled: true },
         ],
-        selected: { text: 'Neutral Gray', id: 'cccccc', image: 'http://via.placeholder.com/350/cccccc/cccccc' }
+        selected: { text: 'Neutral Gray', id: 'cccccc', image: 'https://via.placeholder.com/350/cccccc/cccccc' }
       },
       images: [
-        `http://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent('Product Image 1')}`,
-        `http://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent('Product Image 2')}`,
-        `http://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`,
+        `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent('Product Image 1')}`,
+        `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent('Product Image 2')}`,
+        `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`,
       ],
       thumbnails: [
-        `http://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent('Product Image 1')}`,
-        `http://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
-        `http://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`
+        `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent('Product Image 1')}`,
+        `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
+        `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`
       ]
     }
   })

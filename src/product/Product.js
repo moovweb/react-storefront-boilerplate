@@ -73,7 +73,7 @@ export default class Product extends Component {
 
     return (
       <AmpState initialState={product}>
-        <AmpForm id="form" action="/cart/add-from-amp.json">
+        <AmpForm id="form" action="/cart/add-from-amp.json" method="post">
 
           {/* These hidden fields are needed for AMP */}
           <input type="hidden" name="id" value={product.id}/>
@@ -103,7 +103,7 @@ export default class Product extends Component {
                   <Row>
                     <Hbox>
                       <div style={{ marginRight: '15px' }}>Quantity:</div>
-                      <QuantitySelector product={product}/>
+                      <QuantitySelector name="quantity" product={product}/>
                     </Hbox>
                   </Row>
                   <Hidden implementation="css" smUp>

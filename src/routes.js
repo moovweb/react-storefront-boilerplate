@@ -35,7 +35,7 @@ export default new Router()
     fromClient({ page: 'Cart' }),
     fromServer('./cart/cart-handler')
   )
-  .get('/cart/add-from-amp.json',
+  .post('/cart/add-from-amp.json',
     fromServer('./cart/add-from-amp-handler')
   )
   .get('/checkout',
