@@ -86,7 +86,7 @@ function createProducts(filters=[], page=0, { categoryId, subcategoryId }) {
       name: `Product ${id}`, 
       basePrice: 99.99, 
       rating: i%5, 
-      thumbnail: `http://via.placeholder.com/256x256?text=${encodeURIComponent(`Product ${id}`)}` 
+      thumbnail: `https://via.placeholder.com/256x256?text=${encodeURIComponent(`Product ${id}`)}` 
     })
   }
 
