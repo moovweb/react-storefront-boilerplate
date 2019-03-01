@@ -70,7 +70,7 @@ export default class Header extends Component {
 
     return (
       <div>
-        <AppBar classes={{ root: classes.root }} menuAlign="right">
+        <AppBar classes={{ root: classes.root }} menuAlign="right" menuIconProps={{ label: false }}>
           <Menu align="right" useExpanders/>
           <Hidden mdUp implementation="css">{ storeFinder }</Hidden>
           <Hidden mdUp implementation="css">
