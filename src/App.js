@@ -29,6 +29,7 @@ export default class App extends Component {
       <div>
         <Helmet>
           <link rel="shortcut icon" href="/icons/favicon.ico"/>
+          <meta name="description" content="Build and deploy sub-second e-commerce progressive web apps in record time."/>
         </Helmet>
         <Header/> 
         <NavTabs/>
