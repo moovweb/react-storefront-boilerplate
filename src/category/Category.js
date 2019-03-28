@@ -35,12 +35,11 @@ import Breadcrumbs from 'react-storefront/Breadcrumbs'
     image: {
       width: '100%'
     }
-  }),
-  { name: 'RSFDemoCategory' }
+  })
 )
 @inject(({ app }) => ({ category: app.category }))
 @observer
-export default class App extends Component {
+export default class Category extends Component {
   render() {
     const { category, classes } = this.props
 
