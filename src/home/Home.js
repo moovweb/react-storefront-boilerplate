@@ -4,7 +4,9 @@ import Container from 'react-storefront/Container'
 import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
 import CmsSlot from 'react-storefront/CmsSlot'
+import withAmp from 'react-storefront-extensions/amp/withAmp'
 
+@withAmp
 @inject('app')
 @observer
 export default class Home extends Component { 
@@ -16,6 +18,7 @@ export default class Home extends Component {
       <Container> 
         <Row>
           <Typography variant="h4">React Storefront</Typography>
+          <img src="//placehold.it/200" />
         </Row>
         <Row>
           <Typography variant="subtitle1">
