@@ -132,7 +132,7 @@
     ],
     "collectCoverage": true,
     "transformIgnorePatterns": [
-      "/node_modules/(?!react-storefront/).*"
+      "/node_modules/(?!react-storefront).*"
     ],
     "testURL": "http://localhost",
     "moduleNameMapper": {
