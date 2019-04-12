@@ -1,11 +1,16 @@
 {
-  "short_name": "React Storefront",
+  "short_name": "RSF",
   "name": "React Storefront",
   "icons": [
     {
       "src": "/icons/icon-300.png",
       "type": "image/png",
       "sizes": "300x300"
+    },
+    {
+      "src": "/icons/icon-634.png",
+      "type": "image/png",
+      "sizes": "634x634"
     }
   ],
   "start_url": "/?source=pwa",

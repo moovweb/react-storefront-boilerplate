@@ -6,7 +6,7 @@ import FindStore from '@material-ui/icons/LocationOn'
 import Search from '@material-ui/icons/Search'
 import Link from 'react-storefront/Link'
 import { withStyles } from '@material-ui/core/styles'
-import Logo from '../assets/moovweb-logo.svg'
+import Logo from '../assets/react-storefront-logo.svg'
 import CartButton from 'react-storefront/CartButton'
 import HeaderLogo from 'react-storefront/HeaderLogo'
 import Hidden from '@material-ui/core/Hidden'
@@ -70,7 +70,7 @@ export default class Header extends Component {
 
     return (
       <div>
-        <AppBar classes={{ root: classes.root }} menuAlign="right">
+        <AppBar classes={{ root: classes.root }} menuAlign="right" menuIconProps={{ label: false }}>
           <Menu align="right" useExpanders/>
           <Hidden mdUp implementation="css">{ storeFinder }</Hidden>
           <Hidden mdUp implementation="css">
