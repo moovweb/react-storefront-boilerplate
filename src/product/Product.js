@@ -27,7 +27,7 @@ export const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column'
+      display: 'block' 
     }
   },
   imageSwitcher: {
