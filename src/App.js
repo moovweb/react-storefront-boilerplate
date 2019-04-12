@@ -8,6 +8,9 @@ import Helmet from 'react-helmet'
 import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
+import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
+import TrackPageViews from 'react-storefront-extensions/TrackPageViews'
+import targets from './analytics'
 
 @withStyles(theme => ({
   '@global': {
@@ -26,31 +29,35 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <Helmet>
-          <link rel="shortcut icon" href="/icons/favicon.ico"/>
-          <meta name="description" content="Build and deploy sub-second e-commerce progressive web apps in record time."/>
-        </Helmet>
-        <Header/> 
-        <NavTabs/>
-        <Pages
-          loadMasks={{
-            Category: CategorySkeleton,
-            Subcategory: SubcategorySkeleton,            
-            Product: ProductSkeleton
-          }}
-          components={universal => ({
-            Home: universal(import('./home/Home')),
-            Category: universal(import('./category/Category')),
-            Subcategory: universal(import('./subcategory/Subcategory')),
-            Product: universal(import('./product/Product')),
-            Cart: universal(import('./cart/Cart')),
-            Checkout: universal(import('./checkout/Checkout')),
-            Error: universal(import('./ErrorPage'))
-          })}
-        />
-        <SearchDrawer/>
-      </div>
+      <AnalyticsProvider targets={targets}>
+        <TrackPageViews>
+          <div>
+            <Helmet>
+              <link rel="shortcut icon" href="/icons/favicon.ico"/>
+              <meta name="description" content="Build and deploy sub-second e-commerce progressive web apps in record time."/>
+            </Helmet>
+            <Header/> 
+            <NavTabs/>
+            <Pages
+              loadMasks={{
+                Category: CategorySkeleton,
+                Subcategory: SubcategorySkeleton,            
+                Product: ProductSkeleton
+              }}
+              components={universal => ({
+                Home: universal(import('./home/Home')),
+                Category: universal(import('./category/Category')),
+                Subcategory: universal(import('./subcategory/Subcategory')),
+                Product: universal(import('./product/Product')),
+                Cart: universal(import('./cart/Cart')),
+                Checkout: universal(import('./checkout/Checkout')),
+                Error: universal(import('./ErrorPage'))
+              })}
+            />
+            <SearchDrawer/>
+          </div>
+        </TrackPageViews>
+      </AnalyticsProvider>
     )
   }
 
