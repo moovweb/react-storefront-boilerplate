@@ -75,7 +75,7 @@
     "mobx-react": "^5.0.0",
     "mobx-state-tree": "^3.10.0",
     "moov_builder": "^4.0.0-alpha.1",
-    "moovsdk": "^7.1.4",
+    "moovsdk": "^7.1.7-alpha.1",
     "mst-middlewares": "^3.10.2",
     "nodemon": "^1.18.9",
     "prop-types": "^15.6.1",
