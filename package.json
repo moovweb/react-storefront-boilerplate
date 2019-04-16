@@ -8,8 +8,7 @@
   "dependencies": {
     "moov_perf": "1.2.5",
     "moov_rewriter": "^4.0.1",
-    "moov_stdlib": "^2.6.33",
-    "react-storefront-middleware": "^6.0.1"
+    "moov_stdlib": "^2.6.33"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -89,6 +88,7 @@
     "react-jss": "^8.3.5",
     "react-storefront": "^6.7.0",
     "react-storefront-extensions": "^6.0.1",
+    "react-storefront-middleware": "^6.0.1",
     "react-storefront-moov-xdn": "^6.2.0",
     "react-svg-loader": "^2.1.0",
     "react-transition-group": "^2.5.0",
