@@ -49,7 +49,7 @@ export default class ProductItem extends Component {
 
     return (
       <div id={`item-${index}`} className={classes.root}>
-        <Track event="productClicked" product={product}>
+        <Track trigger={{ onClick: 'productClicked', onImpression: 'productImpression' }} product={product}>
           <ProductLink prefetch="visible" className={classes.link} product={product}>
             <Vbox alignItems="stretch">
               <div className={classes.thumb}>
