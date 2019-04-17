@@ -10,7 +10,7 @@ const theme = createTheme({
       main: red[700],
       light: red[600],
       dark: red[800],
-      contrasText: '#fff'
+      contrastText: '#fff'
     },
     spacing: {
       container: 15,
