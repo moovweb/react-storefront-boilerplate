@@ -11,11 +11,11 @@ const theme = createTheme({
       light: red[600],
       dark: red[800],
       contrastText: '#fff'
-    },
-    spacing: {
-      container: 15,
-      row: 15
     }
+  },
+  spacing: {
+    container: 15,
+    row: 15
   },
   overrides: {
     RSFLoadMask: {
