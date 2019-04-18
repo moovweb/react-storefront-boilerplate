@@ -8,7 +8,7 @@ import Helmet from 'react-helmet'
 import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
-
+import Offline from 'react-storefront/Offline'
 @withStyles(theme => ({
   '@global': {
     body: {
@@ -46,7 +46,8 @@ export default class App extends Component {
             Product: universal(import('./product/Product')),
             Cart: universal(import('./cart/Cart')),
             Checkout: universal(import('./checkout/Checkout')),
-            Error: universal(import('./ErrorPage'))
+            Error: universal(import('./ErrorPage')),
+            Offline
           })}
         />
         <SearchDrawer/>
