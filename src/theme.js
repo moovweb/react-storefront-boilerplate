@@ -11,6 +11,11 @@ const theme = createTheme({
       light: red[600],
       dark: red[800],
       contrastText: '#fff'
+    },
+    price: {
+      full: '#000',
+      main: '#000',
+      sale: '#900'
     }
   },
   spacing: {
