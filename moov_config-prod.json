@@ -16,6 +16,7 @@
     "$.moovweb.cloud => origin.moovweb.com"
   ],
   "static_paths": {
+    "/.well-known/*": "/.well-known/*",
     "/manifest.json": "/manifest.json",
     "/pwa/*": "/pwa/*",
     "/service-worker.js*": "/service-worker.js",
