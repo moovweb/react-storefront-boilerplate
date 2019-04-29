@@ -26,7 +26,7 @@ plugins:
 functions:
   app:
     handler: serverless/dist/app.handler
-    memorySize: 2048
+    memorySize: 1536
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
