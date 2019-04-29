@@ -12,3 +12,5 @@ host_map.js
 /moov_config.json
 /coverage
 /junit.xml
+.serverless
+dist
