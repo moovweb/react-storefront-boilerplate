@@ -5,6 +5,9 @@ const cacheHandler = cache({ server: { maxAgeSeconds: 300 }, client: true }) // 
 
 // See guide to routing: https://pwa.moovweb.com/guides/routing
 export default new Router()
+  .get('/app-shell',     
+    fromServer('./app-shell/app-shell-handler')
+  )
   .get('/', 
     cacheHandler,
     fromClient({ page: 'Home' }),
