@@ -15,8 +15,17 @@ import path from "path";
 
 const app = express();
 
-const staticPath = path.join(paths.clientBuild, paths.publicPath);
-app.use(paths.publicPath, express.static(staticPath));
+const staticPaths = {
+  [paths.publicPath]: paths.publicPath,
+  "/icons": "/icons",
+  "/manifest.json": "manifest.json",
+  "/robots.txt": "robots.txt",
+  "/service-worker.js": "service-worker.js",
+}
+
+for (let key in staticPaths) {
+  app.use(key, express.static(path.join(paths.clientBuild, staticPaths[key])));
+}
 
 app.use(cors());
 app.use(bodyParser.json());

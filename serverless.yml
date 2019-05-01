@@ -16,22 +16,35 @@ package:
 provider:
   name: aws
   runtime: nodejs8.10
-  region: us-west-2
+  region: us-east-1
 
 plugins:
   - serverless-offline
-  # - serverless-domain-manager
+  - serverless-domain-manager
 
-# The `functions` block defines what code to deploy
+custom:
+  domains:
+    production: rsf-lambda-poc.moovweb-dev.net
+    dev: rsf-lambda-poc.moovweb-dev.net
+  customDomain:
+    domainName: '${self:custom.domains.${self:provider.stage}}'
+    basePath: '/'
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    # certificateName: "rsf-lambda-poc.moovweb-dev.net"
+
 functions:
   app:
     handler: serverless/dist/app.handler
     memorySize: 1536
-    # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
           path: /{any+}
-          method: get
+          method: any
+          cors: true
+      - http:
+          path: /
+          method: any
           cors: true
     package:
       archive: dist/packages/app.zip
@@ -39,6 +52,7 @@ functions:
         - serverless/dist/app.js
         - serverless/dist/app.js.map
         - build/**/*
+
 # custom:
 #   customDomain:
 #     domainName: serverless-rsf.moovweb.cloud
