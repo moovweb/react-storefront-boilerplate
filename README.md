@@ -123,6 +123,3 @@ The configure the project in [Circle CI - Moovweb Projects](https://circleci.com
 5. Select "Overview", then "Start Building" at the bottom.
 
 Lastly, start a build and ensure that it succeeds.
-
-
-Test Mark X

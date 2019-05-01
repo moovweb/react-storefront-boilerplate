@@ -8,8 +8,7 @@ import { withStyles } from '@material-ui/core'
 import Image from 'react-storefront/Image'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
-import withAmp from 'react-storefront-extensions/amp/withAmp'
-@withAmp
+
 @withStyles(theme => ({
   subcategories: {
     listStyle: 'none',
