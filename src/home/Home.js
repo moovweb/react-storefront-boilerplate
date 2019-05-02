@@ -7,23 +7,21 @@ import CmsSlot from 'react-storefront/CmsSlot'
 
 @inject('app')
 @observer
-export default class Home extends Component { 
-
+export default class Home extends Component {
   render() {
     const { app } = this.props
 
     return (
-      <Container> 
+      <Container>
         <Row>
           <Typography variant="h4">React Storefront</Typography>
         </Row>
         <Row>
           <Typography variant="subtitle1">
-            <CmsSlot>{ app.welcomeMessage }</CmsSlot>
+            <CmsSlot>{app.welcomeMessage}</CmsSlot>
           </Typography>
         </Row>
-      </Container> 
+      </Container>
     )
   }
-
 }

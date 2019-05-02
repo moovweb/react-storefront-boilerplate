@@ -1,6 +1,6 @@
 /**
  * Handler for the PDP AMP form in src/product/Product.js
- * @param {Object} productInfo 
+ * @param {Object} productInfo
  */
 export default function addFromAmp({ id, name, quantity }, request, response) {
   // Here you would make the necessary API call to add the product to the cart

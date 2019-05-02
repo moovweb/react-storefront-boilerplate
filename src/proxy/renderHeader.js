@@ -10,7 +10,7 @@ import theme from '../theme'
  */
 export default function renderHeader(stats) {
   const { html } = render({
-    component: <Header/>,
+    component: <Header />,
     state: createState(),
     theme,
     stats,
@@ -22,11 +22,14 @@ export default function renderHeader(stats) {
 
   // add the new header and supporting resources to the document
   const $header = $(tag('div', { class: 'mw-header' })).append(html)
-  $body.find('#page-container').attr('id', null).prepend($header)
+  $body
+    .find('#page-container')
+    .attr('id', null)
+    .prepend($header)
 }
 
 /**
- * Extracts a menu item from a nav menu element on www.moovweb.com.  The logic here is 
+ * Extracts a menu item from a nav menu element on www.moovweb.com.  The logic here is
  * specific to www.moovweb.com and only serves an example of extracting MenuModel data from
  * the upstream site.
  * @return {AppModel}
@@ -36,8 +39,11 @@ function createState() {
     const el = $(this)
     const link = el.children('a')
     const href = link.attr('href')
-    const children = el.find('.sub-menu > .menu-item').map(extractMenuItem).get()
-  
+    const children = el
+      .find('.sub-menu > .menu-item')
+      .map(extractMenuItem)
+      .get()
+
     return {
       text: link.text(),
       url: children.length ? null : href,
@@ -45,12 +51,17 @@ function createState() {
     }
   }
 
-  return AppModel.create({ 
-    menu:{
-      levels: [{
-        root: true,
-        items: $body.find('#top-menu > .menu-item').map(extractMenuItem).get()
-      }]
+  return AppModel.create({
+    menu: {
+      levels: [
+        {
+          root: true,
+          items: $body
+            .find('#top-menu > .menu-item')
+            .map(extractMenuItem)
+            .get()
+        }
+      ]
     }
   })
 }

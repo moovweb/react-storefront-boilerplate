@@ -37,75 +37,81 @@ export default class SubcategorySkeleton extends Component {
 
     return (
       <div>
-        <Breadcrumbs/>
+        <Breadcrumbs />
         <Container>
           <Skeleton>
             <Hbox alignItems="stretch">
               <Hidden xsDown implementation="css">
                 <Vbox className={classes.sidebar}>
-                  <BlankRow height="22px"/>
+                  <BlankRow height="22px" />
                   <Row>
-                    <Content><Typography variant="subtitle1">Color</Typography></Content>
-                    <Space flex="1"/>
+                    <Content>
+                      <Typography variant="subtitle1">Color</Typography>
+                    </Content>
+                    <Space flex="1" />
                   </Row>
-                  <FilterOption/>
-                  <FilterOption/>
-                  <FilterOption/>
-                  <BlankRow height="31px"/>
+                  <FilterOption />
+                  <FilterOption />
+                  <FilterOption />
+                  <BlankRow height="31px" />
                   <Row>
-                    <Content><Typography variant="subtitle1">Size</Typography></Content>
-                    <Space flex="1"/>
+                    <Content>
+                      <Typography variant="subtitle1">Size</Typography>
+                    </Content>
+                    <Space flex="1" />
                   </Row>
-                  <FilterOption/>
-                  <FilterOption/>
-                  <FilterOption/>
+                  <FilterOption />
+                  <FilterOption />
+                  <FilterOption />
                   <Row flex="1">
-                    <Space flex="1"/>
+                    <Space flex="1" />
                   </Row>
                 </Vbox>
               </Hidden>
               <Vbox flex="1">
-                <BlankRow height="20px"/>
+                <BlankRow height="20px" />
                 <Row>
                   <Content>
-                    <Typography variant="h6" component="h1" className={classes.header}>{subcategory.name}</Typography>
+                    <Typography variant="h6" component="h1" className={classes.header}>
+                      {subcategory.name}
+                    </Typography>
                   </Content>
-                  <Space flex="1"/>
+                  <Space flex="1" />
                 </Row>
-                <BlankRow height="20px"/>
+                <BlankRow height="20px" />
                 <Row height="20px">
-                  <Content flex="1"/>
+                  <Content flex="1" />
                 </Row>
-                <BlankRow height="20px"/>
+                <BlankRow height="20px" />
                 <Hidden smUp>
                   <Row>
                     <Content flex="1" display="flex">
-                      <ActionButton label="Filter" style={{ flex: 1 }}/>
+                      <ActionButton label="Filter" style={{ flex: 1 }} />
                     </Content>
-                    <Space/>
+                    <Space />
                     <Content flex="1" display="flex">
-                      <ActionButton label="Sort" style={{ flex: 1 }} value="Highest Rated"/>
+                      <ActionButton label="Sort" style={{ flex: 1 }} value="Highest Rated" />
                     </Content>
                   </Row>
                 </Hidden>
                 <Hidden smUp>
-                  <BlankRow height="10px"/>
+                  <BlankRow height="10px" />
                   <Row height="16px">
-                    <Space flex="1"/>
-                    <Content width="80px"/>
-                    <Space/>
+                    <Space flex="1" />
+                    <Content width="80px" />
+                    <Space />
                   </Row>
                 </Hidden>
                 <Hidden xsDown>
                   <Row>
-                    <Space flex="1"/>
-                    <ActionButton label="Sort" value="Highest Rated"/>
+                    <Space flex="1" />
+                    <ActionButton label="Sort" value="Highest Rated" />
                   </Row>
                 </Hidden>
-                <BlankRow height="7.5px"/>
+                <BlankRow height="7.5px" />
                 <Row>
                   <Tiles style={{ flex: 1 }} cols={cols}>
-                    { this.renderProducts() }
+                    {this.renderProducts()}
                   </Tiles>
                 </Row>
               </Vbox>
@@ -121,8 +127,8 @@ export default class SubcategorySkeleton extends Component {
     const { classes, width } = this.props
     const count = cols[width] * 3
 
-    for (let i=0; i<count; i++) {
-      products.push(<Product key={i} classes={classes}/>)
+    for (let i = 0; i < count; i++) {
+      products.push(<Product key={i} classes={classes} />)
     }
 
     return products
@@ -131,20 +137,23 @@ export default class SubcategorySkeleton extends Component {
 
 const Product = ({ classes }) => (
   <div style={{ flex: 1 }}>
-    <Content className={classes.productImage}/>
-    <BlankRow height="10px"/>
-    <Content height="16px"/>
-    <BlankRow height="10px"/>
-    <Content height="16px"/>
-    <BlankRow height="10px"/>
-    <Content height="16px"/>
-    <BlankRow height="30px"/>
+    <Content className={classes.productImage} />
+    <BlankRow height="10px" />
+    <Content height="16px" />
+    <BlankRow height="10px" />
+    <Content height="16px" />
+    <BlankRow height="10px" />
+    <Content height="16px" />
+    <BlankRow height="30px" />
   </div>
 )
 
 const FilterOption = () => (
   <Fragment>
-    <BlankRow height="30px"/>
-    <Row height="16px"><Content flex="1"/><Space width="30px"/></Row>
+    <BlankRow height="30px" />
+    <Row height="16px">
+      <Content flex="1" />
+      <Space width="30px" />
+    </Row>
   </Fragment>
 )
