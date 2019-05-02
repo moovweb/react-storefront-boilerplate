@@ -62,6 +62,10 @@ export default new Router()
       stack: e.stack
     }
   })
+  .appShell(
+    // returns only the global data needed to build the app-shell for offline support
+    fromServer('./app-shell/app-shell-handler')
+  )
   .fallback(
     // when no route matches, pull in content from the upstream site
     proxyUpstream('./proxy/proxy-handler')
