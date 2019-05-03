@@ -52,6 +52,7 @@ export default class Subcategory extends Component {
 
     return (
       <Fragment>
+        <script>{` console.log('this should break amp validation') `}</script>
         <Breadcrumbs />
         <Container className={classes.root} key={subcategory.id}>
           <Hbox alignItems="flex-start">
