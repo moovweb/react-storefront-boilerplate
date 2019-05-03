@@ -30,49 +30,52 @@ import { Hbox } from 'react-storefront/Box'
 @inject(({ app, history }) => ({ cart: app.cart, history }))
 @observer
 export default class Cart extends Component {
-  
   render() {
     const { cart, classes } = this.props
 
     return (
       <Container className={classes.root}>
         <Row>
-          <Typography variant="h6">My Cart ({cart.items.length} {cart.items.length === 1 ? 'item' : 'items'})</Typography>
+          <Typography variant="h6">
+            My Cart ({cart.items.length} {cart.items.length === 1 ? 'item' : 'items'})
+          </Typography>
         </Row>
         <Row>
           <Grid container spacing={32}>
             <Grid item xs={12} sm={8}>
-              { cart.items.length ? (
-                cart.items.map((product, i) => (
-                  <CartItem key={i} product={product}/>
-                ))
+              {cart.items.length ? (
+                cart.items.map((product, i) => <CartItem key={i} product={product} />)
               ) : (
                 <Typography variant="body1">There are no items in your cart.</Typography>
               )}
             </Grid>
-            { cart.empty ? null : (
+            {cart.empty ? null : (
               <Grid item xs={12} sm={4}>
                 <div className={classes.checkoutPanel}>
                   <Hbox alignItems="flex-start">
                     <div>
-                      <Typography variant="subtitle2" className={classes.total}>Estimated Total</Typography>
+                      <Typography variant="subtitle2" className={classes.total}>
+                        Estimated Total
+                      </Typography>
                       <Typography variant="caption">Tax calculated in checkout</Typography>
                     </div>
-                    <Spacer/>
-                    <Typography variant="subtitle2" className={classes.total}>{price(cart.total)}</Typography>
+                    <Spacer />
+                    <Typography variant="subtitle2" className={classes.total}>
+                      {price(cart.total)}
+                    </Typography>
                   </Hbox>
                   <Hidden xsDown implementation="css">
                     <Row>
-                      <Divider/>
+                      <Divider />
                     </Row>
                   </Hidden>
-                  { cart.items.length === 0 ? null : (
+                  {cart.items.length === 0 ? null : (
                     <Fragment>
                       <Hidden smUp implementation="css">
-                        <CheckoutButton className={classes.checkoutButton} docked/>
+                        <CheckoutButton className={classes.checkoutButton} docked />
                       </Hidden>
                       <Hidden xsDown implementation="css">
-                        <CheckoutButton className={classes.checkoutButton}/>
+                        <CheckoutButton className={classes.checkoutButton} />
                       </Hidden>
                     </Fragment>
                   )}
@@ -88,5 +91,4 @@ export default class Cart extends Component {
   goToCheckout = () => {
     this.props.history.push('/checkout')
   }
-
 }

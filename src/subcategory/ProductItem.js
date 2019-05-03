@@ -13,37 +13,37 @@ import Track from 'react-storefront/Track'
   theme => ({
     root: {
       listStyle: 'none',
-      padding: '10px 0',
+      padding: '10px 0'
     },
     thumb: {
       flex: 2,
       display: 'block',
       marginBottom: '10px',
       '& img': {
-        width: '100%',
-      },
+        width: '100%'
+      }
     },
     link: {
       textDecoration: 'none',
-      color: 'inherit',
+      color: 'inherit'
     },
     price: {
       color: theme.palette.price,
-      marginTop: '5px',
+      marginTop: '5px'
     },
     reviews: {
-      marginTop: '5px',
+      marginTop: '5px'
     },
     reviewCount: {
-      marginLeft: '2px',
-    },
+      marginLeft: '2px'
+    }
   }),
-  { name: 'RSFProductItem' },
+  { name: 'RSFProductItem' }
 )
 export default class ProductItem extends Component {
   static propTypes = {
     product: PropTypes.object.isRequired,
-    classes: PropTypes.object,
+    classes: PropTypes.object
   }
 
   render() {
@@ -54,7 +54,7 @@ export default class ProductItem extends Component {
         <Track
           trigger={{
             onClick: 'productClicked',
-            onVisible: 'productImpression',
+            onVisible: 'productImpression'
           }}
           product={product}
         >

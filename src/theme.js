@@ -3,7 +3,7 @@ import red from '@material-ui/core/colors/red'
 
 const theme = createTheme({
   typography: {
-    useNextVariants: true,
+    useNextVariants: true
   },
   palette: {
     secondary: {
@@ -24,6 +24,6 @@ const theme = createTheme({
       }
     }
   }
-});
+})
 
 export default theme

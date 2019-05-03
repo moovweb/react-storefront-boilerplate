@@ -14,7 +14,9 @@ import ProductLink from 'react-storefront/ProductLink'
 @withStyles(theme => ({
   root: {
     flex: 1,
-    padding: `${theme.margins.container}px 40px ${theme.margins.container}px ${theme.margins.container}px`,
+    padding: `${theme.margins.container}px 40px ${theme.margins.container}px ${
+      theme.margins.container
+    }px`,
     marginBottom: `${theme.margins.container}px`,
     position: 'relative'
   },
@@ -37,22 +39,21 @@ import ProductLink from 'react-storefront/ProductLink'
 @inject(({ app }) => ({ cart: app.cart }))
 @observer
 export default class CartItem extends Component {
-  
   render() {
     const { classes, product } = this.props
-    
+
     return (
       <Paper className={classes.root}>
         <Hbox alignItems="flex-start">
           <div className={classes.thumb}>
-            <Image src={product.images[0]} fill aspectRatio={100}/>
+            <Image src={product.images[0]} fill aspectRatio={100} />
           </div>
           <div className={classes.info}>
             <ProductLink product={product}>
               <Typography variant="subtitle1">{product.name}</Typography>
             </ProductLink>
-            <Typography className={classes.price}>{ price(product.price) }</Typography>
-            { product.size.selected && (
+            <Typography className={classes.price}>{price(product.price)}</Typography>
+            {product.size.selected && (
               <Hbox>
                 <Typography className={classes.label}>Size:</Typography>
                 <Typography>{product.size.selected.text}</Typography>
@@ -60,13 +61,13 @@ export default class CartItem extends Component {
             )}
             <Row>
               <Typography>Quantity:</Typography>
-              <QuantitySelector product={product}/>
+              <QuantitySelector product={product} />
             </Row>
           </div>
         </Hbox>
         <Track event="removedFromCart" product={product}>
           <IconButton className={classes.remove} onClick={this.remove}>
-            <CloseIcon/>
+            <CloseIcon />
           </IconButton>
         </Track>
       </Paper>
@@ -76,5 +77,4 @@ export default class CartItem extends Component {
   remove = () => {
     this.props.cart.remove(this.props.product)
   }
-
 }

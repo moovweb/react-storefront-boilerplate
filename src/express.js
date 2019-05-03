@@ -27,12 +27,12 @@ app.use(bodyParser.json())
 
 app.use(
   reactStorefrontMiddleware(
-    new Server({ 
-      theme, 
-      model, 
-      App, 
+    new Server({
+      theme,
+      model,
+      App,
       router
-    }) 
+    })
   )
 )
 

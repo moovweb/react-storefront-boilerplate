@@ -1,6 +1,6 @@
 /**
  * Handler for the PDP AMP form in src/product/Product.js
- * @param {Object} productInfo 
+ * @param {Object} productInfo
  */
 export default function addFromAmp(params, request, response) {
   const { id, name, quantity } = request.body

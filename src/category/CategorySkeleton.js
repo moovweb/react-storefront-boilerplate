@@ -25,24 +25,26 @@ export default class CategorySkeleton extends Component {
 
     return (
       <div>
-        <Breadcrumbs items={[{ text: 'Home', url: '/' }, { text: category.name }]}/>
+        <Breadcrumbs items={[{ text: 'Home', url: '/' }, { text: category.name }]} />
         <Container>
           <Skeleton>
-            <BlankRow/>
+            <BlankRow />
             <Row>
               <Content>
-                <Typography variant="h6" component="h1" className={classes.header}>{category.name}</Typography>
+                <Typography variant="h6" component="h1" className={classes.header}>
+                  {category.name}
+                </Typography>
               </Content>
-              <Space flex="1"/>
+              <Space flex="1" />
             </Row>
-            <BlankRow height="20px"/>
+            <BlankRow height="20px" />
             <Row height="20px">
-              <Content flex="1"/>
+              <Content flex="1" />
             </Row>
-            <BlankRow height="20px"/>
+            <BlankRow height="20px" />
             <Row>
               <Tiles style={{ flex: 1 }} cols={cols}>
-                { this.renderSubcategories() }
+                {this.renderSubcategories()}
               </Tiles>
             </Row>
           </Skeleton>
@@ -56,20 +58,19 @@ export default class CategorySkeleton extends Component {
     const { classes, width } = this.props
     const count = cols[width] * 3
 
-    for (let i=0; i<count; i++) {
-      subcategories.push(<Subcategory key={i} classes={classes}/>)
+    for (let i = 0; i < count; i++) {
+      subcategories.push(<Subcategory key={i} classes={classes} />)
     }
 
     return subcategories
   }
-
 }
 
 const Subcategory = ({ classes }) => (
   <div style={{ flex: 1 }}>
-    <Content className={classes.image}/>
-    <BlankRow height="10px"/>
-    <Content height="24px"/>
-    <BlankRow height="30px"/>
+    <Content className={classes.image} />
+    <BlankRow height="10px" />
+    <Content height="24px" />
+    <BlankRow height="30px" />
   </div>
 )

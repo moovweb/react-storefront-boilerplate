@@ -11,6 +11,7 @@ import ProductSkeleton from './product/ProductSkeleton'
 import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
 import TrackPageViews from 'react-storefront-extensions/TrackPageViews'
 import targets from './analytics'
+import Offline from 'react-storefront/Offline'
 
 @withStyles(theme => ({
   '@global': {
@@ -26,22 +27,24 @@ import targets from './analytics'
   }
 }))
 export default class App extends Component {
-
   render() {
     return (
       <AnalyticsProvider targets={targets}>
         <TrackPageViews>
           <div>
             <Helmet>
-              <link rel="shortcut icon" href="/icons/favicon.ico"/>
-              <meta name="description" content="Build and deploy sub-second e-commerce progressive web apps in record time."/>
+              <link rel="shortcut icon" href="/icons/favicon.ico" />
+              <meta
+                name="description"
+                content="Build and deploy sub-second e-commerce progressive web apps in record time."
+              />
             </Helmet>
-            <Header/> 
-            <NavTabs/>
+            <Header />
+            <NavTabs />
             <Pages
               loadMasks={{
                 Category: CategorySkeleton,
-                Subcategory: SubcategorySkeleton,            
+                Subcategory: SubcategorySkeleton,
                 Product: ProductSkeleton
               }}
               components={universal => ({
@@ -51,14 +54,14 @@ export default class App extends Component {
                 Product: universal(import('./product/Product')),
                 Cart: universal(import('./cart/Cart')),
                 Checkout: universal(import('./checkout/Checkout')),
-                Error: universal(import('./ErrorPage'))
+                Error: universal(import('./ErrorPage')),
+                Offline
               })}
             />
-            <SearchDrawer/>
+            <SearchDrawer />
           </div>
         </TrackPageViews>
       </AnalyticsProvider>
     )
   }
-
 }

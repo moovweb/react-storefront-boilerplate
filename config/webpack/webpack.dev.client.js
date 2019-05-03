@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = dev(path.join(__dirname, '..', '..'), {
   workboxConfig: require('./workbox.config'),
-  prefetchRampUpTime: 0,
+  prefetchRampUpTime: -5000,
   entries: {
     header: './proxy/hydrateHeader'
   },
