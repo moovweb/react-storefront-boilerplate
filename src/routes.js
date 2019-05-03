@@ -5,6 +5,10 @@ const cacheHandler = cache({ server: { maxAgeSeconds: 300 }, client: true }) // 
 
 // See guide to routing: https://pwa.moovweb.com/guides/routing
 export default new Router()
+  .appShell(
+    // returns only the global data needed to build the app-shell for offline support
+    fromServer('./app-shell/app-shell-handler')
+  )
   .get('/', cacheHandler, fromClient({ page: 'Home' }), fromServer('./home/home-handler'))
   .get(
     '/c/:id',
@@ -49,10 +53,6 @@ export default new Router()
       stack: e.stack
     }
   })
-  .appShell(
-    // returns only the global data needed to build the app-shell for offline support
-    fromServer('./app-shell/app-shell-handler')
-  )
   .fallback(
     // when no route matches, pull in content from the upstream site
     proxyUpstream('./proxy/proxy-handler')
