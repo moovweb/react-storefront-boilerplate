@@ -8,7 +8,7 @@ import Helmet from 'react-helmet'
 import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
-
+import Offline from 'react-storefront/Offline'
 @withStyles(theme => ({
   '@global': {
     body: {
@@ -23,19 +23,22 @@ import ProductSkeleton from './product/ProductSkeleton'
   }
 }))
 export default class App extends Component {
-
   render() {
     return (
       <div>
         <Helmet>
-          <link rel="shortcut icon" href="/icons/favicon.ico"/>
+          <link rel="shortcut icon" href="/icons/favicon.ico" />
+          <meta
+            name="description"
+            content="Build and deploy sub-second e-commerce progressive web apps in record time."
+          />
         </Helmet>
-        <Header/> 
-        <NavTabs/>
+        <Header />
+        <NavTabs />
         <Pages
           loadMasks={{
             Category: CategorySkeleton,
-            Subcategory: SubcategorySkeleton,            
+            Subcategory: SubcategorySkeleton,
             Product: ProductSkeleton
           }}
           components={universal => ({
@@ -45,12 +48,12 @@ export default class App extends Component {
             Product: universal(import('./product/Product')),
             Cart: universal(import('./cart/Cart')),
             Checkout: universal(import('./checkout/Checkout')),
-            Error: universal(import('./ErrorPage'))
+            Error: universal(import('./ErrorPage')),
+            Offline
           })}
         />
-        <SearchDrawer/>
+        <SearchDrawer />
       </div>
     )
   }
-
 }

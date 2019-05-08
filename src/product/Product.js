@@ -10,7 +10,6 @@ import QuantitySelector from 'react-storefront/QuantitySelector'
 import AddToCartButton from 'react-storefront/AddToCartButton'
 import Row from 'react-storefront/Row'
 import { Hbox } from 'react-storefront/Box'
-import withAmp from 'react-storefront/amp/withAmp'
 import AmpState from 'react-storefront/amp/AmpState'
 import AmpForm from 'react-storefront/amp/AmpForm'
 import Rating from 'react-storefront/Rating'
@@ -28,19 +27,19 @@ export const styles = theme => ({
     display: 'flex',
     flexDirection: 'row',
     [theme.breakpoints.down('xs')]: {
-      flexDirection: 'column'
+      display: 'block'
     }
   },
   imageSwitcher: {
     width: '400px',
     height: '473px',
-    margin: `0 ${theme.margins.container*2}px 0 0`,
-    
+    margin: `0 ${theme.margins.container * 2}px 0 0`,
+
     [theme.breakpoints.up('md')]: {
       width: '500px',
-      height: '573px',
+      height: '573px'
     },
-    
+
     [theme.breakpoints.down('xs')]: {
       margin: `0 -${theme.margins.container}px`,
       width: '100vw',
@@ -50,7 +49,7 @@ export const styles = theme => ({
   selectionControls: {
     flex: 0,
     [theme.breakpoints.up('sm')]: {
-      flex: 1,
+      flex: 1
     }
   },
   label: {
@@ -63,11 +62,9 @@ export const styles = theme => ({
 })
 
 @withStyles(styles)
-@withAmp
 @inject(({ app }) => ({ product: app.product }))
 @observer
-export default class Product extends Component { 
-
+export default class Product extends Component {
   render() {
     const { product, classes } = this.props
 
@@ -75,44 +72,64 @@ export default class Product extends Component {
 
     return (
       <AmpState initialState={product}>
-        <AmpForm id="form" action="/cart/add-from-amp.json">
-
+        <AmpForm id="form" action="/cart/add-from-amp.json" method="post">
           {/* These hidden fields are needed for AMP */}
-          <input type="hidden" name="id" value={product.id}/>
-          <input type="hidden" name="name" value={product.name}/>
+          <input type="hidden" name="id" value={product.id} />
+          <input type="hidden" name="name" value={product.name} />
 
-          <Breadcrumbs/>
+          <Breadcrumbs />
 
           <Container className={classes.root}>
             <Hidden smUp implementation="css">
-              <Header product={product}/>
+              <Header product={product} />
             </Hidden>
             <Row>
               <div className={classes.mainContainer}>
-                <ImageSwitcher classes={{ root: classes.imageSwitcher }} product={product} indicators/>
+                <ImageSwitcher
+                  classes={{ root: classes.imageSwitcher }}
+                  product={product}
+                  indicators
+                />
                 <div className={classes.selectionControls}>
                   <Hidden xsDown implementation="css">
-                    <Header product={product}/>
+                    <Header product={product} />
                   </Hidden>
                   <Row>
                     <Typography className={classnames(classes.label)}>Color</Typography>
-                    <ButtonSelector name="color" model={product.color} showSelectedText strikeThroughDisabled/>
+                    <ButtonSelector
+                      name="color"
+                      model={product.color}
+                      showSelectedText
+                      strikeThroughDisabled
+                    />
                   </Row>
                   <Row className={classes.size}>
                     <Typography className={classnames(classes.label)}>Size</Typography>
-                    <ButtonSelector name="size" model={product.size} strikeThroughDisabled strikeThroughAngle={32}/>
+                    <ButtonSelector
+                      name="size"
+                      model={product.size}
+                      strikeThroughDisabled
+                      strikeThroughAngle={32}
+                    />
                   </Row>
                   <Row>
                     <Hbox>
                       <div style={{ marginRight: '15px' }}>Quantity:</div>
-                      <QuantitySelector product={product}/>
+                      <QuantitySelector name="quantity" product={product} />
                     </Hbox>
                   </Row>
                   <Hidden implementation="css" smUp>
-                    <AddToCartButton product={product} docked confirmation="This item has been added to your cart."/>
+                    <AddToCartButton
+                      product={product}
+                      docked
+                      confirmation="This item has been added to your cart."
+                    />
                   </Hidden>
                   <Hidden implementation="css" xsDown>
-                    <AddToCartButton product={product} confirmation="This item has been added to your cart."/>
+                    <AddToCartButton
+                      product={product}
+                      confirmation="This item has been added to your cart."
+                    />
                   </Hidden>
                 </div>
               </div>
@@ -122,7 +139,9 @@ export default class Product extends Component {
               <CmsSlot label="Specs">{product.specs}</CmsSlot>
               <div label="Reviews">
                 {product.reviews.map((review, i) => (
-                  <Paper key={i} className={this.props.classes.review}>{review}</Paper>
+                  <Paper key={i} className={this.props.classes.review}>
+                    {review}
+                  </Paper>
                 ))}
               </div>
             </TabPanel>
@@ -131,7 +150,6 @@ export default class Product extends Component {
       </AmpState>
     )
   }
-
 }
 
 @withStyles(theme => ({
@@ -146,23 +164,23 @@ export default class Product extends Component {
 }))
 @observer
 export class Header extends Component {
-
   render() {
     const { product, classes } = this.props
 
     return (
       <div>
         <Row className={classes.title}>
-          <Typography variant="h6" component="h1">{product.name}</Typography>
+          <Typography variant="h6" component="h1">
+            {product.name}
+          </Typography>
         </Row>
         <Row>
           <Hbox>
             <Typography variant="subtitle1">{price(product.price)}</Typography>
-            <Rating product={product} className={classes.rating}/>
+            <Rating product={product} className={classes.rating} />
           </Hbox>
         </Row>
       </div>
     )
   }
-
 }

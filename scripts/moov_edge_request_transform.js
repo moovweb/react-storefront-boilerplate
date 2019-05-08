@@ -1,4 +1,4 @@
-const edgeRequestTransform = require('react-storefront/platform/edgeRequestTransform').default
+const edgeRequestTransform = require('react-storefront-moov-xdn/edgeRequestTransform').default
 
 /**
  * This function runs at the edge before the cache.

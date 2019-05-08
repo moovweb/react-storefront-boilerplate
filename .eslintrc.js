@@ -9,5 +9,15 @@ module.exports = {
   ],
   env: {
     'react-storefront/server': true
+  },
+  parserOptions: {
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };

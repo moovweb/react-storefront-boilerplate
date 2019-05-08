@@ -1,4 +1,4 @@
-const edgeResponseTransform = require('react-storefront/platform/edgeResponseTransform').default
+const edgeResponseTransform = require('react-storefront-moov-xdn/edgeResponseTransform').default
 
 /**
  * This function runs at edge after the response has been returned from the cache.

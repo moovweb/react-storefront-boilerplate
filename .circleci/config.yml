@@ -10,14 +10,14 @@ jobs:
       # To force clear all cached assets, increment the "v" version in both lines below.
       - restore_cache:
           keys:
-          - v6-dependencies-{{ checksum "package.json" }}
-          - v6-dependencies- # Fallback to using the latest cache if no exact match is found
+            - v6-dependencies-{{ checksum "package.json" }}
+            - v6-dependencies- # Fallback to using the latest cache if no exact match is found
 
       - run:
           name: Install npm dependencies
           command: |
             npm install -g npm@latest && npm version && npm install
-      
+
       - run:
           name: Deploy to production
           command: |
@@ -25,12 +25,12 @@ jobs:
               env="demo"
               extra_args="--mode default"
             else
-              env="demo"
+              env="dev"
               extra_args="--mode ${CIRCLE_BRANCH} --create"
             fi
 
             npm run link -- "${env}"
-            
+
             ./node_modules/.bin/moovsdk deploy moovweb react-storefront-boilerplate-dev \
               --user-email=${MOOV_EMAIL} \
               --user-password=${MOOV_PASSWORD} \
