@@ -4,9 +4,10 @@ const path = require('path')
 module.exports = dev(path.join(__dirname, '..', '..'), {
   workboxConfig: require('./workbox.config'),
   prefetchRampUpTime: -5000,
+  allowPrefetchThrottling: false,
   entries: {
     header: './proxy/hydrateHeader'
-  },
+  }
   // Adds the eslint loader to webpack.
   // You can use the default Moovweb eslint style guide by running
   // `npm install eslint-config-moov`, or use your own style guide.
@@ -14,4 +15,4 @@ module.exports = dev(path.join(__dirname, '..', '..'), {
   // eslintConfig: {
   //   extends: 'moov',
   // }
-});
+})
