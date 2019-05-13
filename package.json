@@ -9,7 +9,7 @@
     "moov_perf": "1.2.5",
     "moov_rewriter": "^4.0.1",
     "moov_stdlib": "^2.6.33",
-    "react-storefront-middleware": "^6.0.1"
+    "react-storefront-middleware": "^6.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -73,7 +73,7 @@
     "jss-nested": "^6.0.1",
     "lodash": "^4.17.5",
     "mobx": "^4.9.4",
-    "mobx-react": "^5.0.0",
+    "mobx-react": "^5.4.3",
     "mobx-state-tree": "^3.14.0",
     "moov_builder": "^4.0.0-alpha.1",
     "moovsdk": "^7.1.4",
