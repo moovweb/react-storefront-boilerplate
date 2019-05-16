@@ -25,7 +25,6 @@ export default class CategorySkeleton extends Component {
 
     return (
       <div>
-        <Breadcrumbs items={[{ text: 'Home', url: '/' }, { text: category.name }]} />
         <Container>
           <Skeleton>
             <BlankRow />

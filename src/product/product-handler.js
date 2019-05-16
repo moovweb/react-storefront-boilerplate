@@ -16,8 +16,7 @@ export default function productHandler({ id, c, s }, request, response) {
         text: `Subcategory ${s}`,
         url: `/s/${s}?c=${c}`,
         state: { loadingSubcategory: { id: s, name: `Subcategory ${c}` } }
-      },
-      { text: `Product ${id}` }
+      }
     ],
     product: {
       id,

@@ -52,8 +52,7 @@ export default function subcategoryHandler(
           text: `Category ${c}`,
           url: `/c/${c}`,
           state: { loadingCategory: { id: c, name: `Category ${c}` } }
-        },
-        { text: `Subcategory ${id}` }
+        }
       ],
       subcategory: {
         id,

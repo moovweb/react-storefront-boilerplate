@@ -7,7 +7,7 @@ export default function categoryHandler({ id }, request, response) {
   return withGlobalState(request, globalState, {
     title: `React Storefront - Category #${id}`,
     page: 'Category',
-    breadcrumbs: [{ text: 'Home', url: '/' }, { text: `Category ${id}` }],
+    breadcrumbs: [],
     category: {
       id,
       name: `Category ${id}`,

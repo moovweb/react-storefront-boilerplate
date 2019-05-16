@@ -48,7 +48,6 @@ export default class App extends Component {
 
     return (
       <Fragment>
-        <Breadcrumbs />
         <Container>
           <Row>
             <Typography variant="h6" component="h1">
