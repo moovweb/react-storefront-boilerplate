@@ -15,6 +15,8 @@ import Offline from 'react-storefront/Offline'
 import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no-webpack-loader-syntax
 // import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
 
+import AirbrakeErrorReporter from 'react-storefront-extensions/AirbrakeErrorReporter'
+
 @withStyles(theme => ({
   '@global': {
     body: {
@@ -31,6 +33,10 @@ import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no
 export default class App extends Component {
   render() {
     return (
+      <AirbrakeErrorReporter
+        projectId={226916}
+        projectKey='69ab172e9ccc2f60946028b369193d4c'
+      >
       <AnalyticsProvider targets={targets}>
         <TrackPageViews>
           <div>
@@ -76,6 +82,7 @@ export default class App extends Component {
           </div>
         </TrackPageViews>
       </AnalyticsProvider>
+      </AirbrakeErrorReporter>
     )
   }
 }
