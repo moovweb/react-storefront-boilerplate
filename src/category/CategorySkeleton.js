@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react'
 import { withStyles, withWidth } from '@material-ui/core'
 import { Skeleton, BlankRow, Row, Space, Content, Tiles } from 'react-storefront/Skeleton'
 import Typography from '@material-ui/core/Typography'
-import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import Container from 'react-storefront/Container'
 
 const cols = { xs: 1, sm: 2, md: 3, lg: 4, xl: 4 }
