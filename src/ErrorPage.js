@@ -7,7 +7,7 @@ import Redbox from 'react-storefront/Redbox'
 export default class ErrorPage extends Component {
   render() {
     if (process.env.MOOV_ENV === 'production') {
-      // In production we return a generic, user-friendlt error page that hides the underlying message and stacktrack
+      // In production we return a generic, user-friendly error page that hides the underlying message and stacktrack
       return (
         <Container>
           <Row>
