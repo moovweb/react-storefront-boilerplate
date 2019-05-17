@@ -12,3 +12,6 @@ host_map.js
 /moov_config.json
 /coverage
 /junit.xml
+
+# JetBrains IDE
+/.idea
