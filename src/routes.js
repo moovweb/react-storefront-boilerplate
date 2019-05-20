@@ -8,6 +8,7 @@ const cacheHandler = cache({ server: { maxAgeSeconds: 300 }, client: true }) // 
 export default new Router()
   .appShell(
     // returns only the global data needed to build the app-shell for offline support
+    cacheHandler,
     fromServer('./app-shell/app-shell-handler')
   )
   .get('/', cacheHandler, fromClient({ page: 'Home' }), fromServer('./home/home-handler'))
