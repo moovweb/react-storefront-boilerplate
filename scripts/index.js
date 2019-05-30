@@ -1,8 +1,7 @@
-console.error = console.warn = console.log;
+console.error = console.warn = console.log
 
 const index = require('react-storefront-moov-xdn').default
-
-require('../src/analytics')
+const errorReporter = require('../src/errorReporter').default
 
 module.exports = function() {
   index({
@@ -10,6 +9,7 @@ module.exports = function() {
     model: require('../src/AppModel').default,
     App: require('../src/App').default,
     router: require('../src/routes').default,
-    blob: env.blob || require('../src/blob.dev')
+    blob: env.blob || require('../src/blob.dev'),
+    errorReporter
   })
 }
