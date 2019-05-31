@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import { withStyles, Hidden } from '@material-ui/core'
 import { Skeleton, BlankRow, Row, Space, Content, ImageSwitcher } from 'react-storefront/Skeleton'
-import { Header, styles } from './Product'
+import { styles } from './Product'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import Container from 'react-storefront/Container'
 import classnames from 'classnames'
 import QuantitySelector from 'react-storefront/QuantitySelector'
 import Typography from '@material-ui/core/Typography'
 import AddToCartButton from 'react-storefront/AddToCartButton'
+import ProductHeader from './ProductHeader'
 
 @withStyles(theme => ({
   ...styles(theme),
@@ -57,7 +58,7 @@ export default class ProductSkeleton extends Component {
         <Breadcrumbs />
         <Container>
           <Hidden smUp implementation="css">
-            <Header product={product} />
+            <ProductHeader product={product} />
           </Hidden>
           <Skeleton>
             <Hidden xsDown implementation="css">
@@ -82,7 +83,7 @@ export default class ProductSkeleton extends Component {
               >
                 <Hidden xsDown implementation="css">
                   <Content>
-                    <Header product={product} />
+                    <ProductHeader product={product} />
                   </Content>
                 </Hidden>
                 <Row>

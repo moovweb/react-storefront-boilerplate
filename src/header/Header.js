@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { observer, inject } from 'mobx-react'
 import AppBar from 'react-storefront/AppBar'
 import IconButton from '@material-ui/core/IconButton'
@@ -14,7 +14,7 @@ import Menu from 'react-storefront/Menu'
 import PromoBanner from 'react-storefront/PromoBanner'
 import SearchField from 'react-storefront/SearchField'
 
-@withStyles(theme => ({
+const styles = theme => ({
   root: {
     height: '64px',
     position: 'relative'
@@ -50,60 +50,55 @@ import SearchField from 'react-storefront/SearchField'
   large: {
     fontSize: '28px'
   }
-}))
-@inject('app')
-@observer
-export default class Header extends Component {
-  render() {
-    const { classes } = this.props
+})
 
-    const storeFinder = (
-      <Link to="/store-finder">
-        <IconButton aria-label="Store Locator" color="inherit" classes={{ label: classes.large }}>
-          <FindStore className={classes.icon} />
-        </IconButton>
-      </Link>
-    )
+const Header = ({ classes, app }) => {
+  const storeFinder = (
+    <Link to="/store-finder">
+      <IconButton aria-label="Store Locator" color="inherit" classes={{ label: classes.large }}>
+        <FindStore className={classes.icon} />
+      </IconButton>
+    </Link>
+  )
 
-    const promo = `https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent(
-      '25% OFF EVERYTHING'
-    )}`
+  const promo = `https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent(
+    '25% OFF EVERYTHING'
+  )}`
 
-    return (
-      <div>
-        <AppBar classes={{ root: classes.root }} menuAlign="right" menuIconProps={{ label: false }}>
-          <Menu align="right" useExpanders />
-          <Hidden mdUp implementation="css">
-            {storeFinder}
-          </Hidden>
-          <Hidden mdUp implementation="css">
-            <IconButton
-              aria-label="Search"
-              color="inherit"
-              classes={{ label: classes.large }}
-              onClick={this.onSearchClick}
-            >
-              <Search className={classes.icon} />
-            </IconButton>
-          </Hidden>
-          <HeaderLogo>
-            <Logo />
-          </HeaderLogo>
-          <div style={{ flex: 1 }} />
-          <Hidden smDown implementation="css">
-            <SearchField className={classes.searchField} />
-          </Hidden>
-          <Hidden smDown implementation="css">
-            {storeFinder}
-          </Hidden>
-          <CartButton classes={{ icon: classes.icon }} />
-        </AppBar>
-        <PromoBanner className={classes.promo} src={promo} style={{ height: '64px' }} />
-      </div>
-    )
-  }
+  const onSearchClick = () => app.search.toggle(true)
 
-  onSearchClick = () => {
-    this.props.app.search.toggle(true)
-  }
+  return (
+    <div>
+      <AppBar classes={{ root: classes.root }} menuAlign="right" menuIconProps={{ label: false }}>
+        <Menu align="right" useExpanders />
+        <Hidden mdUp implementation="css">
+          {storeFinder}
+        </Hidden>
+        <Hidden mdUp implementation="css">
+          <IconButton
+            aria-label="Search"
+            color="inherit"
+            classes={{ label: classes.large }}
+            onClick={onSearchClick}
+          >
+            <Search className={classes.icon} />
+          </IconButton>
+        </Hidden>
+        <HeaderLogo>
+          <Logo />
+        </HeaderLogo>
+        <div style={{ flex: 1 }} />
+        <Hidden smDown implementation="css">
+          <SearchField className={classes.searchField} />
+        </Hidden>
+        <Hidden smDown implementation="css">
+          {storeFinder}
+        </Hidden>
+        <CartButton classes={{ icon: classes.icon }} />
+      </AppBar>
+      <PromoBanner className={classes.promo} src={promo} style={{ height: '64px' }} />
+    </div>
+  )
 }
+
+export default withStyles(styles)(inject('app')(observer(Header)))

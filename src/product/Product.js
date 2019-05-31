@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import Container from 'react-storefront/Container'
 import { observer, inject } from 'mobx-react'
 import { withStyles, Hidden } from '@material-ui/core'
 import ImageSwitcher from 'react-storefront/ImageSwitcher'
-import { price } from 'react-storefront/format'
 import QuantitySelector from 'react-storefront/QuantitySelector'
 import AddToCartButton from 'react-storefront/AddToCartButton'
 import Row from 'react-storefront/Row'
 import { Hbox } from 'react-storefront/Box'
 import AmpState from 'react-storefront/amp/AmpState'
 import AmpForm from 'react-storefront/amp/AmpForm'
-import Rating from 'react-storefront/Rating'
 import ButtonSelector from 'react-storefront/ButtonSelector'
 import TabPanel from 'react-storefront/TabPanel'
 import CmsSlot from 'react-storefront/CmsSlot'
 import classnames from 'classnames'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import ProductHeader from './ProductHeader'
 
 export const styles = theme => ({
   root: {
@@ -61,126 +60,90 @@ export const styles = theme => ({
   }
 })
 
-@withStyles(styles)
-@inject(({ app }) => ({ product: app.product }))
-@observer
-export default class Product extends Component {
-  render() {
-    const { product, classes } = this.props
+const Product = ({ product, classes }) => {
+  if (!product) return null
 
-    if (!product) return null
+  return (
+    <AmpState initialState={product}>
+      <AmpForm id="form" action="/cart/add-from-amp.json" method="post">
+        {/* These hidden fields are needed for AMP */}
+        <input type="hidden" name="id" value={product.id} />
+        <input type="hidden" name="name" value={product.name} />
 
-    return (
-      <AmpState initialState={product}>
-        <AmpForm id="form" action="/cart/add-from-amp.json" method="post">
-          {/* These hidden fields are needed for AMP */}
-          <input type="hidden" name="id" value={product.id} />
-          <input type="hidden" name="name" value={product.name} />
+        <Breadcrumbs />
 
-          <Breadcrumbs />
-
-          <Container className={classes.root}>
-            <Hidden smUp implementation="css">
-              <Header product={product} />
-            </Hidden>
-            <Row>
-              <div className={classes.mainContainer}>
-                <ImageSwitcher
-                  classes={{ root: classes.imageSwitcher }}
-                  product={product}
-                  indicators
-                />
-                <div className={classes.selectionControls}>
-                  <Hidden xsDown implementation="css">
-                    <Header product={product} />
-                  </Hidden>
-                  <Row>
-                    <Typography className={classnames(classes.label)}>Color</Typography>
-                    <ButtonSelector
-                      name="color"
-                      model={product.color}
-                      showSelectedText
-                      strikeThroughDisabled
-                    />
-                  </Row>
-                  <Row className={classes.size}>
-                    <Typography className={classnames(classes.label)}>Size</Typography>
-                    <ButtonSelector
-                      name="size"
-                      model={product.size}
-                      strikeThroughDisabled
-                      strikeThroughAngle={32}
-                    />
-                  </Row>
-                  <Row>
-                    <Hbox>
-                      <div style={{ marginRight: '15px' }}>Quantity:</div>
-                      <QuantitySelector name="quantity" product={product} />
-                    </Hbox>
-                  </Row>
-                  <Hidden implementation="css" smUp>
-                    <AddToCartButton
-                      product={product}
-                      docked
-                      confirmation="This item has been added to your cart."
-                    />
-                  </Hidden>
-                  <Hidden implementation="css" xsDown>
-                    <AddToCartButton
-                      product={product}
-                      confirmation="This item has been added to your cart."
-                    />
-                  </Hidden>
-                </div>
+        <Container className={classes.root}>
+          <Hidden smUp implementation="css">
+            <ProductHeader product={product} />
+          </Hidden>
+          <Row>
+            <div className={classes.mainContainer}>
+              <ImageSwitcher
+                classes={{ root: classes.imageSwitcher }}
+                product={product}
+                indicators
+              />
+              <div className={classes.selectionControls}>
+                <Hidden xsDown implementation="css">
+                  <ProductHeader product={product} />
+                </Hidden>
+                <Row>
+                  <Typography className={classnames(classes.label)}>Color</Typography>
+                  <ButtonSelector
+                    name="color"
+                    model={product.color}
+                    showSelectedText
+                    strikeThroughDisabled
+                  />
+                </Row>
+                <Row className={classes.size}>
+                  <Typography className={classnames(classes.label)}>Size</Typography>
+                  <ButtonSelector
+                    name="size"
+                    model={product.size}
+                    strikeThroughDisabled
+                    strikeThroughAngle={32}
+                  />
+                </Row>
+                <Row>
+                  <Hbox>
+                    <div style={{ marginRight: '15px' }}>Quantity:</div>
+                    <QuantitySelector name="quantity" product={product} />
+                  </Hbox>
+                </Row>
+                <Hidden implementation="css" smUp>
+                  <AddToCartButton
+                    product={product}
+                    docked
+                    confirmation="This item has been added to your cart."
+                  />
+                </Hidden>
+                <Hidden implementation="css" xsDown>
+                  <AddToCartButton
+                    product={product}
+                    confirmation="This item has been added to your cart."
+                  />
+                </Hidden>
               </div>
-            </Row>
-            <TabPanel>
-              <CmsSlot label="Description">{product.description}</CmsSlot>
-              <CmsSlot label="Specs">{product.specs}</CmsSlot>
-              <div label="Reviews">
-                {product.reviews.map((review, i) => (
-                  <Paper key={i} className={this.props.classes.review}>
-                    {review}
-                  </Paper>
-                ))}
-              </div>
-            </TabPanel>
-          </Container>
-        </AmpForm>
-      </AmpState>
-    )
-  }
+            </div>
+          </Row>
+          <TabPanel>
+            <CmsSlot label="Description">{product.description}</CmsSlot>
+            <CmsSlot label="Specs">{product.specs}</CmsSlot>
+            <div label="Reviews">
+              {product.reviews.map((review, i) => (
+                <Paper key={i} className={classes.review}>
+                  {review}
+                </Paper>
+              ))}
+            </div>
+          </TabPanel>
+        </Container>
+      </AmpForm>
+    </AmpState>
+  )
 }
 
-@withStyles(theme => ({
-  title: {
-    [theme.breakpoints.up('sm')]: {
-      marginTop: '0'
-    }
-  },
-  rating: {
-    marginLeft: '10px'
-  }
-}))
-@observer
-export class Header extends Component {
-  render() {
-    const { product, classes } = this.props
-
-    return (
-      <div>
-        <Row className={classes.title}>
-          <Typography variant="h6" component="h1">
-            {product.name}
-          </Typography>
-        </Row>
-        <Row>
-          <Hbox>
-            <Typography variant="subtitle1">{price(product.price)}</Typography>
-            <Rating product={product} className={classes.rating} />
-          </Hbox>
-        </Row>
-      </div>
-    )
-  }
-}
+export default withStyles(styles)(
+  inject(({ app }) => ({ product: app.product }))(observer(Product))
+)
