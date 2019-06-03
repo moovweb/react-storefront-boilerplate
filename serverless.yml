@@ -9,6 +9,7 @@ service: react-storefront-boilerplate
 
 package:
   individually: true
+  excludeDevDependencies: false
   exclude:
     - "**"
 
@@ -24,15 +25,11 @@ plugins:
   - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
 
 custom:
-  domains:
-    production: rsf-lambda-poc.moovweb-dev.net
-    dev: rsf-lambda-poc.moovweb-dev.net
   customDomain:
-    domainName: '${self:custom.domains.${self:provider.stage}}'
-    basePath: '/'
-    stage: ${self:provider.stage}
+    domainName: rsf-lambda-poc.moovweb-dev.net
+    basePath: ''
     createRoute53Record: true
-    # certificateName: "rsf-lambda-poc.moovweb-dev.net"
+    certificateName: "rsf-lambda-poc.moovweb-dev.net"
 
 functions:
   edge:
@@ -66,12 +63,3 @@ functions:
         - serverless/dist/app.js
         - serverless/dist/app.js.map
         - build/**/*
-
-# custom:
-#   customDomain:
-#     domainName: serverless-rsf.moovweb.cloud
-#     stage: dev
-#     basePath: /
-#     certificateName: '*.moovweb.cloud'
-#     createRoute53Record: true
-#     endpointType: 'regional'
