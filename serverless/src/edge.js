@@ -8,8 +8,6 @@ export const handler = (...args) => {
     console.log('params', params)
     console.log('req', request.queryStringParameters)
 
-    const cacheKey = request.queryStringParameters && request.queryStringParameters.query
-
-    return cacheKey
+    return null
   })
 };
