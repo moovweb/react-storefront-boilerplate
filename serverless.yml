@@ -47,7 +47,7 @@ functions:
           cors: true
     lambdaAtEdge:
       distribution: 'WebsiteDistribution'
-      eventType: 'origin-request'
+      eventType: 'viewer-request'
   app:
     handler: serverless/dist/app.handler
     memorySize: 1536

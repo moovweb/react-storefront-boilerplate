@@ -1,22 +1,32 @@
 import router from "../../src/routes";
 import url from 'url'
 
+function buildCacheKey(match, params) {
+  if (!match) return null
+  return params.id
+}
+
 export const handler = (event, context, callback) => {
 
-  // // Might need this
-  // const request = event.Records[0].cf.request;
-
-//  console.log(request);
-
-  const { match, params } = router.findMatchingRoute(mapApiGatewayEventToHttpRequest(event, context))
+  const request = event.Records ? event.Records[0].cf.request : event;
+    
+  const { match, params } = router.findMatchingRoute(request)
   console.log('match', match);
   console.log('params', params);
-  callback(null, 'lol')
+
+  request.headers['x-cache-key'] = buildCacheKey(match, params)
+
+  callback(null, request)
 };
+
+// AWS Lambda event -> Request transformer code
+// This code below was taken from https://github.com/awslabs/aws-serverless-express
+// Sadly, it does not export this function, so we just copied it
 
 function getPathWithQueryStringParams (event) {
   return url.format({ pathname: event.path, query: event.queryStringParameters })
 }
+
 function getEventBody (event) {
   return Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8')
 }
