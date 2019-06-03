@@ -1,8 +1,13 @@
 import router from "../../src/routes";
 
 export const handler = (event, context) => {
-  console.log(event);
-  const { match, params } = router.findMatchingRoute(event)
+  
+  // Might need this
+  const request = event.Records[0].cf.request;
+      
+  console.log(request);
+
+  const { match, params } = router.findMatchingRoute(request)
   console.log(match);
   console.log(params);    
 };
