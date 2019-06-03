@@ -21,6 +21,7 @@ provider:
 plugins:
   - serverless-offline
   - serverless-domain-manager
+  - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
 
 custom:
   domains:
@@ -34,21 +35,34 @@ custom:
     # certificateName: "rsf-lambda-poc.moovweb-dev.net"
 
 functions:
-  app:
-    handler: serverless/dist/app.handler
-    memorySize: 1536
+  edge:
+    #name: '${self:custom.objectPrefix}-edge'
+    handler: serverless/dist/edge.handler
+    memorySize: 128
+    timeout: 1
     events:
       - http:
           path: /{any+}
           method: any
           cors: true
-      - http:
-          path: /
-          method: any
-          cors: true
+    lambdaAtEdge:
+      distribution: 'WebsiteDistribution'
+      eventType: 'viewer-request'
+  app:
+    handler: serverless/dist/app.handler
+    memorySize: 1536
+    # events:
+    #   - http:
+    #       path: /{any+}
+    #       method: any
+    #       cors: true
+    #   - http:
+    #       path: /
+    #       method: any
+    #       cors: true
     package:
       archive: dist/packages/app.zip
-      include: 
+      include:
         - serverless/dist/app.js
         - serverless/dist/app.js.map
         - build/**/*

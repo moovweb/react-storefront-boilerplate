@@ -4,7 +4,10 @@ const root = path.join(__dirname, "..", "..")
 const createConfig = require("react-storefront/webpack/server").dev(root)
 
 module.exports = createConfig({
-  entry: [path.join(__dirname, "..", "src", "app.js")],
+  entry: {
+    app: path.join(__dirname, "..", "src", "app.js"),
+    edge: path.join(__dirname, "..", "src", "edge.js")
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.RSF_APP_ROOT': JSON.stringify(path.join(__dirname, "..", ".."))
@@ -12,7 +15,7 @@ module.exports = createConfig({
   ],
   output: {
     path: path.join(__dirname, "..", "dist"),
-    filename: "app.js",
+    filename: "[name].js",
     libraryTarget: "umd"
   },
   alias: {

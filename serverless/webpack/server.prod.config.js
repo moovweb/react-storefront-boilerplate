@@ -3,11 +3,14 @@ const root = path.join(__dirname, "..", "..");
 const createConfig = require("react-storefront/webpack/server").prod(root);
 
 module.exports = createConfig({
-  entry: [path.join(__dirname, "..", "src", "app.js")],
+  entry: {
+    app: path.join(__dirname, "..", "src", "app.js"),
+    edge: path.join(__dirname, "..", "src", "edge.js")
+  },
   plugins: [],
   output: {
     path: path.join(__dirname, "..", "dist"),
-    filename: "app.js",
+    filename: "[name].js",
     libraryTarget: "umd"
   },
   target: "node",
