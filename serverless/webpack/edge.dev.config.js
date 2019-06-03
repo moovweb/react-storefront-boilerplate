@@ -1,11 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
 const root = path.join(__dirname, "..", "..")
-const createConfig = require("react-storefront/webpack/server").dev(root)
+const createConfig = require("react-storefront/webpack/edge").dev(root)
 
 module.exports = createConfig({
   entry: {
-    app: path.join(__dirname, "..", "src", "app.js")
+    edge: path.join(__dirname, "..", "src", "edge.js")
   },
   plugins: [
     new webpack.DefinePlugin({
