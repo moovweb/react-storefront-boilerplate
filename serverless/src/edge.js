@@ -44,5 +44,10 @@ export const handler = (event, context, callback) => {
     request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
   }
 
+  if (process.env.MOOV_XDN_VERSION) {
+    request.path = `/${process.env.MOOV_XDN_VERSION}${request.path}`
+    console.log('New path', request.path);
+  }
+
   callback(null, request)
 };
