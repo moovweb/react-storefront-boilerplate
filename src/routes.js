@@ -16,7 +16,7 @@ const cacheHandler = cache({
 
 // See guide to routing: https://pwa.moovweb.com/guides/routing
 export default new Router()
-  .get('/', 
+  .get('/',
     cacheHandler,
     fromClient({ page: 'Home' }),
     fromServer('./home/home-handler')
@@ -54,14 +54,14 @@ export default new Router()
     fromServer('./checkout/checkout-handler')
   )
   .get('/search/suggest',
-    fromServer('./search/suggest-handler'),
+    fromServer('./search/suggest-handler')
   )
   .get('/search',
     // Note: Search results and subcategory views are often the same.  In practice you may need to implement 
     // a different handler or view for search results.  For simplicity we just reuse the subcategory view and 
     // handler here.
     fromClient({ page: 'Subcategory' }),
-    fromServer('./subcategory/subcategory-handler'),
+    fromServer('./subcategory/subcategory-handler')
   )
   .error((e, params, request, response) => {
     response.status(500)
