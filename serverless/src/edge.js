@@ -7,13 +7,23 @@ const SURROGATE_KEY_NAME='__moov_sk__'
 export const handler = (event, context, callback) => {
 
   const isAtEdge = !!event.Records
-  const version = process.env.MOOV_XDN_VERSION || __build_timestamp__ // eslint-disable-line
+  const version = __build_timestamp__ // eslint-disable-line
   const request = isAtEdge ? event.Records[0].cf.request : event
 
+  const protocol = request.origin ?
+    request.origin.protocol :
+    request.requestContext ? request.requestContext.protocol : ''
+
+  const accept = (request.headers.accept && Array.isArray(request.headers.accept)) ? request.headers.accept[0].value : request.headers.Accept
+
+  // Transform for Router
+  request.path = request.uri
+  request.query = request.querystring
+  
   const key = router.getCacheKey(request, {
-    path: request.path,
-    protocol: request.requestContext.protocol,
-    accept: request.headers.Accept
+    path: request.uri || request.path
+    // protocol,
+    // accept
   })
   
   function setHeader(request, key, value) {
@@ -38,15 +48,11 @@ export const handler = (event, context, callback) => {
   const surrogateKey = router.getSurrogateKey(request)
   console.log('surrogateKey', surrogateKey);
   if (surrogateKey) {
-    if (!request.queryStringParameters) {
-      request.queryStringParameters = {}
-    }
-    request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
-  }
-
-  if (process.env.MOOV_XDN_VERSION) {
-    request.path = `/${process.env.MOOV_XDN_VERSION}${request.path}`
-    console.log('New path', request.path);
+    // if (!request.queryStringParameters) {
+    //   request.queryStringParameters = {}
+    // }  
+    // request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
+    request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
   }
 
   callback(null, request)
