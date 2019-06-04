@@ -131,6 +131,7 @@
     "serverless:build:prod": "webpack --progress --config ./config/webpack/webpack.prod.client.js && webpack --progress --config ./serverless/webpack/server.prod.config.js",
     "serverless:watch": "concurrently \"npm run serverless:build:client\" \"npm run serverless:build:server\"",
     "serverless:start": "serverless offline",
+    "serverless:debug": "SLS_DEBUG=* node --inspect ./node_modules/serverless/bin/serverless offline -s dev",
     "serverless:deploy": "npm run serverless:build:prod && serverless deploy --stage=production",
     "serverless:undeploy": "serverless remove"
   },
