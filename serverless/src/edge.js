@@ -2,6 +2,9 @@ import crypto from 'crypto'
 import { CLOUDFRONT_CACHE_HASH, XDN_VERSION } from 'react-storefront/router/headers'
 import router from "../../src/routes";
 
+
+const SURROGATE_KEY_NAME='__moov_sk__'
+
 export const handler = (event, context, callback) => {
 
   const isAtEdge = !!event.Records
@@ -36,6 +39,11 @@ export const handler = (event, context, callback) => {
   
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
   setHeader(request, XDN_VERSION, version)
+
+  if (!request.queryStringParameters) {
+    request.queryStringParameters = {}
+  }
+  request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
 
   callback(null, request)
 };
