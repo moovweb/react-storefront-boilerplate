@@ -13,7 +13,9 @@ import TrackPageViews from 'react-storefront-extensions/TrackPageViews'
 import targets from './analytics'
 import Offline from 'react-storefront/Offline'
 import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no-webpack-loader-syntax
-// import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
+import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
+import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
+import targets from './analytics'
 
 @withStyles(theme => ({
   '@global': {
@@ -34,7 +36,7 @@ export default class App extends Component {
       <AnalyticsProvider targets={targets}>
         <TrackPageViews>
           <div>
-            {/* <FirebasePerformanceMonitoring
+            <FirebasePerformanceMonitoring
               firstInputDelayPolyfill={fid}
               config={{
                 apiKey: 'AIzaSyBaWW0RxrM5_UdVNwmbYJyjKmRL9mnIhBc',
@@ -45,7 +47,7 @@ export default class App extends Component {
                 messagingSenderId: '33647407204',
                 appId: '1:33647407204:web:d6e49ffdf25c8bce'
               }}
-            /> */}
+            />
             <Helmet>
               <link rel="shortcut icon" href="/icons/favicon.ico" />
               <meta

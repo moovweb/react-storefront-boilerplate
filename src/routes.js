@@ -45,7 +45,6 @@ export default new Router()
     fromClient({ page: 'Subcategory' }),
     fromServer('./subcategory/subcategory-handler')
   )
-  .error(errorHandler)
   .fallback(
     // when no route matches, pull in content from the upstream site
     proxyUpstream('./proxy/proxy-handler')
