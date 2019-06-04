@@ -30,6 +30,12 @@ for (let key in staticPaths) {
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  const X_MOOV_XDN_VERSION_HEADER = 'x-moov-xdn-version'
+  res.set(X_MOOV_XDN_VERSION_HEADER, req.get(X_MOOV_XDN_VERSION_HEADER))
+  next()
+})
+
 app.use(
   reactStorefrontMiddleware(
     new Server({
