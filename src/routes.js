@@ -5,7 +5,7 @@ const cacheHandler = cache({
   server: {
     maxAgeSeconds: 300,
     key: (request, defaults) => {
-      return {...defaults, foo: 'bar'}  
+      return {...defaults, foo: 'bar', query: request.queryStringParameters.query}  
     },
     surrogateKey: (request) => {
       return 'hahaha'
