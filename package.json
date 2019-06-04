@@ -34,6 +34,7 @@
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@bugsnag/js": "^6.3.0",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "airbrake-js": "^1.6.6",

@@ -10,11 +10,9 @@ import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
 import TrackPageViews from 'react-storefront-extensions/TrackPageViews'
-import targets from './analytics'
 import Offline from 'react-storefront/Offline'
 import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no-webpack-loader-syntax
 import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
-import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
 import targets from './analytics'
 
 @withStyles(theme => ({

@@ -2,6 +2,8 @@ import globalState from '../globalState'
 import { withGlobalState } from 'react-storefront/router'
 
 export default function homeHandler(params, request, response) {
+  throw new Error('test')
+
   return withGlobalState(request, globalState, {
     title: 'React Storefront',
     welcomeMessage:

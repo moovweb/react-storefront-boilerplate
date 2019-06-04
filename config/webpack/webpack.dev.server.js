@@ -3,6 +3,11 @@ const path = require('path')
 
 module.exports = dev(
   path.join(__dirname, '..', '..'),
+  {
+    alias: {
+      '@bugsnag/js': '@bugsnag/js/node/notifier.js'
+    }
+  }
   // Adds the eslint loader to webpack.
   // You can use the default Moovweb eslint style guide by running
   // ```
@@ -21,4 +26,4 @@ module.exports = dev(
   //     },
   //   }
   // }
-);
+)

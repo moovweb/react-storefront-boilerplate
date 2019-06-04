@@ -1,5 +1,4 @@
 import { Router, fromClient, fromServer, cache, proxyUpstream } from 'react-storefront/router'
-import errorHandler from './error-handler'
 
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({ server: { maxAgeSeconds: 300 }, client: true }) // cache responses in varnish for 5 minutes
