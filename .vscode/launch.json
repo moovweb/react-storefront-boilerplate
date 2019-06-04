@@ -7,13 +7,17 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Debug Serverless Oflline",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/node_modules/serverless/bin/serverless",
+      "args": ["offline"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Debug PWA Project",
       "program": "${workspaceFolder}/node_modules/moovsdk/bin/moovsdk",
-      "args": [
-        "start",
-        "--path",
-        "${workspaceFolder}",
-      ]
+      "args": ["start", "--path", "${workspaceFolder}"]
     },
     {
       "type": "node",
