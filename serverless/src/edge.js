@@ -21,11 +21,7 @@ export const handler = (event, context, callback) => {
 
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
-  const cacheKey = router.getCacheKey({
-    path: request.uri || request.path,
-    method: request.method,
-    query
-  }, {
+  const cacheKey = router.getCacheKey(request, {
     path: request.uri || request.path,
     query: querystring.stringify(query)
     // protocol,

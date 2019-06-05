@@ -1,4 +1,5 @@
 import { Router, fromClient, fromServer, cache, proxyUpstream } from 'react-storefront/router'
+import cookie from 'cookie'
 
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({
@@ -33,11 +34,11 @@ export default new Router()
     cache({
       server: {
         maxAgeSeconds: 99999,
-        key: (request, { path, query }) => {
-          const key = { path, query, language: request.cookies['language'] }
-          console.log('request', request)
-          console.log('request.cookies', request.cookies)
-          return key
+        key: (request, defaults) => {
+          const cookieHeader = request.headers['cookie']
+          const cookieValue = (cookieHeader && cookieHeader[0].value) || ''
+          const language = cookie.parse(cookieValue).language
+          return { ...defaults, language }
         }
       }
     }), 
