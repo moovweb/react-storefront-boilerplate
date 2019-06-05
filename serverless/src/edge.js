@@ -18,7 +18,9 @@ export const handler = (event, context, callback) => {
   const cacheKey = router.getCacheKey({
     path: request.uri || request.path,
     method: request.method,
-    query
+    headers: request.headers,
+    query,
+    cookies: {}
   }, {
     path: request.uri || request.path,
     query: querystring.stringify(query),
