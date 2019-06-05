@@ -15,6 +15,7 @@ export const handler = (event, context, callback) => {
 
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
+  // TODO: Clean up what is passed to Router
   const cacheKey = router.getCacheKey({
     path: request.uri,
     headers: request.headers,
