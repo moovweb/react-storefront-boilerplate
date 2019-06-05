@@ -33,33 +33,63 @@ custom:
 
 functions:
   edge:
-    #name: '${self:custom.objectPrefix}-edge'
     handler: serverless/dist/edge.handler
     memorySize: 128
     timeout: 1
+    lambdaAtEdge:
+      distribution: WebsiteDistribution
+      eventType: 'viewer-request'
+    package:
+      archive: dist/packages/edge.zip
+      include:
+        - serverless/dist/edge.js
+        - serverless/dist/edge.js.map
+
+  app:
+    handler: serverless/dist/app.handler
+    memorySize: 1536
     events:
       - http:
           path: /{any+}
           method: any
           cors: true
-    lambdaAtEdge:
-      distribution: 'WebsiteDistribution'
-      eventType: 'viewer-request'
-  app:
-    handler: serverless/dist/app.handler
-    memorySize: 1536
-    # events:
-    #   - http:
-    #       path: /{any+}
-    #       method: any
-    #       cors: true
-    #   - http:
-    #       path: /
-    #       method: any
-    #       cors: true
+      - http:
+          path: /
+          method: any
+          cors: true
     package:
       archive: dist/packages/app.zip
       include:
         - serverless/dist/app.js
         - serverless/dist/app.js.map
         - build/**/*
+
+resources:
+  Resources:
+    WebsiteDistribution:
+        Type: 'AWS::CloudFront::Distribution'
+        Properties:
+          DistributionConfig:
+              DefaultCacheBehavior:
+                TargetOriginId: 'RSF-Lambda'
+                ViewerProtocolPolicy: 'redirect-to-https'
+                Compress: true
+                ForwardedValues:
+                    Headers:
+                      - x-moov-cache-hash
+                    QueryString: true
+                    QueryStringCacheKeys: []
+                    Cookies:
+                      Forward: 'all'
+              Enabled: true
+              HttpVersion: 'http2'
+              ViewerCertificate:
+                CloudFrontDefaultCertificate: true
+              Origins:
+                -
+                  Id: RSF-Lambda
+                  DomainName: rsf-lambda-poc.moovweb-dev.net
+                  CustomOriginConfig:
+                    HTTPPort: 80
+                    HTTPSPort: 443
+                    OriginProtocolPolicy: 'https-only'
