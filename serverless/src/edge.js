@@ -56,7 +56,6 @@ export const handler = (event, context, callback) => {
   
   setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', JSON.stringify(cacheKey))
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
-  setHeader(request, 'x-moov-xdn-querystring', querystring.stringify(query))
   setHeader(request, XDN_VERSION, version)
 
   const surrogateKey = router.getSurrogateKey(request)
@@ -77,9 +76,6 @@ export const handler = (event, context, callback) => {
     }
     console.log(request.origin.custom);
   }
-
-  // Clear querystring for cloudfront
-  request.querystring = ''
 
   callback(null, request)
 };
