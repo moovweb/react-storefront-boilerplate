@@ -9,19 +9,42 @@ const slugRoutingRules = convertHostMapToSlugRoutingRules(config.host_map)
 
 console.log('Slug Routing Rules', slugRoutingRules);
 
+function transformedHeaders() {
+
+}
+
 export default async function proxyHandler(params, req, response) {
   
   const rule = slugRoutingRules[1]
   
   // request transform using rules
-  request(`${rule.Upstream}${req.url}`, (err, res, body) => {
+  const url = `${rule.Upstream}${req.url}`
+  const options = {
+    headers: transformedHeaders(req, slugRoutingRules)
+  }
+  request(url, options, (err, res, body) => {
     
     // USER CODE - TRANSFORMATION EXAMPLE
     let transformed = body
 
-    if (res.request.path === '/faq') {
+    if (res.request.path === '/faq' || res.request.path === '/company') {
       const $ = cheerio.load(body)
-      $('h1').css('color', '#e74c3c')
+      $('head').append(`
+      <style>
+      body:before {
+        display: block;
+        content: 'This page has been transformed';
+        background: #2ecc71;
+        width: 100%;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        font-family: monospace;
+        padding: 10px;
+        text-align: center;
+      }
+      </style>
+      `)
       transformed = $.html()
     }
     
