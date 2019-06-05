@@ -18,9 +18,29 @@ const cacheHandler = cache({
 export default new Router()
   // URL normalization
   .get('/normalize', 
+    cache({
+      server: {
+        maxAgeSeconds: 99999,
+        key: (request, { path, query }) => {
+          const { uid, ...others } = query
+          return { path, query: others }
+        }
+      }
+    }),
     fromServer('./poc/normalize')
   )
-  .get('/language',     
+  .get('/language',    
+    cache({
+      server: {
+        maxAgeSeconds: 99999,
+        key: (request, { path, query }) => {
+          const key = { path, query, language: request.cookies['language'] }
+          console.log('request', request)
+          console.log('request.cookies', request.cookies)
+          return key
+        }
+      }
+    }), 
     fromServer('./poc/language')
   )
   // Cache split by language cookie

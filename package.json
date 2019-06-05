@@ -128,7 +128,7 @@
     "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
-    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
+    "dev:link": "npm link serverless-offline react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
     "serverless:build:edge": "webpack --config ./serverless/webpack/edge.prod.config.js",
     "serverless:build:server": "webpack --config ./serverless/webpack/server.dev.config.js --watch",
     "serverless:build:client": "webpack --config ./config/webpack/webpack.dev.client.js --watch",
