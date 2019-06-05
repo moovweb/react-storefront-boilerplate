@@ -1,6 +1,22 @@
 import { Router, fromClient, fromServer, cache, proxyUpstream } from 'react-storefront/router'
 import cookie from 'cookie'
 
+const splitCacheByLanguage = cache({
+  server: {
+    maxAgeSeconds: 99999,
+    key: (request, defaults) => {
+      try {
+        const cookieHeader = request.headers['cookie']
+        const cookieValue = (cookieHeader && cookieHeader[0].value) || ''
+        const language = cookie.parse(cookieValue).language
+        return { ...defaults, language }
+      } catch (e) {
+        return { ...defaults, error: { message: e.message, stack: e.stack } }
+      }
+    }
+  }
+})
+
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({
   server: {
@@ -23,7 +39,7 @@ export default new Router()
       server: {
         maxAgeSeconds: 99999,
         key: (request, { path, query }) => {
-          const { uid, ...others } = query
+          const { uid, ...others } = request.query
           return { path, query: others }
         }
       }
@@ -31,27 +47,13 @@ export default new Router()
     fromServer('./poc/normalize')
   )
   .get('/language',    
-    cache({
-      server: {
-        maxAgeSeconds: 99999,
-        key: (request, defaults) => {
-          try {
-            const cookieHeader = request.headers['cookie']
-            const cookieValue = (cookieHeader && cookieHeader[0].value) || ''
-            const language = cookie.parse(cookieValue).language
-            return { ...defaults, language }
-          } catch (e) {
-            return { ...defaults, error: { message: e.message, stack: e.stack } }
-          }
-        }
-      }
-    }), 
+    splitCacheByLanguage, 
     fromServer('./poc/language')
   )
   // Cache split by language cookie
 
   .get('/',
-    cacheHandler,
+    splitCacheByLanguage,
     fromClient({ page: 'Home' }),
     fromServer('./home/home-handler')
   )
