@@ -12,6 +12,7 @@ import Server from "react-storefront/Server";
 import reactStorefrontMiddleware from "react-storefront-middleware";
 import paths from "../../config/paths";
 import path from "path";
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
@@ -28,6 +29,7 @@ for (let key in staticPaths) {
 }
 
 app.use(cors());
+app.use(cookieParser())
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {

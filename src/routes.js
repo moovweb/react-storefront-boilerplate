@@ -16,6 +16,15 @@ const cacheHandler = cache({
 
 // See guide to routing: https://pwa.moovweb.com/guides/routing
 export default new Router()
+  // URL normalization
+  .get('/normalize', 
+    fromServer('./poc/normalize')
+  )
+  .get('/language',     
+    fromServer('./poc/language')
+  )
+  // Cache split by language cookie
+
   .get('/',
     cacheHandler,
     fromClient({ page: 'Home' }),
