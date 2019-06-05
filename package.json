@@ -131,7 +131,6 @@
     "serverless:build:server": "webpack --config ./serverless/webpack/server.dev.config.js --watch",
     "serverless:build:client": "webpack --config ./config/webpack/webpack.dev.client.js --watch",
     "serverless:build:prod": "webpack --progress --config ./config/webpack/webpack.prod.client.js && webpack --progress --config ./serverless/webpack/server.prod.config.js && webpack --progress --config ./serverless/webpack/edge.prod.config.js",
-    "serverless:build:prod:edge": "webpack --progress --config ./serverless/webpack/edge.prod.config.js",
     "serverless:watch": "concurrently \"npm run serverless:build:client\" \"npm run serverless:build:server\" \"npm run serverless:build:edge\"",
     "serverless:start": "serverless offline",
     "serverless:deploy": "npm run serverless:build:prod && serverless deploy --stage=production",

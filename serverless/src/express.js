@@ -32,9 +32,23 @@ app.use(bodyParser.json());
 
 app.use((req, res, next) => {
   const X_MOOV_XDN_VERSION_HEADER = 'x-moov-xdn-version'
+  const X_MOOV_CACHE_HASH = 'x-moov-cache-hash'
+
   res.set(X_MOOV_XDN_VERSION_HEADER, req.get(X_MOOV_XDN_VERSION_HEADER))
-  next()
+  res.set(X_MOOV_CACHE_HASH, req.get(X_MOOV_CACHE_HASH))
+
+  if (req.query.debug) {
+    res.json({
+      timestamp: (new Date()).toISOString(),
+      originalUrl: req.originalUrl,
+      method: req.method,
+      headers: req.headers,
+    })
+  } else {
+    next()
+  }
 })
+
 
 app.use(
   reactStorefrontMiddleware(
