@@ -10,7 +10,7 @@ export const handler = (event, context, callback) => {
   console.log('Edge handler');
 
   const isAtEdge = !!event.Records
-  const version = __build_timestamp__ // eslint-disable-line
+  const version = process.env.MOOV_XDN_VERSION || __build_timestamp__ // eslint-disable-line
   const request = isAtEdge ? event.Records[0].cf.request : event
 
   const protocol = request.origin ?
@@ -31,6 +31,9 @@ export const handler = (event, context, callback) => {
     // protocol,
     // accept
   })
+
+  // Inject after user mucks with it
+  cacheKey.version = version
   
   function setHeader(request, name, value) {
     request.headers[name] = isAtEdge
@@ -57,6 +60,7 @@ export const handler = (event, context, callback) => {
 
   const surrogateKey = router.getSurrogateKey(request)
   console.log('surrogateKey', surrogateKey);
+  
   if (surrogateKey) {
     // if (!request.queryStringParameters) {
     //   request.queryStringParameters = {}
@@ -65,7 +69,14 @@ export const handler = (event, context, callback) => {
     // request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
     request.querystring = querystring.stringify({...query, [SURROGATE_KEY_NAME]: surrogateKey})
     console.log('querystring', request.querystring);
-    
+  }
+
+  // Prefix the version
+  console.log('VERSION', version);
+  
+  if (request.origin) {
+    request.origin.custom.path = `/${version}${request.origin.custom.path}`
+    console.log(request.origin.custom);
   }
 
   callback(null, request)

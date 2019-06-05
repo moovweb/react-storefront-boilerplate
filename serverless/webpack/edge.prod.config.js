@@ -1,6 +1,10 @@
 const path = require("path");
 const root = path.join(__dirname, "..", "..");
-const createConfig = require("react-storefront/webpack/edge").prod(root);
+const createConfig = require("react-storefront/webpack/edge").prod(root, {
+  envVariables: {
+    'process.env.MOOV_XDN_VERSION': JSON.stringify(process.env.MOOV_XDN_VERSION)
+  }
+});
 
 module.exports = createConfig({
   entry: {
