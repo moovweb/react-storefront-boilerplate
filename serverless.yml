@@ -18,18 +18,17 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-east-1
-
 plugins:
   - serverless-offline
   - serverless-domain-manager
-  - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
+  # - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
 
-custom:
-  customDomain:
-    domainName: rsf-lambda-poc.moovweb-dev.net
-    basePath: ''
-    createRoute53Record: true
-    certificateName: "rsf-lambda-poc.moovweb-dev.net"
+# custom:
+#   customDomain:
+#     domainName: rsf-lambda-poc.moovweb-dev.net
+#     basePath: ''
+#     createRoute53Record: true
+#     certificateName: "rsf-lambda-poc.moovweb-dev.net"
 
 functions:
   edge:
@@ -88,7 +87,8 @@ resources:
               Origins:
                 -
                   Id: RSF-Lambda
-                  DomainName: rsf-lambda-poc.moovweb-dev.net
+                  DomainName: ebr04ic2h7.execute-api.us-east-1.amazonaws.com #{ 'Fn::Join': [ '', ['https://', { 'Ref': 'ApiGatewayRestApi' }, '.execute-api.us-east-1.', { 'Ref': 'AWS::URLSuffix' }]] }
+                  OriginPath: /production
                   CustomOriginConfig:
                     HTTPPort: 80
                     HTTPSPort: 443
