@@ -3,36 +3,32 @@
 import { convertHostMapToSlugRoutingRules } from 'react-storefront/utils/moovConfig'
 import request from 'request'
 import config from '../../moov_config.json'
+import cheerio from 'cheerio'
 
 const slugRoutingRules = convertHostMapToSlugRoutingRules(config.host_map)
 
 console.log('Slug Routing Rules', slugRoutingRules);
 
 export default async function proxyHandler(params, req, response) {
-  const contentType = env.content_type || '';
-  if (contentType.indexOf('html') > -1) {
-    // const stats = await getStats()
-    // fns.init$(body)
-    // renderHeader(stats) // reuse the PWA header in legacy pages
-    // response.send($.html())
-
-    const rule = slugRoutingRules[1]
-
-    // request transform using rules
-    request(`${rule.Upstream}${req.url}`, {
-      // headers: []
-    })
-    // transform the response
-    .pipe(response)
+  
+  const rule = slugRoutingRules[1]
+  
+  // request transform using rules
+  request(`${rule.Upstream}${req.url}`, (err, res, body) => {
     
+    // USER CODE - TRANSFORMATION EXAMPLE
+    let transformed = body
 
-  } else {
-
-    // TODO: Need to pull domain out of host map
-    // TODO: Use the rewriter to transform the response
+    if (res.request.path === '/faq') {
+      const $ = cheerio.load(body)
+      $('h1').css('color', '#e74c3c')
+      transformed = $.html()
+    }
     
-    request(`https://www.moovweb.com${req.url}`).pipe(response)
+    //// ------------------------ //////
+      
+    response.send(transformed);
+  })
 
-  }
 }
 

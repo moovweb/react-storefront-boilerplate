@@ -6,6 +6,7 @@
   "author": "Moovweb",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "moov_perf": "1.2.5",
     "moov_rewriter": "^4.0.1",
     "moov_stdlib": "^2.6.33",
