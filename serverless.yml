@@ -20,8 +20,8 @@ provider:
   region: us-east-1
 plugins:
   - serverless-offline
-  - serverless-domain-manager
-  # - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
+  # - serverless-domain-manager
+  - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
 
 # custom:
 #   customDomain:
