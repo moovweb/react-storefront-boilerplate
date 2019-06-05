@@ -69,6 +69,7 @@ resources:
         Type: 'AWS::CloudFront::Distribution'
         Properties:
           DistributionConfig:
+              Comment: react-storefront-boilerplate-serverless
               DefaultCacheBehavior:
                 TargetOriginId: 'RSF-Lambda'
                 ViewerProtocolPolicy: 'redirect-to-https'
@@ -76,8 +77,10 @@ resources:
                 ForwardedValues:
                     Headers:
                       - x-moov-cache-hash
+                    # All querystring params are forwarded, but *NONE* are used as cache key.
+                    # To use some query string as cache key, they must be explicitely included in x-moov-cache-hash
                     QueryString: true
-                    QueryStringCacheKeys: []
+                    QueryStringCacheKeys: ['nothing-whitelisted-but-this-cannot-be-empty']
                     Cookies:
                       Forward: 'all'
               Enabled: true
@@ -87,7 +90,7 @@ resources:
               Origins:
                 -
                   Id: RSF-Lambda
-                  DomainName: ebr04ic2h7.execute-api.us-east-1.amazonaws.com #{ 'Fn::Join': [ '', ['https://', { 'Ref': 'ApiGatewayRestApi' }, '.execute-api.us-east-1.', { 'Ref': 'AWS::URLSuffix' }]] }
+                  DomainName: { 'Fn::Join': [ '', [{ 'Ref': 'ApiGatewayRestApi' }, '.execute-api.us-east-1.', { 'Ref': 'AWS::URLSuffix' }]] }
                   OriginPath: /production
                   CustomOriginConfig:
                     HTTPPort: 80
