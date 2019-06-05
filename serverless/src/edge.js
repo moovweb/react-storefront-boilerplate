@@ -15,6 +15,7 @@ export const handler = (event, context, callback) => {
 
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
+  // TODO: Normalize λ request object
   const cacheKey = router.getCacheKey({
     path: request.uri || request.path,
     method: request.method,
