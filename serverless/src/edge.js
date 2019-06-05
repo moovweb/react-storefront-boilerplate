@@ -62,11 +62,6 @@ export const handler = (event, context, callback) => {
   console.log('surrogateKey', surrogateKey);
   
   if (surrogateKey) {
-    // if (!request.queryStringParameters) {
-    //   request.queryStringParameters = {}
-    // }  
-    // request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
-    // request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
     request.querystring = querystring.stringify({...query, [SURROGATE_KEY_NAME]: surrogateKey})
     console.log('querystring', request.querystring);
   }
