@@ -13,22 +13,15 @@ export const handler = (event, context, callback) => {
   const version = process.env.MOOV_XDN_VERSION || __build_timestamp__ // eslint-disable-line
   const request = isAtEdge ? event.Records[0].cf.request : event
 
-  const protocol = request.origin ?
-    request.origin.protocol :
-    request.requestContext ? request.requestContext.protocol : ''
-
-  const accept = (request.headers.accept && Array.isArray(request.headers.accept)) ? request.headers.accept[0].value : request.headers.Accept
-
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
   const cacheKey = router.getCacheKey(request, {
     path: request.uri || request.path,
-    query: querystring.stringify(query)
-    // protocol,
-    // accept
+    query: querystring.stringify(query),
+    // TODO: Need production properties here
   })
 
-  // Inject after user mucks with it
+  // Inject after user transforms it
   cacheKey.version = version
   
   function setHeader(request, name, value) {
