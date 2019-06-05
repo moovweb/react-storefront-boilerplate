@@ -1,10 +1,13 @@
 import crypto from 'crypto'
+import querystring from 'querystring'
 import { CLOUDFRONT_CACHE_HASH, XDN_VERSION } from 'react-storefront/router/headers'
 import router from "../../src/routes";
 
 const SURROGATE_KEY_NAME='__moov_sk__'
 
 export const handler = (event, context, callback) => {
+
+  console.log('Edge handler');
 
   const isAtEdge = !!event.Records
   const version = __build_timestamp__ // eslint-disable-line
@@ -16,31 +19,36 @@ export const handler = (event, context, callback) => {
 
   const accept = (request.headers.accept && Array.isArray(request.headers.accept)) ? request.headers.accept[0].value : request.headers.Accept
 
-  // Transform for Router
-  request.path = request.uri
-  request.query = request.querystring
-  
-  const key = router.getCacheKey(request, {
+  const query = request.querystring ? querystring.parse(request.querystring) : request.query
+
+  const cacheKey = router.getCacheKey({
+    path: request.uri || request.path,
+    method: request.method,
+    query
+  }, {
     path: request.uri || request.path
     // protocol,
     // accept
   })
   
-  function setHeader(request, key, value) {
-    request.headers[key] = isAtEdge
+  function setHeader(request, name, value) {
+    request.headers[name] = isAtEdge
       ? [
           {
-            key,
+            key: name,
             value
           }
         ]
       : value
   }
 
+  console.log('Raw Key', cacheKey);
 
-  console.log('Raw Key', key);
+  const sortedKeys = Object.keys(cacheKey).sort()
+  const sortedContent = sortedKeys.map(key => `${key}=${cacheKey[key]}`).join('|')
+  const keyHash = crypto.createHash('sha256').update(sortedContent).digest('base64');
 
-  const keyHash = crypto.createHash('sha256').update(JSON.stringify(key)).digest('base64');
+  console.log('Cache Hash', keyHash);
   
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
   setHeader(request, XDN_VERSION, version)
@@ -52,7 +60,10 @@ export const handler = (event, context, callback) => {
     //   request.queryStringParameters = {}
     // }  
     // request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
-    request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
+    // request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
+    request.querystring = querystring.stringify({...query, [SURROGATE_KEY_NAME]: surrogateKey})
+    console.log('querystring', request.querystring);
+    
   }
 
   callback(null, request)
