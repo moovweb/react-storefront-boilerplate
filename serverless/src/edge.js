@@ -54,7 +54,7 @@ export const handler = (event, context, callback) => {
 
   console.log('Cache Hash', keyHash);
   
-  setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', encodeURIComponent(JSON.stringify(cacheKey)))
+  setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', JSON.stringify(cacheKey))
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
   setHeader(request, XDN_VERSION, version)
 
@@ -75,7 +75,10 @@ export const handler = (event, context, callback) => {
   console.log('VERSION', version);
   
   if (request.origin) {
-    request.origin.custom.path = `/${version}${request.origin.custom.path}`
+    request.origin.custom.path = `/${version}`
+    if (process.env.API_GATEWAY_DOMAIN) {
+      request.origin.custom.domainName = process.env.API_GATEWAY_DOMAIN
+    }
     console.log(request.origin.custom);
   }
 
