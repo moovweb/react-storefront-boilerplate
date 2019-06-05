@@ -35,10 +35,14 @@ export default new Router()
       server: {
         maxAgeSeconds: 99999,
         key: (request, defaults) => {
-          const cookieHeader = request.headers['cookie']
-          const cookieValue = (cookieHeader && cookieHeader[0].value) || ''
-          const language = cookie.parse(cookieValue).language
-          return { ...defaults, language }
+          try {
+            const cookieHeader = request.headers['cookie']
+            const cookieValue = (cookieHeader && cookieHeader[0].value) || ''
+            const language = cookie.parse(cookieValue).language
+            return { ...defaults, language }
+          } catch (e) {
+            return { ...defaults, error: { message: e.message, stack: e.stack } }
+          }
         }
       }
     }), 

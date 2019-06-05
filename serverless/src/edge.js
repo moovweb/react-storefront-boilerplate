@@ -15,7 +15,11 @@ export const handler = (event, context, callback) => {
 
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
-  const cacheKey = router.getCacheKey(request, {
+  const cacheKey = router.getCacheKey({
+    path: request.uri,
+    headers: request.headers,
+    query
+  }, {
     path: request.uri || request.path,
     query: querystring.stringify(query),
     // TODO: Need production properties here
