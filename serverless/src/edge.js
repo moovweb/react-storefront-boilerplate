@@ -56,17 +56,13 @@ export const handler = (event, context, callback) => {
   
   setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', JSON.stringify(cacheKey))
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
+  setHeader(request, 'x-moov-xdn-querystring', querystring.stringify(query))
   setHeader(request, XDN_VERSION, version)
 
   const surrogateKey = router.getSurrogateKey(request)
   console.log('surrogateKey', surrogateKey);
   
   if (surrogateKey) {
-    // if (!request.queryStringParameters) {
-    //   request.queryStringParameters = {}
-    // }  
-    // request.queryStringParameters[SURROGATE_KEY_NAME] = surrogateKey
-    // request.querystring = `${request.querystring}${request.querystring ? '&' : ''}${SURROGATE_KEY_NAME}=${surrogateKey}`
     request.querystring = querystring.stringify({...query, [SURROGATE_KEY_NAME]: surrogateKey})
     console.log('querystring', request.querystring);
   }
@@ -81,6 +77,9 @@ export const handler = (event, context, callback) => {
     }
     console.log(request.origin.custom);
   }
+
+  // Clear querystring for cloudfront
+  request.querystring = ''
 
   callback(null, request)
 };
