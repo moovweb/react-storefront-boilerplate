@@ -26,7 +26,8 @@ export const handler = (event, context, callback) => {
     method: request.method,
     query
   }, {
-    path: request.uri || request.path
+    path: request.uri || request.path,
+    query: querystring.stringify(query)
     // protocol,
     // accept
   })
@@ -50,6 +51,7 @@ export const handler = (event, context, callback) => {
 
   console.log('Cache Hash', keyHash);
   
+  setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', encodeURIComponent(JSON.stringify(cacheKey)))
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
   setHeader(request, XDN_VERSION, version)
 
