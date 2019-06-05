@@ -16,21 +16,21 @@ export const handler = (event, context, callback) => {
 
   const accept = (request.headers.accept && Array.isArray(request.headers.accept)) ? request.headers.accept[0].value : request.headers.Accept
 
-  // Transform for Router
-  request.path = request.uri
-  request.query = request.querystring
-  
-  const key = router.getCacheKey(request, {
+  const key = router.getCacheKey({
+    path: request.uri || request.path,
+    method: request.method,
+    query: request.querystring
+  }, {
     path: request.uri || request.path
     // protocol,
     // accept
   })
   
-  function setHeader(request, key, value) {
-    request.headers[key] = isAtEdge
+  function setHeader(request, name, value) {
+    request.headers[name] = isAtEdge
       ? [
           {
-            key,
+            key: name,
             value
           }
         ]
