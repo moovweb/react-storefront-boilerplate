@@ -12,7 +12,7 @@ export const handler = (event, context, callback) => {
   const isAtEdge = !!event.Records
   const version = process.env.MOOV_XDN_VERSION || __build_timestamp__ // eslint-disable-line
   const request = isAtEdge ? event.Records[0].cf.request : event
-
+  
   const query = request.querystring ? querystring.parse(request.querystring) : request.query
 
   // TODO: Clean up what is passed to Router
@@ -51,6 +51,7 @@ export const handler = (event, context, callback) => {
   setHeader(request, CLOUDFRONT_CACHE_HASH + '-debug', JSON.stringify(cacheKey))
   setHeader(request, CLOUDFRONT_CACHE_HASH, keyHash)
   setHeader(request, XDN_VERSION, version)
+  setHeader(request, 'x-moov-edge-event', JSON.stringify(event))
 
   const surrogateKey = router.getSurrogateKey(request)
   console.log('surrogateKey', surrogateKey);
