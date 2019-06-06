@@ -65,7 +65,7 @@ export default new Router()
     cache({
       server: {
         maxAgeSeconds: 300,
-        surrogateKey: 'skproduct'
+        surrogateKey: () => 'skproduct'
       },
       client: true
     }),
