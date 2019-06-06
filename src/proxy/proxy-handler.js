@@ -49,15 +49,10 @@ export default async function proxyHandler(params, req, response) {
   // Don't allow compressed data
   delete rewrittenHeaders['accept-encoding']
 
-  // response.set('x-moov-rewritten-host', rewrittenHeaders.host)
-
-  rewrittenHeaders.host = "www.moovweb.com"
-
   const requestOptions = {
     uri: url.format({
       protocol: req.protocol,
-      // host: rewrittenHeaders.host,
-      host: 'www.moovweb.com',
+      host: rewrittenHeaders.host,
       pathname: req.path,
       query: req.query
     }),
