@@ -7,8 +7,6 @@ const SURROGATE_KEY_NAME='__moov_sk__'
 
 export const handler = (event, context, callback) => {
 
-  console.log('Edge handler');
-
   const isAtEdge = !!event.Records
   const version = process.env.MOOV_XDN_VERSION || __build_timestamp__ // eslint-disable-line
   const request = isAtEdge ? event.Records[0].cf.request : event
