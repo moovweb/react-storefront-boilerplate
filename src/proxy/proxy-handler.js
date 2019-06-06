@@ -4,10 +4,26 @@ import { convertHostMapToSlugRoutingRules } from 'react-storefront/utils/moovCon
 import request from 'request'
 import url from 'url'
 import config from '../../moov_config.json'
-import cheerio from 'cheerio'
 import PerfectProxyHeaderRewriter from './PerfectProxyHeaderRewriter'
 
 const slugRoutingRules = convertHostMapToSlugRoutingRules(config.host_map)
+
+const transformation = `
+<style>
+body:before {
+  display: block;
+  content: 'This page has been transformed';
+  background: #2ecc71;
+  width: 100%;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: monospace;
+  padding: 10px;
+  text-align: center;
+}
+</style>
+`
 
 export default async function proxyHandler(params, req, response) {
   
@@ -29,13 +45,19 @@ export default async function proxyHandler(params, req, response) {
   const rewriter = new PerfectProxyHeaderRewriter(req.headers, options);
   rewriter.rewriteRequestHeaders();
   const rewrittenHeaders = rewriter.headers
+  
   // Don't allow compressed data
   delete rewrittenHeaders['accept-encoding']
+
+  // response.set('x-moov-rewritten-host', rewrittenHeaders.host)
+
+  rewrittenHeaders.host = "www.moovweb.com"
 
   const requestOptions = {
     uri: url.format({
       protocol: req.protocol,
-      host: rewrittenHeaders.host,
+      // host: rewrittenHeaders.host,
+      host: 'www.moovweb.com',
       pathname: req.path,
       query: req.query
     }),
@@ -57,24 +79,7 @@ export default async function proxyHandler(params, req, response) {
     
     // USER CODE - TRANSFORMATION EXAMPLE
     if (res.request.path === '/faq' || res.request.path === '/company') {
-      const $ = cheerio.load(body)
-      $('head').append(`
-      <style>
-      body:before {
-        display: block;
-        content: 'This page has been transformed';
-        background: #2ecc71;
-        width: 100%;
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        font-family: monospace;
-        padding: 10px;
-        text-align: center;
-      }
-      </style>
-      `)
-      response.send($.html());
+      response.send(body + transformation);
       return
     }
       
