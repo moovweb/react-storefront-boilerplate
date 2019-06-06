@@ -14,7 +14,8 @@
   "layers": ["minify-js", "minify-css", "live-reload"],
   "host_map": [
     "$.moovweb.cloud => www.moovweb.com",
-    "localhost:3000 => www.moovweb.com"
+    "localhost:3000 => www.moovweb.com",
+    "d2ko2oxcqak8yr.cloudfront.net => www.moovweb.com"
   ],
   "static_paths": {
     "/manifest.json": "/manifest.json",
