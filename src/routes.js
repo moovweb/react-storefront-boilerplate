@@ -20,13 +20,7 @@ const splitCacheByLanguage = cache({
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({
   server: {
-    maxAgeSeconds: 300,
-    key: (request, defaults) => {
-      return {...defaults, query: request.query.query, foo: 'bar' }  
-    },
-    surrogateKey: (request) => {
-      return 'hahaha'
-    }
+    maxAgeSeconds: 300
   },
   client: true
 }) // cache responses in varnish for 5 minutes
