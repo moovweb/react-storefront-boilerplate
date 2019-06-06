@@ -56,8 +56,6 @@ export default async function proxyHandler(params, req, response) {
     })
     
     // USER CODE - TRANSFORMATION EXAMPLE
-    let transformed = body
-
     if (res.request.path === '/faq' || res.request.path === '/company') {
       const $ = cheerio.load(body)
       $('head').append(`
@@ -76,12 +74,11 @@ export default async function proxyHandler(params, req, response) {
       }
       </style>
       `)
-      transformed = $.html()
+      response.send($.html());
+      return
     }
-    
-    //// ------------------------ //////
       
-    response.send(transformed);
+    response.send(body);
   })
 
 }
