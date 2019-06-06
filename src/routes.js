@@ -62,7 +62,13 @@ export default new Router()
     fromServer('./subcategory/subcategory-handler')
   )
   .get('/p/:id',
-    cacheHandler,
+    cache({
+      server: {
+        maxAgeSeconds: 300,
+        surrogateKey: 'skproduct'
+      },
+      client: true
+    }),
     fromClient({ page: 'Product' }),
     fromServer('./product/product-handler')
   )
