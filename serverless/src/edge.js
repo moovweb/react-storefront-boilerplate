@@ -3,7 +3,7 @@ import querystring from 'querystring'
 import { CLOUDFRONT_CACHE_HASH, XDN_VERSION } from 'react-storefront/router/headers'
 import router from "../../src/routes";
 
-const SURROGATE_KEY_NAME='__moov_sk__'
+const SURROGATE_KEY_NAME ='__moov_sk__'
 
 export const handler = (event, context, callback) => {
 
@@ -55,8 +55,9 @@ export const handler = (event, context, callback) => {
   console.log('surrogateKey', surrogateKey);
   
   if (surrogateKey) {
-    request.querystring = querystring.stringify({...query, [SURROGATE_KEY_NAME]: surrogateKey})
-    console.log('querystring', request.querystring);
+    const keys = Array.isArray(surrogateKey) ? surrogateKey : [surrogateKey]
+    request.uri = request.uri + '/' + keys.map(k => `${SURROGATE_KEY_NAME}${k}`).join('/')
+    console.log('request.uri', request.uri);
   }
 
   // Prefix the version
