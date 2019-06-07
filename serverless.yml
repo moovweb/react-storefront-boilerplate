@@ -91,7 +91,7 @@ resources:
                 -
                   Id: RSF-Lambda
                   DomainName: { 'Fn::Join': [ '', [{ 'Ref': 'ApiGatewayRestApi' }, '.execute-api.us-east-1.', { 'Ref': 'AWS::URLSuffix' }]] }
-                  OriginPath: /production
+                  OriginPath: '/${opt:stage}'
                   CustomOriginConfig:
                     HTTPPort: 80
                     HTTPSPort: 443
