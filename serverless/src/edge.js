@@ -77,7 +77,7 @@ export const handler = (event, context, callback) => {
     if (process.env.API_GATEWAY_DOMAIN) {
       request.origin.custom.domainName = process.env.API_GATEWAY_DOMAIN
     }
-    console.log(request.origin.custom);
+    console.log('request origin', request.origin.custom);
   }
 
   callback(null, request)
