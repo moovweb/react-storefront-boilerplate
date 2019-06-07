@@ -137,7 +137,7 @@
     "serverless:build:prod": "webpack --progress --config ./config/webpack/webpack.prod.client.js && webpack --progress --config ./serverless/webpack/server.prod.config.js && webpack --progress --config ./serverless/webpack/edge.prod.config.js",
     "serverless:watch": "concurrently \"npm run serverless:build:client\" \"npm run serverless:build:server\" \"npm run serverless:build:edge\"",
     "serverless:start": "serverless offline",
-    "serverless:deploy": "npm run serverless:build:prod && serverless deploy --stage=production",
+    "serverless:deploy": "npm run serverless:build:prod && rm -rf serverless/build && cp -r build serverless/build && cd serverless && serverless deploy --stage=production",
     "serverless:undeploy": "serverless remove"
   },
   "jest": {

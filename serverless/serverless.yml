@@ -32,7 +32,7 @@ plugins:
 
 functions:
   edge:
-    handler: serverless/dist/edge.handler
+    handler: dist/edge.handler
     memorySize: 128
     timeout: 1
     lambdaAtEdge:
@@ -41,11 +41,11 @@ functions:
     package:
       archive: dist/packages/edge.zip
       include:
-        - serverless/dist/edge.js
-        - serverless/dist/edge.js.map
+        - dist/edge.js
+        - dist/edge.js.map
 
   app:
-    handler: serverless/dist/app.handler
+    handler: dist/app.handler
     memorySize: 1536
     events:
       - http:
@@ -59,8 +59,8 @@ functions:
     package:
       archive: dist/packages/app.zip
       include:
-        - serverless/dist/app.js
-        - serverless/dist/app.js.map
+        - dist/app.js
+        - dist/app.js.map
         - build/**/*
 
 resources:
@@ -69,7 +69,7 @@ resources:
         Type: 'AWS::CloudFront::Distribution'
         Properties:
           DistributionConfig:
-              Comment: react-storefront-boilerplate-serverless
+              Comment: react-storefront-boilerplate
               DefaultCacheBehavior:
                 TargetOriginId: 'RSF-Lambda'
                 ViewerProtocolPolicy: 'redirect-to-https'
