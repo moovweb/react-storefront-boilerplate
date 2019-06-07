@@ -69,7 +69,7 @@ resources:
         Type: 'AWS::CloudFront::Distribution'
         Properties:
           DistributionConfig:
-              Comment: react-storefront-boilerplate
+              Comment: ${self:service.name}-${opt:stage}
               DefaultCacheBehavior:
                 TargetOriginId: 'RSF-Lambda'
                 ViewerProtocolPolicy: 'redirect-to-https'
