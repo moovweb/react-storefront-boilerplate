@@ -78,7 +78,7 @@ resources:
                     Headers:
                       - x-moov-cache-hash
                     # All querystring params are forwarded, but *NONE* are used as cache key.
-                    # To use some query string as cache key, they must be explicitely included in x-moov-cache-hash
+                    # To use some query string as cache key, they must be explicitly included in x-moov-cache-hash
                     QueryString: true
                     QueryStringCacheKeys: ['nothing-whitelisted-but-this-cannot-be-empty']
                     Cookies:
