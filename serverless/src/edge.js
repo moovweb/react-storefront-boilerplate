@@ -5,7 +5,6 @@ import router from "../../src/routes";
 
 export const SURROGATE_KEY_NAME ='__moov_sk__'
 
-
 const getRequest = (event, isAtEdge) => {
   let request = isAtEdge ? event.Records[0].cf.request : event
   if (isAtEdge) {

@@ -13,7 +13,7 @@ import reactStorefrontMiddleware from "react-storefront-middleware";
 import paths from "../../config/paths";
 import path from "path";
 import cookieParser from 'cookie-parser';
-import SURROGATE_KEY_NAME from './edge';
+import {SURROGATE_KEY_NAME} from './edge';
 
 const app = express();
 
