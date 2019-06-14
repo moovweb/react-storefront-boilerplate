@@ -1,7 +1,8 @@
-console.error = console.warn = console.log;
+console.error = console.warn = console.log
 
 const index = require('react-storefront-moov-xdn').default
 const { transformAmpHtml } = require('react-storefront-extensions/amp')
+const errorReporter = require('../src/errorReporter').default
 
 require('../src/analytics')
 
@@ -12,6 +13,7 @@ module.exports = function() {
     App: require('../src/App').default,
     router: require('../src/routes').default,
     blob: env.blob || require('../src/blob.dev'),
-    transform: transformAmpHtml
+    transform: transformAmpHtml,
+    errorReporter
   })
 }
