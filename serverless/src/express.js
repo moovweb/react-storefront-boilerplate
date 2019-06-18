@@ -12,6 +12,8 @@ import Server from "react-storefront/Server";
 import reactStorefrontMiddleware from "react-storefront-middleware";
 import paths from "../../config/paths";
 import path from "path";
+import cookieParser from 'cookie-parser';
+import {SURROGATE_KEY_NAME} from './edge';
 
 const app = express();
 
@@ -28,7 +30,34 @@ for (let key in staticPaths) {
 }
 
 app.use(cors());
+app.use(cookieParser())
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  // surrogate keys are being injected to req.path on the edge
+  // we need to set it back to it's original value by removing 
+  // everything that starts with SURROGATE_KEY_NAME
+  const urlParts = req.url.split('/').filter(x => !x.startsWith(SURROGATE_KEY_NAME));
+  req.url = urlParts.join('/');
+
+  const X_MOOV_XDN_VERSION_HEADER = 'x-moov-xdn-version'
+  const X_MOOV_CACHE_HASH = 'x-moov-cache-hash'
+
+  res.set(X_MOOV_XDN_VERSION_HEADER, req.get(X_MOOV_XDN_VERSION_HEADER))
+  res.set(X_MOOV_CACHE_HASH, req.get(X_MOOV_CACHE_HASH))
+
+  if (req.query.debug) {
+    res.json({
+      timestamp: (new Date()).toISOString(),
+      originalUrl: req.originalUrl,
+      method: req.method,
+      headers: req.headers,
+    })
+  } else {
+    next()
+  }
+})
+
 
 app.use(
   reactStorefrontMiddleware(

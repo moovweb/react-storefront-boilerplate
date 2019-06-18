@@ -1,0 +1,98 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: react-storefront-boilerplate
+
+package:
+  individually: true
+  excludeDevDependencies: false
+  exclude:
+    - "**"
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: us-east-1
+plugins:
+  - serverless-offline
+  # - serverless-domain-manager
+  - '@silvermine/serverless-plugin-cloudfront-lambda-edge'
+
+# custom:
+#   customDomain:
+#     domainName: rsf-lambda-poc.moovweb-dev.net
+#     basePath: ''
+#     createRoute53Record: true
+#     certificateName: "rsf-lambda-poc.moovweb-dev.net"
+
+functions:
+  edge:
+    handler: dist/edge.handler
+    memorySize: 128
+    timeout: 1
+    lambdaAtEdge:
+      distribution: WebsiteDistribution
+      eventType: 'viewer-request'
+    package:
+      archive: dist/packages/edge.zip
+      include:
+        - dist/edge.js
+        - dist/edge.js.map
+
+  app:
+    handler: dist/app.handler
+    memorySize: 1536
+    events:
+      - http:
+          path: /{any+}
+          method: any
+          cors: true
+      - http:
+          path: /
+          method: any
+          cors: true
+    package:
+      archive: dist/packages/app.zip
+      include:
+        - dist/app.js
+        - dist/app.js.map
+        - build/**/*
+
+resources:
+  Resources:
+    WebsiteDistribution:
+        Type: 'AWS::CloudFront::Distribution'
+        Properties:
+          DistributionConfig:
+              Comment: ${self:service.name}-${opt:stage}
+              DefaultCacheBehavior:
+                TargetOriginId: 'RSF-Lambda'
+                ViewerProtocolPolicy: 'redirect-to-https'
+                Compress: true
+                ForwardedValues:
+                    Headers:
+                      - x-moov-cache-hash
+                    # All querystring params are forwarded, but *NONE* are used as cache key.
+                    # To use some query string as cache key, they must be explicitly included in x-moov-cache-hash
+                    QueryString: true
+                    QueryStringCacheKeys: ['nothing-whitelisted-but-this-cannot-be-empty']
+                    Cookies:
+                      Forward: 'all'
+              Enabled: true
+              HttpVersion: 'http2'
+              ViewerCertificate:
+                CloudFrontDefaultCertificate: true
+              Origins:
+                -
+                  Id: RSF-Lambda
+                  DomainName: { 'Fn::Join': [ '', [{ 'Ref': 'ApiGatewayRestApi' }, '.execute-api.us-east-1.', { 'Ref': 'AWS::URLSuffix' }]] }
+                  OriginPath: '/${opt:stage}'
+                  CustomOriginConfig:
+                    HTTPPort: 80
+                    HTTPSPort: 443
+                    OriginProtocolPolicy: 'https-only'

@@ -1,4 +1,4 @@
-/build
+build
 /node_modules
 /tmp
 /moovworkerd.pid
@@ -14,3 +14,6 @@ host_map.js
 /junit.xml
 .serverless
 dist
+
+# JetBrains IDE
+.idea/

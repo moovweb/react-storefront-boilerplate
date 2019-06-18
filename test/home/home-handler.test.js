@@ -8,5 +8,4 @@ describe('home-handler', () => {
     expect(result).toHaveProperty('title')
     expect(result).toHaveProperty('welcomeMessage')
   })
-  
 })

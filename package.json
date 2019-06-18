@@ -6,10 +6,12 @@
   "author": "Moovweb",
   "license": "MIT",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "moov_perf": "1.2.5",
     "moov_rewriter": "^4.0.1",
     "moov_stdlib": "^2.6.33",
-    "react-storefront-middleware": "^6.0.1"
+    "react-storefront-middleware": "^6.0.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -37,6 +39,7 @@
     "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^3.8.1",
     "@material-ui/icons": "^3.0.2",
+    "@silvermine/serverless-plugin-cloudfront-lambda-edge": "2.1.1",
     "aws-serverless-express": "^3.3.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^9.0.0",
@@ -49,6 +52,7 @@
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
     "concurrently": "^4.1.0",
+    "cookie-parser": "^1.4.4",
     "core-js": "^2.5.7",
     "cors": "^2.8.5",
     "enzyme": "^3.8.0",
@@ -126,12 +130,14 @@
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
     "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
+    "serverless:build:edge:prod": "webpack --config ./serverless/webpack/edge.prod.config.js",
+    "serverless:build:edge": "webpack --config ./serverless/webpack/edge.dev.config.js --watch",
     "serverless:build:server": "webpack --config ./serverless/webpack/server.dev.config.js --watch",
     "serverless:build:client": "webpack --config ./config/webpack/webpack.dev.client.js --watch",
-    "serverless:build:prod": "webpack --progress --config ./config/webpack/webpack.prod.client.js && webpack --progress --config ./serverless/webpack/server.prod.config.js",
-    "serverless:watch": "concurrently \"npm run serverless:build:client\" \"npm run serverless:build:server\"",
+    "serverless:build:prod": "webpack --progress --config ./config/webpack/webpack.prod.client.js && webpack --progress --config ./serverless/webpack/server.prod.config.js && webpack --progress --config ./serverless/webpack/edge.prod.config.js",
+    "serverless:watch": "concurrently \"npm run serverless:build:client\" \"npm run serverless:build:server\" \"npm run serverless:build:edge\"",
     "serverless:start": "serverless offline",
-    "serverless:deploy": "npm run serverless:build:prod && serverless deploy --stage=production",
+    "serverless:deploy": "npm run serverless:build:prod && rm -rf serverless/build && cp -r build serverless/build && cd serverless && serverless deploy --stage=production",
     "serverless:undeploy": "serverless remove"
   },
   "jest": {
