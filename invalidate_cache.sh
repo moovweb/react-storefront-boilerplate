@@ -6,6 +6,8 @@ set -e
 distribution_id=${1}
 surrogate_key=${2}
 
+start=`date +%s`
+
 response=$(aws cloudfront create-invalidation \
               --distribution-id "${distribution_id}" \
               --paths "/__moov_sk__${surrogate_key}*")
@@ -24,4 +26,4 @@ while [ "${job_status}" != "Completed" ]; do
   sleep 5
 done
 
-echo "Done"
+echo "Done! Took $(($(date +%s)-${start})) seconds"
