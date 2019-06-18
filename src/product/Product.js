@@ -88,6 +88,8 @@ export default class Product extends Component {
                 <ImageSwitcher
                   classes={{ root: classes.imageSwitcher }}
                   product={product}
+                  imageProps={{ quality: 80 }}
+                  loadingThumbnailProps={{ quality: 50 }}
                   indicators
                 />
                 <div className={classes.selectionControls}>

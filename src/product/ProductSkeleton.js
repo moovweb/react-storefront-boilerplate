@@ -67,6 +67,9 @@ export default class ProductSkeleton extends Component {
               <Row alignItems="stretch">
                 <div>
                   <ImageSwitcher
+                    loadingThumbnailProps={{
+                      quality: 50
+                    }}
                     classes={{
                       root: classnames(classes.imageSwitcher, classes.imageSwitcherNoMargin)
                     }}
