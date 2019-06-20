@@ -9,6 +9,9 @@ import CategorySkeleton from './category/CategorySkeleton'
 import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import Offline from 'react-storefront/Offline'
+import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
+import targets from './analytics'
+
 @withStyles(theme => ({
   '@global': {
     body: {
@@ -25,35 +28,37 @@ import Offline from 'react-storefront/Offline'
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <Helmet>
-          <link rel="shortcut icon" href="/icons/favicon.ico" />
-          <meta
-            name="description"
-            content="Build and deploy sub-second e-commerce progressive web apps in record time."
+      <AnalyticsProvider targets={targets}>
+        <div>
+          <Helmet>
+            <link rel="shortcut icon" href="/icons/favicon.ico" />
+            <meta
+              name="description"
+              content="Build and deploy sub-second e-commerce progressive web apps in record time."
+            />
+          </Helmet>
+          <Header />
+          <NavTabs />
+          <Pages
+            loadMasks={{
+              Category: CategorySkeleton,
+              Subcategory: SubcategorySkeleton,
+              Product: ProductSkeleton
+            }}
+            components={universal => ({
+              Home: universal(import('./home/Home')),
+              Category: universal(import('./category/Category')),
+              Subcategory: universal(import('./subcategory/Subcategory')),
+              Product: universal(import('./product/Product')),
+              Cart: universal(import('./cart/Cart')),
+              Checkout: universal(import('./checkout/Checkout')),
+              Error: universal(import('./ErrorPage')),
+              Offline
+            })}
           />
-        </Helmet>
-        <Header />
-        <NavTabs />
-        <Pages
-          loadMasks={{
-            Category: CategorySkeleton,
-            Subcategory: SubcategorySkeleton,
-            Product: ProductSkeleton
-          }}
-          components={universal => ({
-            Home: universal(import('./home/Home')),
-            Category: universal(import('./category/Category')),
-            Subcategory: universal(import('./subcategory/Subcategory')),
-            Product: universal(import('./product/Product')),
-            Cart: universal(import('./cart/Cart')),
-            Checkout: universal(import('./checkout/Checkout')),
-            Error: universal(import('./ErrorPage')),
-            Offline
-          })}
-        />
-        <SearchDrawer />
-      </div>
+          <SearchDrawer />
+        </div>
+      </AnalyticsProvider>
     )
   }
 }
