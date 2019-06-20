@@ -64,7 +64,7 @@ export const styles = theme => ({
 })
 
 @withStyles(styles)
-@withPersonalization('product') // automatically calls ProductModel.loadPersonalization() when the user views a product
+@withPersonalization(app => app.product) // automatically calls ProductModel.loadPersonalization() when the user views a product
 @inject('app')
 @observer
 export default class Product extends Component {

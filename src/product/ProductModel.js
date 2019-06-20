@@ -12,7 +12,10 @@ const ProductModel = types.compose(
     })
     .actions(self => ({
       /**
-       * Late loads personalization data from product/personalization-handler.js
+       * Here's an example of how you can late load personalized data.  Doing
+       * so allows your main product route to be cached on the server, which is
+       * essential for achieving the best possible performance.  Any data that is not cacheable,
+       * such as personalized product recommendations should be late loaded here.
        */
       loadPersonalization: flow(function*() {
         if (self.recommendations == null) {
