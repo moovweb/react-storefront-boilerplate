@@ -27,9 +27,21 @@ export default async function suggestHandler({ q }) {
         {
           caption: 'Suggested Products',
           results: [
-            { text: 'Product 1', url: '/p/1', thumbnail: 'https://via.placeholder.com/120x120' },
-            { text: 'Product 2', url: '/p/2', thumbnail: 'https://via.placeholder.com/120x120' },
-            { text: 'Product 3', url: '/p/3', thumbnail: 'https://via.placeholder.com/120x120' }
+            {
+              text: 'Product 1',
+              url: '/p/1?s=1&c=1',
+              thumbnail: 'https://via.placeholder.com/120x120'
+            },
+            {
+              text: 'Product 2',
+              url: '/p/2?s=1&c=1',
+              thumbnail: 'https://via.placeholder.com/120x120'
+            },
+            {
+              text: 'Product 3',
+              url: '/p/3?s=1&c=1',
+              thumbnail: 'https://via.placeholder.com/120x120'
+            }
           ]
         }
       ]
