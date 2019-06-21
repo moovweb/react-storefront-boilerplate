@@ -59,6 +59,7 @@ export default class ProductItem extends Component {
             <Vbox alignItems="stretch">
               <div className={classes.thumb}>
                 <Image
+                  quality={50}
                   lazy={index >= 4 && index < 10}
                   aspectRatio={100}
                   alt="product"
