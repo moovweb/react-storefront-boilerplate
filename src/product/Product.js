@@ -18,6 +18,8 @@ import TabPanel from 'react-storefront/TabPanel'
 import CmsSlot from 'react-storefront/CmsSlot'
 import classnames from 'classnames'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import withPersonalization from 'react-storefront/personal/withPersonalization'
+import Recommendations from './Recommendations'
 
 export const styles = theme => ({
   root: {
@@ -62,11 +64,15 @@ export const styles = theme => ({
 })
 
 @withStyles(styles)
-@inject(({ app }) => ({ product: app.product }))
+@withPersonalization(app => app.product) // automatically calls ProductModel.loadPersonalization() when the user views a product
+@inject('app')
 @observer
 export default class Product extends Component {
   render() {
-    const { product, classes } = this.props
+    const {
+      app: { product, amp },
+      classes
+    } = this.props
 
     if (!product) return null
 
@@ -145,6 +151,11 @@ export default class Product extends Component {
                 ))}
               </div>
             </TabPanel>
+            {!amp && (
+              <Row>
+                <Recommendations product={product} />
+              </Row>
+            )}
           </Container>
         </AmpForm>
       </AmpState>

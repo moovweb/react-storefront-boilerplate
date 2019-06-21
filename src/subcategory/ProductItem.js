@@ -36,6 +36,9 @@ import Track from 'react-storefront/Track'
     },
     reviewCount: {
       marginLeft: '2px'
+    },
+    info: {
+      margin: '0'
     }
   }),
   { name: 'RSFProductItem' }
@@ -62,7 +65,7 @@ export default class ProductItem extends Component {
                   src={product.thumbnail}
                 />
               </div>
-              <div>
+              <div className={classes.info}>
                 <Typography variant="subtitle1" className={classes.name}>
                   {product.name}
                 </Typography>

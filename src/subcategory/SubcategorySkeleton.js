@@ -98,8 +98,7 @@ export default class SubcategorySkeleton extends Component {
                   <BlankRow height="10px" />
                   <Row height="16px">
                     <Space flex="1" />
-                    <Content width="80px" />
-                    <Space />
+                    <Content width="100px" />
                   </Row>
                 </Hidden>
                 <Hidden xsDown>
@@ -108,7 +107,7 @@ export default class SubcategorySkeleton extends Component {
                     <ActionButton label="Sort" value="Highest Rated" />
                   </Row>
                 </Hidden>
-                <BlankRow height="7.5px" />
+                <BlankRow height="20px" />
                 <Row>
                   <Tiles style={{ flex: 1 }} cols={cols}>
                     {this.renderProducts()}

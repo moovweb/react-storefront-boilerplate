@@ -83,7 +83,11 @@ export default function subcategoryHandler(
  * @param {Object} options.categoryId The parent category's id
  * @param {Object} options.subcategoryId The subcategory's id
  */
-function createProducts(filters = [], page = 0, { categoryId, subcategoryId }) {
+export function createProducts(
+  filters = [],
+  page = 0,
+  { categoryId = '1', subcategoryId = '1' } = {}
+) {
   const items = []
 
   const total =
