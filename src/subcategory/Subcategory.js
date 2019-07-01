@@ -95,7 +95,7 @@ export default class Subcategory extends Component {
                 ))}
               </ResponsiveTiles>
 
-              <ShowMore key={subcategory.page} model={subcategory} infiniteScroll />
+              <ShowMore key={subcategory.page} model={subcategory} />
             </Vbox>
           </Hbox>
         </Container>
