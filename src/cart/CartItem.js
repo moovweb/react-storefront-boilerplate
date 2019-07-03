@@ -46,7 +46,7 @@ export default class CartItem extends Component {
       <Paper className={classes.root}>
         <Hbox alignItems="flex-start">
           <div className={classes.thumb}>
-            <Image src={product.images[0]} fill aspectRatio={100} />
+            <Image src={product.images[0]} fill aspectRatio={100} quality={50} />
           </div>
           <div className={classes.info}>
             <ProductLink product={product}>

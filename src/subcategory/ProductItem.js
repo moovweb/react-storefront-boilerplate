@@ -36,6 +36,9 @@ import Track from 'react-storefront/Track'
     },
     reviewCount: {
       marginLeft: '2px'
+    },
+    info: {
+      margin: '0'
     }
   }),
   { name: 'RSFProductItem' }
@@ -56,13 +59,14 @@ export default class ProductItem extends Component {
             <Vbox alignItems="stretch">
               <div className={classes.thumb}>
                 <Image
+                  quality={50}
                   lazy={index >= 4 && index < 10}
                   aspectRatio={100}
                   alt="product"
                   src={product.thumbnail}
                 />
               </div>
-              <div>
+              <div className={classes.info}>
                 <Typography variant="subtitle1" className={classes.name}>
                   {product.name}
                 </Typography>
