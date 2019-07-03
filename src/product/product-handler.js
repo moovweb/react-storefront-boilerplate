@@ -3,7 +3,7 @@ import { withGlobalState } from 'react-storefront/router'
 
 export default function productHandler({ id, c, s }, request, response) {
   return withGlobalState(request, globalState, {
-    title: `Product ${id}`,
+    title: `React Storefront - Product ${id}`,
     page: 'Product',
     breadcrumbs: [
       { text: 'Home', url: '/' },
