@@ -1,7 +1,3 @@
 const builder = require("moov_builder");
 
-// Run webpack before everything else
-builder.bundler.watch();
-
-// Run gulp tasks
-builder().watch();
+builder.buildAndWatch();
