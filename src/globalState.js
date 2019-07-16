@@ -16,7 +16,7 @@ function createMenu() {
       url: `/c/${c}`,
       state: JSON.stringify({
         loadingCategory: { name: text, id: text },
-        breadcrumbs: [{ url: '/', text: 'Home' }, { text: `Category ${c}` }]
+        breadcrumbs: [{ url: '/', text: 'Home' }]
       }),
       items: []
     }
@@ -31,11 +31,7 @@ function createMenu() {
         url: `/s/${s}?c=${c}`,
         state: JSON.stringify({
           loadingSubcategory: { name: text, id: text },
-          breadcrumbs: [
-            { url: '/', text: 'Home' },
-            { url: `/c/${c}`, text: `Category ${c}` },
-            { text: `Subcategory ${s}` }
-          ]
+          breadcrumbs: [{ url: '/', text: 'Home' }, { url: `/c/${c}`, text: `Category ${c}` }]
         })
       })
     }

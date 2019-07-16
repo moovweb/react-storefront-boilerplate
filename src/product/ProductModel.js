@@ -8,7 +8,7 @@ const ProductModel = types.compose(
       // additional product fields go here
       specs: types.maybeNull(types.string),
       reviews: types.optional(types.array(types.string), []),
-      recommendations: types.maybeNull(types.array(types.late(() => ProductModel)))
+      recommendations: types.optional(types.array(types.late(() => ProductModel)), [])
     })
     .actions(self => ({
       /**

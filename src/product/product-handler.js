@@ -10,14 +10,13 @@ export default function productHandler({ id, c, s }, request, response) {
       {
         text: `Category ${c}`,
         url: `/c/${c}`,
-        state: { loadingCategory: { name: `Category ${c}` } }
+        state: { loadingCategory: { id: c, name: `Category ${c}` } }
       },
       {
         text: `Subcategory ${s}`,
         url: `/s/${s}?c=${c}`,
         state: { loadingSubcategory: { id: s, name: `Subcategory ${c}` } }
-      },
-      { text: `Product ${id}` }
+      }
     ],
     product: {
       id,
@@ -90,6 +89,13 @@ export default function productHandler({ id, c, s }, request, response) {
         `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
         `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`
+      ],
+      recommendations: [
+        {
+          id: 'r1',
+          url: '/p/1',
+          name: 'recommended 1'
+        }
       ]
     }
   })

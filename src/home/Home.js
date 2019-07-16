@@ -4,6 +4,7 @@ import Container from 'react-storefront/Container'
 import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
 import CmsSlot from 'react-storefront/CmsSlot'
+import Image from 'react-storefront/Image'
 
 @inject('app')
 @observer

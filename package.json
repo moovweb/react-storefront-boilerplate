@@ -113,6 +113,7 @@
     "link": "f() { ln -sf moov_config-$@.json moov_config.json; }; f",
     "start": "npm run link local && moovsdk start",
     "debug": "npm run link local && node --inspect node_modules/moovsdk/sdk.js start",
+    "start:localsdk": "npm run link local && /Users/markbrocato/Code/moovworker/moovsdk start",
     "start:express": "node express",
     "start:playback": "npm start --replay-upstream-requests",
     "start:prod": "npm run link local && npm run build && moovsdk start --no-build",
@@ -141,5 +142,9 @@
       "^moov-pwa-analytics$": "moov-pwa-analytics/src",
       "^moov-pwa-analytics/(.*)$": "moov-pwa-analytics/src/$1"
     }
+  },
+  "moovweb": {
+    "smokeTest": "./test/smoke.js",
+    "amp":
   }
 }

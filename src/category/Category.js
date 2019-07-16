@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
 import SubcategoryLink from 'react-storefront/SubcategoryLink'
 import Typography from '@material-ui/core/Typography'
@@ -7,7 +7,6 @@ import Row from 'react-storefront/Row'
 import { withStyles } from '@material-ui/core'
 import Image from 'react-storefront/Image'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
-import Breadcrumbs from 'react-storefront/Breadcrumbs'
 
 @withStyles(
   theme => ({
@@ -47,8 +46,7 @@ export default class App extends Component {
     if (!category) return null
 
     return (
-      <Fragment>
-        <Breadcrumbs />
+      <>
         <Container>
           <Row>
             <Typography variant="h6" component="h1">
@@ -86,7 +84,7 @@ export default class App extends Component {
             </ResponsiveTiles>
           </Row>
         </Container>
-      </Fragment>
+      </>
     )
   }
 }
