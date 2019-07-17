@@ -75,6 +75,7 @@ export default class App extends Component {
                       aspectRatio={50}
                       src={subcategory.image}
                       alt={category.name}
+                      quality={50}
                     />
                     <Typography className={classes.subcategoryName} variant="subtitle1">
                       {subcategory.name}

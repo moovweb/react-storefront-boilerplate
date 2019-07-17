@@ -98,7 +98,12 @@ export default class Header extends Component {
           </Hidden>
           <CartButton classes={{ icon: classes.icon }} />
         </AppBar>
-        <PromoBanner className={classes.promo} src={promo} style={{ height: '64px' }} />
+        <PromoBanner
+          className={classes.promo}
+          src={promo}
+          style={{ height: '64px' }}
+          imgProps={{ quality: 50 }}
+        />
       </div>
     )
   }

@@ -34,6 +34,26 @@ export default class App extends Component {
       <AnalyticsProvider targets={targets}>
         <TrackPageViews>
           <div>
+            <Helmet>
+              {/**
+               * This tag allows us to start the connection with the Moovweb
+               * Optimization server as soon as the browser parses the HTML.
+               *
+               * Preconnect allows the browser to setup early connections
+               * before an HTTP request is actually sent to the server.
+               *
+               * In turn, image optimization requests will be faster.
+               *
+               * If your project does not use this optimization service, this
+               * tag can be removed.
+               */}
+              <link href="https://opt.moovweb.net" rel="preconnect" crossorigin />
+              <link rel="shortcut icon" href="/icons/favicon.ico" />
+              <meta
+                name="description"
+                content="Build and deploy sub-second e-commerce progressive web apps in record time."
+              />
+            </Helmet>
             <FirebasePerformanceMonitoring
               firstInputDelayPolyfill={fid}
               config={{
@@ -46,13 +66,6 @@ export default class App extends Component {
                 appId: '1:33647407204:web:d6e49ffdf25c8bce'
               }}
             />
-            <Helmet>
-              <link rel="shortcut icon" href="/icons/favicon.ico" />
-              <meta
-                name="description"
-                content="Build and deploy sub-second e-commerce progressive web apps in record time."
-              />
-            </Helmet>
             <Header />
             <NavTabs />
             <Pages

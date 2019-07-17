@@ -3,7 +3,7 @@ import { withGlobalState } from 'react-storefront/router'
 
 export default function productHandler({ id, c, s }, request, response) {
   return withGlobalState(request, globalState, {
-    title: `Product ${id}`,
+    title: `React Storefront - Product ${id}`,
     page: 'Product',
     breadcrumbs: [
       { text: 'Home', url: '/' },
@@ -82,12 +82,12 @@ export default function productHandler({ id, c, s }, request, response) {
         }
       },
       images: [
-        `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent('Product Image 1')}`,
+        `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent('Product Image 2')}`,
         `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`
       ],
       thumbnails: [
-        `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent('Product Image 1')}`,
+        `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
         `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`
       ]
