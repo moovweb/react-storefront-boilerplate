@@ -141,5 +141,19 @@
       "^moov-pwa-analytics$": "moov-pwa-analytics/src",
       "^moov-pwa-analytics/(.*)$": "moov-pwa-analytics/src/$1"
     }
+  },
+  "moovweb": {
+    "development": {
+      "builds": {
+        "client": "config/webpack/webpack.dev.client.js",
+        "server": "config/webpack/webpack.dev.server.js"
+      }
+    },
+    "production": {
+      "builds": {
+        "client": "config/webpack/webpack.prod.client.js",
+        "server": "config/webpack/webpack.prod.server.js"
+      }
+    }
   }
 }

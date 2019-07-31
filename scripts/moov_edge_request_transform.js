@@ -11,4 +11,4 @@ module.exports = ({ setCacheKey }) => {
     setCacheKey,
     router: require('../src/routes').default
   })
-};
+}
