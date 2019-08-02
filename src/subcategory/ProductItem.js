@@ -28,7 +28,7 @@ import Track from 'react-storefront/Track'
       color: 'inherit'
     },
     price: {
-      color: theme.palette.price,
+      color: theme.palette.price.main,
       marginTop: '5px'
     },
     reviews: {
@@ -40,8 +40,7 @@ import Track from 'react-storefront/Track'
     info: {
       margin: '0'
     }
-  }),
-  { name: 'RSFProductItem' }
+  })
 )
 export default class ProductItem extends Component {
   static propTypes = {

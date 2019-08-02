@@ -20,7 +20,8 @@
     "/service-worker.js*": "/service-worker.js",
     "/workbox-*": "/workbox-*",
     "/icons/*": "/icons/*",
-    "/robots.txt": "/robots.txt"
+    "/robots.txt": "/robots.txt",
+    "/favicon.ico": "/icons/favicon.ico"
   },
   "validate_amp": true
 }
