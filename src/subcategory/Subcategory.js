@@ -39,8 +39,7 @@ import LoadMask from 'react-storefront/LoadMask'
       marginTop: `${theme.margins.container - 5}px`,
       width: '200px'
     }
-  }),
-  { name: 'RSFSubcategory' }
+  })
 )
 @inject(({ app }) => ({ subcategory: app.subcategory }))
 @observer
