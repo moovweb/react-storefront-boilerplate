@@ -12,10 +12,9 @@
     "on_deploy_command": "node ./tasks/on_deploy"
   },
   "layers": ["minify-js", "minify-css", "live-reload"],
-  "host_map": [
-    "$.moovweb.cloud => www.moovweb.com"
-  ],
+  "host_map": ["$.moovweb.cloud => www.moovweb.com"],
   "static_paths": {
+    "/moov_main.js.map": "../scripts/moov_main.js.map",
     "/.well-known/*": "/well-known/*",
     "/manifest.json": "/manifest.json",
     "/pwa/*": "/pwa/*",
