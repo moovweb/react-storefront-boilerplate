@@ -5,8 +5,6 @@
   "CanAccessRequestHeaderAndBody": true,
   "ReqHeaderChangeAllowed": true,
   "RespHeaderChangeAllowed": true,
-  "EdgeRequestChangeAllowed": true,
-  "EdgeResponseChangeAllowed": true,
   "taskrunner": {
     "on_project_start_command": "node ./tasks/on_project_start",
     "on_deploy_command": "node ./tasks/on_deploy"
