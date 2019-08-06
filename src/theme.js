@@ -10,12 +10,17 @@ const theme = createTheme({
       main: red[700],
       light: red[600],
       dark: red[800],
-      contrasText: '#fff'
+      contrastText: '#fff'
     },
-    spacing: {
-      container: 15,
-      row: 15
+    price: {
+      full: '#000',
+      main: '#000',
+      sale: '#900'
     }
+  },
+  spacing: {
+    container: 15,
+    row: 15
   },
   overrides: {
     RSFLoadMask: {
