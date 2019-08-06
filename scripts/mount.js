@@ -2,6 +2,8 @@
 // control-flow.js in moovworker sets the state of `global` at different points
 // during the execution of bundled code.
 function getRequireMap(path) {
+  console.log('require', path)
+
   switch (path) {
     // This is a misleading variable name. What it actually means is the
     // interface version for control-flow.js in moovworker. Previously, it was
