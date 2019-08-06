@@ -9,13 +9,6 @@ provided by Moovweb.  An example is provided below:
 //   new DebugTarget().sendForAllEvents()
 // )
 
-import GoogleAnalyticsAPITarget from 'react-storefront-extensions/GoogleAnalyticsAPITarget'
 import GoogleAnalyticsTarget from 'react-storefront-extensions/GoogleAnalyticsTarget'
 
-export default () => [
-  new GoogleAnalyticsAPITarget({
-    trackingID: 'UA-26739163-21',
-    customDimensions: [typeof window !== 'undefined' ? window.location.href : null]
-  }),
-  new GoogleAnalyticsTarget({ trackingID: 'UA-26739163-21' })
-]
+export default () => [new GoogleAnalyticsTarget({ trackingID: 'UA-26739163-21' })]
