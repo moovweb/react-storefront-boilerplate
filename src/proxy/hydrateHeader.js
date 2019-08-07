@@ -4,7 +4,7 @@ See config/webpack/webpack.*.client.js
 */
 
 import React from 'react'
-import { hydrate } from 'react-storefront/renderers'
+import hydrate from 'react-storefront/utils/hydrate'
 import Header from '../header/Header'
 import model from '../AppModel'
 import theme from '../theme'
