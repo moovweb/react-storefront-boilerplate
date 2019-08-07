@@ -139,7 +139,7 @@
   },
   "moovweb": {
     "host_map": [
-      "react-storefront-boilerplate.moovweb.cloud => dev-origin.moovweb.com"
+      "cdn-as-code-test.global.ssl.fastly.net => www.moovweb.com"
     ],
     "environments": {
       "development": {
@@ -156,9 +156,6 @@
         }
       },
       "demo": {
-        "host_map": [
-          "react-storefront-boilerplate.moovweb.cloud => dev-origin.moovweb.com"
-        ],
         "builds": {
           "client": "config/webpack/webpack.prod.client.js",
           "server": "config/webpack/webpack.prod.server.js"
@@ -175,6 +172,7 @@
       "/robots.txt": "/robots.txt",
       "/favicon.ico": "/icons/favicon.ico"
     },
+    "taskrunner": {},
     "moovweb_project_format_version": "2.0.0",
     "domain_model": "single_domain",
     "user_agent": "pwa-_Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; da-dk) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
