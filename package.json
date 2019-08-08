@@ -100,7 +100,6 @@
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
     "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/*",
-    "test:ci": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
     "twa:release": "node node_modules/react-storefront/bin/buildTwa",
     "cache:clear": "node ./tasks/on_cache_clear",
     "clean": "rm -rf pwa/build pwa/dist build/assets/* scripts/build/* && mkdir -p build/assets/pwa",
@@ -116,7 +115,9 @@
     "start:windows": "npm run link:windows && xdn-start",
     "start:windows:prod": "npm run build && NODE_ENV=production xdn-start",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
-    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
+    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
+    "xdn:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
+    "xdn:deploy": ""
   },
   "jest": {
     "testEnvironment": "./test/config/jsdom",
