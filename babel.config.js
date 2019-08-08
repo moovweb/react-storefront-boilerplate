@@ -11,7 +11,7 @@ module.exports = function(api) {
           },
           useBuiltIns: 'usage',
           forceAllTransforms: true,
-          modules: false,
+          modules: process.env.NODE_ENV === 'test' ? 'commonjs' : false,
           corejs: 2
         }
       ],
