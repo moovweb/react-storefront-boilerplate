@@ -116,8 +116,8 @@
     "start:windows:prod": "npm run build && NODE_ENV=production xdn-start",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
     "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
-    "xdn:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
-    "xdn:deploy": ""
+    "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
+    "ci:build": "xdn build"
   },
   "jest": {
     "testEnvironment": "./test/config/jsdom",
@@ -173,7 +173,9 @@
       "/robots.txt": "/robots.txt",
       "/favicon.ico": "/icons/favicon.ico"
     },
-    "taskrunner": {},
+    "taskrunner": {
+      "on_deploy_command": "./tasks/on_deploy"
+    },
     "moovweb_project_format_version": "2.0.0",
     "domain_model": "single_domain",
     "user_agent": "pwa-_Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; da-dk) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
