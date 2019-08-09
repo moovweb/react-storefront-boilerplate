@@ -144,20 +144,20 @@
     ],
     "environments": {
       "development": {
-        "builds": {
+        "bundles": {
           "client": "config/webpack/webpack.dev.client.js",
           "server": "config/webpack/webpack.dev.server.js"
         }
       },
       "production": {
-        "builds": {
+        "bundles": {
           "client": "config/webpack/webpack.prod.client.js",
           "server": "config/webpack/webpack.prod.server.js",
           "edge": "config/webpack/webpack.prod.edge.js"
         }
       },
       "demo": {
-        "builds": {
+        "bundles": {
           "client": "config/webpack/webpack.prod.client.js",
           "server": "config/webpack/webpack.prod.server.js"
         }

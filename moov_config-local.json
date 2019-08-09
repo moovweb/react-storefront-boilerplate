@@ -24,7 +24,11 @@
   "EdgeRequestChangeAllowed": false,
   "EdgeResponseChangeAllowed": false,
   "builds": {
-    "client": "config/webpack/webpack.prod.client.js",
-    "server": "config/webpack/webpack.prod.server.js"
+    "client": "config/webpack/webpack.dev.client.js",
+    "server": "config/webpack/webpack.dev.server.js"
+  },
+  "bundles": {
+    "client": "config/webpack/webpack.dev.client.js",
+    "server": "config/webpack/webpack.dev.server.js"
   }
 }
