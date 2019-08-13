@@ -1,15 +1,8 @@
-import {
-  Router,
-  fromClient,
-  fromServer,
-  cache,
-  proxyUpstream,
-  createCustomCacheKey
-} from 'react-storefront/router'
+import { Router, fromClient, fromServer, cache, proxyUpstream } from 'react-storefront/router'
 
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({
-  server: { maxAgeSeconds: 300, key: createCustomCacheKey().addCookie('moov-location') },
+  server: { maxAgeSeconds: 300 },
   client: true
 }) // cache responses in varnish for 5 minutes
 
