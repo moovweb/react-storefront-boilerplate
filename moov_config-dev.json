@@ -4,16 +4,14 @@
   "CanAccessRequestHeaderAndBody": true,
   "ReqHeaderChangeAllowed": true,
   "RespHeaderChangeAllowed": true,
-  "EdgeRequestChangeAllowed": true,
-  "EdgeResponseChangeAllowed": true,
+  "EdgeRequestChangeAllowed": false,
+  "EdgeResponseChangeAllowed": false,
   "taskrunner": {
     "on_project_start_command": "node ./tasks/on_project_start",
     "on_deploy_command": "node ./tasks/on_deploy"
   },
   "layers": ["minify-js", "minify-css", "live-reload"],
-  "host_map": [
-    "$.moovweb.cloud => dev-origin.moovweb.com"
-  ],
+  "host_map": ["$.moovweb.cloud => dev-origin.moovweb.com"],
   "static_paths": {
     "/.well-known/*": "/well-known/*",
     "/manifest.json": "/manifest.json",
