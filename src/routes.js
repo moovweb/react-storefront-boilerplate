@@ -2,9 +2,9 @@ import { Router, fromClient, fromServer, cache, proxyUpstream } from 'react-stor
 
 // See guide to caching on Moov XDN: https://pwa.moovweb.com/guides/caching
 const cacheHandler = cache({
-  server: { maxAgeSeconds: 300 },
-  client: true
-}) // cache responses in varnish for 5 minutes
+  edge: { maxAgeSeconds: 60 * 60 * 24 }, // cache on the network edge for 24 hours
+  client: true // cache on the client using the service worker
+})
 
 // See guide to routing: https://pwa.moovweb.com/guides/routing
 export default new Router()
