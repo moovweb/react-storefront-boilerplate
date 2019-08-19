@@ -14,7 +14,7 @@ export default new Router()
     fromServer('./app-shell/app-shell-handler')
   )
   .get(
-    '/.asset/2.163.2/js/chunks/2-d4153af2c98a48e978dc.min.js',
+    '/.asset/*path/:file',
     cache({
       edge: {
         maxAgeSeconds: 9999
