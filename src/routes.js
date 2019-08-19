@@ -13,6 +13,15 @@ export default new Router()
     cacheHandler,
     fromServer('./app-shell/app-shell-handler')
   )
+  .get(
+    '/.asset/2.163.2/js/chunks/2-d4153af2c98a48e978dc.min.js',
+    cache({
+      edge: {
+        maxAgeSeconds: 9999
+      }
+    }),
+    proxyUpstream()
+  )
   .get('/', cacheHandler, fromClient({ page: 'Home' }), fromServer('./home/home-handler'))
   .get(
     '/c/:id',
