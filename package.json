@@ -103,8 +103,8 @@
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
     "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* test/unit",
-    "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
-    "ci:smoke": "jest test/smoke",
+    "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand test/unit",
+    "ci:smoke": "jest test/smoke --reporters=./node_modules/react-storefront-selenium/smoke-test-reporter.js",
     "build": "node ./tasks/on_deploy",
     "twa:release": "node node_modules/react-storefront/bin/buildTwa",
     "cache:clear": "node ./tasks/on_cache_clear",
@@ -122,7 +122,7 @@
     "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
-    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
+    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-selenium react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
   },
   "jest": {
     "testEnvironment": "./test/unit/config/jsdom",
@@ -132,7 +132,6 @@
     "snapshotSerializers": [
       "./test/unit/config/snapshotSerializer"
     ],
-    "collectCoverage": true,
     "transformIgnorePatterns": [
       "/node_modules/(?!react-storefront).*"
     ],
