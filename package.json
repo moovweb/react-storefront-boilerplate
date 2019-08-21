@@ -93,6 +93,7 @@
     "react-universal-component": "^3.0.3",
     "remotedev": "^0.2.7",
     "rxjs-compat": "^6.3.3",
+    "selenium-webdriver": "^4.0.0-alpha.4",
     "source-map-loader": "^0.2.4",
     "url-loader": "^1.1.2",
     "webpack": "^4.0.0",
@@ -101,8 +102,9 @@
   },
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
-    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/*",
-    "test:ci": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
+    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* test/unit",
+    "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
+    "ci:smoke": "jest test/smoke",
     "build": "node ./tasks/on_deploy",
     "twa:release": "node node_modules/react-storefront/bin/buildTwa",
     "cache:clear": "node ./tasks/on_cache_clear",
@@ -123,12 +125,12 @@
     "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
   },
   "jest": {
-    "testEnvironment": "./test/config/jsdom",
+    "testEnvironment": "./test/unit/config/jsdom",
     "setupFiles": [
-      "./test/config/setup.js"
+      "./test/unit/config/setup.js"
     ],
     "snapshotSerializers": [
-      "./test/config/snapshotSerializer"
+      "./test/unit/config/snapshotSerializer"
     ],
     "collectCoverage": true,
     "transformIgnorePatterns": [
