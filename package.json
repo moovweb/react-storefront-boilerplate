@@ -104,7 +104,7 @@
     "analyze": "ANALYZE=true npm run build",
     "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* test/unit",
     "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand test/unit",
-    "ci:smoke": "jest test/smoke --reporters=./node_modules/react-storefront-selenium/smoke-test-reporter.js",
+    "ci:smoke": "jest test/smoke --reporters=default --reporters=./node_modules/react-storefront-selenium/smoke-test-reporter.js",
     "build": "node ./tasks/on_deploy",
     "twa:release": "node node_modules/react-storefront/bin/buildTwa",
     "cache:clear": "node ./tasks/on_cache_clear",
