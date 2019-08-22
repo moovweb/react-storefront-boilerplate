@@ -5,16 +5,17 @@ const {
   waitForElement
 } = require('react-storefront-selenium')
 
+const hostToTest = process.env.HOST
+if (!hostToTest) {
+  console.error('HOST environment variable left unset.')
+  process.exit(1)
+}
+
 describe('smoke tests', () => {
   jest.setTimeout(30000)
   let driver
 
   beforeAll(() => {
-    // driver = new Builder()
-    //   .setChromeOptions(createDefaultChromeOptions())
-    //   .forBrowser('chrome')
-    //   .build()
-
     driver = createDefaultDriver()
   })
 
@@ -23,7 +24,7 @@ describe('smoke tests', () => {
   })
 
   it('Navigate to landing page', async function() {
-    await driver.get(host)
+    await driver.get(`https://${hostToTest}`)
   })
 
   it('Navigate to category', async function() {
