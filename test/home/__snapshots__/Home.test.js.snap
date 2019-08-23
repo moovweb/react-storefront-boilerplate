@@ -29,7 +29,7 @@ exports[`Home should render 1`] = `
                         <Typography variant="subtitle1" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
                           <h6 className="MuiTypography-root-4 MuiTypography-subtitle1-22">
                             <WithStyles(CmsSlot)>
-                              <CmsSlot classes={{...}} />
+                              <CmsSlot classes={{...}} lazyLoadImages={false} />
                             </WithStyles(CmsSlot)>
                           </h6>
                         </Typography>
