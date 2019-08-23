@@ -31,7 +31,7 @@ import targets from './analytics'
 export default class App extends Component {
   render() {
     return (
-      <AnalyticsProvider targets={targets}>
+      <AnalyticsProvider targets={targets} delayUntilInteractive>
         <TrackPageViews>
           <div>
             <Helmet>
