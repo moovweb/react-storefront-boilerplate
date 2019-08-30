@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { inject, observer } from 'mobx-react'
 import Typography from '@material-ui/core/Typography'
+import BackToTop from 'react-storefront/BackToTop'
 import Container from 'react-storefront/Container'
 import { withStyles } from '@material-ui/core'
 import ProductItem from './ProductItem'
@@ -14,33 +15,31 @@ import Hidden from '@material-ui/core/Hidden'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import LoadMask from 'react-storefront/LoadMask'
 
-@withStyles(
-  theme => ({
-    header: {
-      margin: '20px 0'
-    },
-    description: {
-      margin: '0 0 20px 0'
-    },
-    headerButton: {
-      [theme.breakpoints.down('xs')]: {
-        flex: 1
-      }
-    },
-    total: {
-      margin: '10px 0',
-      flex: 1,
-      [theme.breakpoints.down('xs')]: {
-        textAlign: 'right'
-      }
-    },
-    sidebar: {
-      marginRight: `${theme.margins.container * 2}px`,
-      marginTop: `${theme.margins.container - 5}px`,
-      width: '200px'
+@withStyles(theme => ({
+  header: {
+    margin: '20px 0'
+  },
+  description: {
+    margin: '0 0 20px 0'
+  },
+  headerButton: {
+    [theme.breakpoints.down('xs')]: {
+      flex: 1
     }
-  })
-)
+  },
+  total: {
+    margin: '10px 0',
+    flex: 1,
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'right'
+    }
+  },
+  sidebar: {
+    marginRight: `${theme.margins.container * 2}px`,
+    marginTop: `${theme.margins.container - 5}px`,
+    width: '200px'
+  }
+}))
 @inject(({ app }) => ({ subcategory: app.subcategory }))
 @observer
 export default class Subcategory extends Component {
@@ -52,6 +51,7 @@ export default class Subcategory extends Component {
     return (
       <Fragment>
         <Breadcrumbs />
+        <BackToTop />
         <Container className={classes.root} key={subcategory.id}>
           <Hbox alignItems="flex-start">
             <Hidden xsDown implementation="css">
