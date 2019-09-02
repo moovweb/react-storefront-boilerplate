@@ -1,8 +1,8 @@
 import React from 'react'
 import { createMemoryHistory } from 'history'
 import { Provider } from 'mobx-react'
-import AppModel from '../src/AppModel'
-import theme from '../src/theme'
+import AppModel from '../../src/AppModel'
+import theme from '../../src/theme'
 import { MuiThemeProvider } from '@material-ui/core'
 
 export default function TestProvider({ app, history, children, ...stores }) {
@@ -26,15 +26,8 @@ export default function TestProvider({ app, history, children, ...stores }) {
   history = history || createMemoryHistory({ initialEntries })
 
   return (
-    <Provider 
-      router={{}} 
-      app={app}
-      history={history}
-      {...stores}
-    >
-      <MuiThemeProvider theme={theme}>
-        {children}
-      </MuiThemeProvider>
+    <Provider router={{}} app={app} history={history} {...stores}>
+      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
     </Provider>
   )
 }

@@ -88,6 +88,7 @@
     "react-jss": "^8.3.5",
     "react-storefront": "^6.43.1",
     "react-storefront-moov-xdn": "^6.43.1",
+    "react-storefront-puppeteer": "^6.44.0-alpha.4",
     "react-svg-loader": "^2.1.0",
     "react-transition-group": "^2.5.0",
     "react-universal-component": "^3.0.3",
@@ -101,8 +102,9 @@
   },
   "scripts": {
     "analyze": "ANALYZE=true npm run build",
-    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/*",
-    "test:ci": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand",
+    "test": "jest --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* test/unit",
+    "ci:test": "jest --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!test/**/* --ci --reporters=default --reporters=jest-junit --runInBand test/unit",
+    "ci:smoke": "jest test/smoke --reporters=default --reporters=./node_modules/react-storefront-puppeteer/smoke-test-reporter.js",
     "build": "node ./tasks/on_deploy",
     "twa:release": "node node_modules/react-storefront/bin/buildTwa",
     "cache:clear": "node ./tasks/on_cache_clear",
@@ -120,17 +122,16 @@
     "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
-    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
+    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-puppeteer react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
   },
   "jest": {
-    "testEnvironment": "./test/config/jsdom",
+    "testEnvironment": "./test/unit/config/jsdom",
     "setupFiles": [
-      "./test/config/setup.js"
+      "./test/unit/config/setup.js"
     ],
     "snapshotSerializers": [
-      "./test/config/snapshotSerializer"
+      "./test/unit/config/snapshotSerializer"
     ],
-    "collectCoverage": true,
     "transformIgnorePatterns": [
       "/node_modules/(?!react-storefront).*"
     ],
