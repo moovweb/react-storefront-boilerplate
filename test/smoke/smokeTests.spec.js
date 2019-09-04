@@ -5,25 +5,26 @@
  * We rely on elements with `data-th` attributes to guide the selenium test script through the
  * shopping flow.
  *
- * The hostname of the app to be tested is specified in the required environment variable `RSF_URL`.
+ * The hostname of the app to be tested is specified in the required environment variable `RSF_SMOKE_TEST_URL`.
  */
 
 const { createBrowser, createPage, clickElement } = require('react-storefront-puppeteer')
 
-const startURL = process.env.RSF_URL
-const headless = process.env.RSF_HEADLESS || 'true'
-const ignoreHTTPSErrors = process.env.RSF_IGNORE_HTTPS_ERRORS === 'true'
+const startURL = process.env.RSF_SMOKE_TEST_URL
+const headless = process.env.RSF_SMOKE_TEST_HEADLESS !== 'false'
+const ignoreHTTPSErrors = process.env.RSF_SMOKE_TEST_IGNORE_HTTPS_ERRORS === 'true'
+const timeout = parseInt(process.env.RSF_SMOKE_TEST_TIMEOUT || '10000')
 
 if (!startURL) {
   console.error(
-    'You must set the RSF_URL environment variable to the URL of the app you want to test.'
+    'You must set the RSF_SMOKE_TEST_URL environment variable to the URL of the app you want to test.'
   )
-  console.error('Example: export RSF_URL="https://myapp.moovweb.cloud"')
+  console.error('Example: export RSF_SMOKE_TEST_URL="https://myapp.moovweb.cloud"')
   process.exit(1)
 }
 
 describe('smoke tests', () => {
-  jest.setTimeout(30000)
+  jest.setTimeout(timeout)
 
   let browser
   let page
