@@ -1,6 +1,6 @@
 /**
- * This is the default smoke test run by Moovweb Control Center when
- * your project is linked to a GitHub repository with the Auto-Deploy option checked.
+ * This is the default smoke test run by Apollo when the Moovweb XDN Github app is not
+ * installed, or the app does not have a `ci:smoke` script in package.json.
  *
  * We rely on elements with `data-th` attributes to guide the selenium test script through the
  * shopping flow.
@@ -8,7 +8,8 @@
  * The hostname of the app to be tested is specified in the required environment variable `RSF_SMOKE_TEST_URL`.
  */
 
-const { createBrowser, createPage, clickElement } = require('react-storefront-puppeteer')
+const puppeteer = require('puppeteer')
+const { createPage, clickElement } = require('react-storefront-puppeteer')
 
 const startURL = process.env.RSF_SMOKE_TEST_URL
 const headless = process.env.RSF_SMOKE_TEST_HEADLESS !== 'false'
@@ -30,7 +31,7 @@ describe('smoke tests', () => {
   let page
 
   beforeAll(async () => {
-    browser = await createBrowser({ headless, ignoreHTTPSErrors })
+    browser = await puppeteer.launch({ ignoreHTTPSErrors, headless })
     page = await createPage(browser)
   })
 
