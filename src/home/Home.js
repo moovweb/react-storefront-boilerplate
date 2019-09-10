@@ -4,8 +4,10 @@ import Container from 'react-storefront/Container'
 import Typography from '@material-ui/core/Typography'
 import Row from 'react-storefront/Row'
 import CmsSlot from 'react-storefront/CmsSlot'
+import withAmp from 'react-storefront-extensions/amp/withAmp'
 
 @inject('app')
+@withAmp
 @observer
 export default class Home extends Component {
   render() {

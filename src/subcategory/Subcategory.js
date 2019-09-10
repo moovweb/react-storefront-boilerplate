@@ -14,6 +14,7 @@ import { Hbox, Vbox } from 'react-storefront/Box'
 import Hidden from '@material-ui/core/Hidden'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import LoadMask from 'react-storefront/LoadMask'
+import withAmp from 'react-storefront-extensions/amp/withAmp'
 
 @withStyles(theme => ({
   header: {
@@ -41,6 +42,7 @@ import LoadMask from 'react-storefront/LoadMask'
   }
 }))
 @inject(({ app }) => ({ subcategory: app.subcategory }))
+@withAmp
 @observer
 export default class Subcategory extends Component {
   render() {
