@@ -8,36 +8,36 @@ import { withStyles } from '@material-ui/core'
 import Image from 'react-storefront/Image'
 import ResponsiveTiles from 'react-storefront/ResponsiveTiles'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
+import withAmp from 'react-storefront-extensions/amp/withAmp'
 
-@withStyles(
-  theme => ({
-    subcategories: {
-      listStyle: 'none',
-      margin: 0,
-      padding: 0,
-      '& li': {
-        display: 'flex',
-        position: 'relative',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: theme.margins.row,
-        flexDirection: 'column'
-      }
-    },
-    subcategoryName: {
-      textAlign: 'center',
-      margin: `${theme.margins.container}px 0`
-    },
-    link: {
-      textDecoration: 'none'
-    },
-    image: {
-      width: '100%'
+@withStyles(theme => ({
+  subcategories: {
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+    '& li': {
+      display: 'flex',
+      position: 'relative',
+      width: '100%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: theme.margins.row,
+      flexDirection: 'column'
     }
-  })
-)
+  },
+  subcategoryName: {
+    textAlign: 'center',
+    margin: `${theme.margins.container}px 0`
+  },
+  link: {
+    textDecoration: 'none'
+  },
+  image: {
+    width: '100%'
+  }
+}))
 @inject(({ app }) => ({ category: app.category }))
+@withAmp
 @observer
 export default class Category extends Component {
   render() {
