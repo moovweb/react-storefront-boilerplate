@@ -20,6 +20,7 @@ import classnames from 'classnames'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import withPersonalization from 'react-storefront/personal/withPersonalization'
 import Recommendations from './Recommendations'
+import withAmp from 'react-storefront-extensions/amp/withAmp'
 
 export const styles = theme => ({
   root: {
@@ -66,6 +67,7 @@ export const styles = theme => ({
 @withStyles(styles)
 @withPersonalization(app => app.product) // automatically calls ProductModel.loadPersonalization() when the user views a product
 @inject('app')
+@withAmp
 @observer
 export default class Product extends Component {
   render() {
