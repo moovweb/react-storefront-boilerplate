@@ -87,9 +87,9 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.5",
-    "react-storefront": "^6.44.2",
-    "react-storefront-moov-xdn": "^6.44.2",
-    "react-storefront-puppeteer": "^6.44.2",
+    "react-storefront": "^6.47.0",
+    "react-storefront-moov-xdn": "^6.47.0",
+    "react-storefront-puppeteer": "^6.47.0",
     "react-svg-loader": "^2.1.0",
     "react-transition-group": "^2.5.0",
     "react-universal-component": "^3.0.3",
@@ -123,7 +123,8 @@
     "start:windows": "npm run link:windows && moovsdk start",
     "start:windows:prod": "npm run build && moovsdk start --no-build",
     "clear:babel-cache": "rimraf -rf ./node_modules/.cache/babel-loader/*",
-    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-puppeteer react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions"
+    "dev:link": "npm link react-storefront react-storefront-moov-xdn react-storefront-puppeteer react-storefront-middleware babel-plugin-react-storefront react-storefront-extensions",
+    "dev:upgrade-rsf": "npm i --save-dev react-storefront@latest react-storefront-moov-xdn@latest react-storefront-puppeteer@latest"
   },
   "jest": {
     "testEnvironment": "./test/unit/config/jsdom",
