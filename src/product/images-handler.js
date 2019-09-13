@@ -12,6 +12,7 @@ export default function imagesHandler({ id, color }) {
   return {
     images,
     thumbnails: images,
-    thumbnail: images[0]
+    thumbnail: images[0],
+    selectedImage: 0
   }
 }
