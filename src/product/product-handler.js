@@ -84,12 +84,17 @@ export default function productHandler({ id, c, s }, request, response) {
       images: [
         `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent('Product Image 2')}`,
-        `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`
+        `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`,
+        {
+          src: 'https://temp.media/video/?height=400&width=500&length=10',
+          video: true
+        }
       ],
       thumbnails: [
         `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
-        `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`
+        `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`,
+        'https://placehold.it/500x400'
       ]
     }
   })
