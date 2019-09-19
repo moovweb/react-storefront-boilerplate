@@ -25,7 +25,7 @@ export default function imagesHandler({ id, color }) {
     `https://via.placeholder.com/350x600/${color}/fff?text=${encodeURIComponent(
       'Product Image 3'
     )}`,
-    'https://placehold.it/500x400'
+    `https://placehold.it/500x400/${color}/fff`
   ]
 
   return {

@@ -94,7 +94,7 @@ export default function productHandler({ id, c, s }, request, response) {
         `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(`Product ${id}`)}`,
         `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent('Product Image 2')}`,
         `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent('Product Image 3')}`,
-        'https://placehold.it/500x400'
+        'https://placehold.it/500x400/cccccc/fff'
       ]
     }
   })
