@@ -10,7 +10,7 @@ export default function imagesHandler({ id, color }) {
       'Product Image 3'
     )}`,
     {
-      src: 'https://temp.media/video/?height=400&width=500&length=10',
+      src: 'https://pwa.moovweb.com/videos/500x400.mp4',
       video: true
     }
   ]
