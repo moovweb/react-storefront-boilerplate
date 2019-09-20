@@ -86,7 +86,7 @@ export default function productHandler({ id, c, s }, request, response) {
         `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent('Product Image 2')}`,
         `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent('Product Image 3')}`,
         {
-          src: 'https://temp.media/video/?height=400&width=500&length=10',
+          src: 'https://pwa.moovweb.com/videos/500x400.mp4',
           video: true
         }
       ],
