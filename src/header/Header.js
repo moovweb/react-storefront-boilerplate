@@ -3,7 +3,6 @@ import { observer, inject } from 'mobx-react'
 import AppBar from 'react-storefront/AppBar'
 import IconButton from '@material-ui/core/IconButton'
 import FindStore from '@material-ui/icons/LocationOn'
-import Search from '@material-ui/icons/Search'
 import Link from 'react-storefront/Link'
 import { withStyles } from '@material-ui/core/styles'
 import Logo from '../assets/react-storefront-logo.svg'
@@ -13,6 +12,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Menu from 'react-storefront/Menu'
 import PromoBanner from 'react-storefront/PromoBanner'
 import SearchField from 'react-storefront/SearchField'
+import SearchButton from 'react-storefront/SearchButton'
 
 @withStyles(theme => ({
   root: {
@@ -77,14 +77,7 @@ export default class Header extends Component {
             {storeFinder}
           </Hidden>
           <Hidden mdUp implementation="css">
-            <IconButton
-              aria-label="Search"
-              color="inherit"
-              classes={{ label: classes.large }}
-              onClick={this.onSearchClick}
-            >
-              <Search className={classes.icon} />
-            </IconButton>
+            <SearchButton />
           </Hidden>
           <HeaderLogo>
             <Logo />
