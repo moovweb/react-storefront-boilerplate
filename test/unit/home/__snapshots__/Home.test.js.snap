@@ -4,44 +4,53 @@ exports[`Home should render 1`] = `
 <TestProvider>
   <Provider router={{...}} app={{...}} history={{...}}>
     <MuiThemeProviderOld theme={{...}}>
-      <inject-Home-with-app>
-        <Home app={{...}}>
-          <WithStyles(Container)>
-            <Container classes={{...}} inset={true}>
-              <div className="RSFContainer-root-1 RSFContainer-inset-2">
-                <WithStyles(Row)>
-                  <Row classes={{...}}>
-                    <div className="RSFRow-root-3">
-                      <WithStyles(Typography) variant="h4">
-                        <Typography variant="h4" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                          <h4 className="MuiTypography-root-4 MuiTypography-h4-19">
-                            React Storefront
-                          </h4>
-                        </Typography>
-                      </WithStyles(Typography)>
-                    </div>
-                  </Row>
-                </WithStyles(Row)>
-                <WithStyles(Row)>
-                  <Row classes={{...}}>
-                    <div className="RSFRow-root-3">
-                      <WithStyles(Typography) variant="subtitle1">
-                        <Typography variant="subtitle1" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
-                          <h6 className="MuiTypography-root-4 MuiTypography-subtitle1-22">
-                            <WithStyles(CmsSlot)>
-                              <CmsSlot classes={{...}} lazyLoadImages={false} />
-                            </WithStyles(CmsSlot)>
-                          </h6>
-                        </Typography>
-                      </WithStyles(Typography)>
-                    </div>
-                  </Row>
-                </WithStyles(Row)>
-              </div>
-            </Container>
-          </WithStyles(Container)>
-        </Home>
-      </inject-Home-with-app>
+      <inject-inject-WithAmp-with-app-history-with-app>
+        <inject-WithAmp-with-app-history app={{...}}>
+          <WithAmp app={{...}} history={{...}}>
+            <HelmetWrapper defer={true} encodeSpecialCharacters={true}>
+              <SideEffect(NullComponent) defer={true} encodeSpecialCharacters={true} link={{...}}>
+                <NullComponent defer={true} encodeSpecialCharacters={true} link={{...}} />
+              </SideEffect(NullComponent)>
+            </HelmetWrapper>
+            <Home app={{...}} history={{...}}>
+              <WithStyles(Container)>
+                <Container classes={{...}} inset={true}>
+                  <div className="RSFContainer-root-1 RSFContainer-inset-2">
+                    <WithStyles(Row)>
+                      <Row classes={{...}}>
+                        <div className="RSFRow-root-3">
+                          <WithStyles(Typography) variant="h4">
+                            <Typography variant="h4" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <h4 className="MuiTypography-root-4 MuiTypography-h4-19">
+                                React Storefront
+                              </h4>
+                            </Typography>
+                          </WithStyles(Typography)>
+                        </div>
+                      </Row>
+                    </WithStyles(Row)>
+                    <WithStyles(Row)>
+                      <Row classes={{...}}>
+                        <div className="RSFRow-root-3">
+                          <WithStyles(Typography) variant="subtitle1">
+                            <Typography variant="subtitle1" theme={{...}} classes={{...}} align="inherit" color="default" gutterBottom={false} headlineMapping={{...}} inline={false} noWrap={false} paragraph={false}>
+                              <h6 className="MuiTypography-root-4 MuiTypography-subtitle1-22">
+                                <WithStyles(CmsSlot)>
+                                  <CmsSlot classes={{...}} lazyLoadImages={false} />
+                                </WithStyles(CmsSlot)>
+                              </h6>
+                            </Typography>
+                          </WithStyles(Typography)>
+                        </div>
+                      </Row>
+                    </WithStyles(Row)>
+                  </div>
+                </Container>
+              </WithStyles(Container)>
+            </Home>
+          </WithAmp>
+        </inject-WithAmp-with-app-history>
+      </inject-inject-WithAmp-with-app-history-with-app>
     </MuiThemeProviderOld>
   </Provider>
 </TestProvider>
