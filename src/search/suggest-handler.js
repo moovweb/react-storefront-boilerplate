@@ -11,6 +11,7 @@ export default async function suggestHandler({ q }) {
       groups: [
         {
           caption: 'Suggested Searches',
+          thumbnails: false,
           results: [`Small ${q}`, `Large ${q}`, `${q} with red stripes`].map(text => ({
             text,
             url: `/search?q=${encodeURIComponent(text)}`
@@ -18,6 +19,7 @@ export default async function suggestHandler({ q }) {
         },
         {
           caption: 'Suggested Categories',
+          thumbnails: false,
           results: [
             { text: 'Category 1', url: '/c/1' },
             { text: 'Category 2', url: '/c/2' },
@@ -26,6 +28,7 @@ export default async function suggestHandler({ q }) {
         },
         {
           caption: 'Suggested Products',
+          thumbnails: true,
           results: [
             {
               text: 'Product 1',
@@ -40,6 +43,16 @@ export default async function suggestHandler({ q }) {
             {
               text: 'Product 3',
               url: '/p/3?s=1&c=1',
+              thumbnail: 'https://via.placeholder.com/120x120'
+            },
+            {
+              text: 'Product 4',
+              url: '/p/3?s=1&c=1',
+              thumbnail: 'https://via.placeholder.com/120x120'
+            },
+            {
+              text: 'Product 5',
+              url: '/p/5?s=1&c=1',
               thumbnail: 'https://via.placeholder.com/120x120'
             }
           ]

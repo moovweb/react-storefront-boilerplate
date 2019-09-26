@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import AppBar from 'react-storefront/AppBar'
-import IconButton from '@material-ui/core/IconButton'
-import FindStore from '@material-ui/icons/LocationOn'
-import Search from '@material-ui/icons/Search'
-import Link from 'react-storefront/Link'
 import { withStyles } from '@material-ui/core/styles'
 import Logo from '../assets/react-storefront-logo.svg'
 import CartButton from 'react-storefront/CartButton'
@@ -13,6 +9,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Menu from 'react-storefront/Menu'
 import PromoBanner from 'react-storefront/PromoBanner'
 import SearchField from 'react-storefront/SearchField'
+import SearchButton from 'react-storefront/SearchButton'
 
 @withStyles(theme => ({
   root: {
@@ -57,34 +54,12 @@ export default class Header extends Component {
   render() {
     const { classes } = this.props
 
-    const storeFinder = (
-      <Link to="/store-finder">
-        <IconButton aria-label="Store Locator" color="inherit" classes={{ label: classes.large }}>
-          <FindStore className={classes.icon} />
-        </IconButton>
-      </Link>
-    )
-
-    const promo = `https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent(
-      '25% OFF EVERYTHING'
-    )}`
-
     return (
       <div>
         <AppBar classes={{ root: classes.root }} menuAlign="right" menuIconProps={{ label: false }}>
           <Menu align="right" useExpanders />
           <Hidden mdUp implementation="css">
-            {storeFinder}
-          </Hidden>
-          <Hidden mdUp implementation="css">
-            <IconButton
-              aria-label="Search"
-              color="inherit"
-              classes={{ label: classes.large }}
-              onClick={this.onSearchClick}
-            >
-              <Search className={classes.icon} />
-            </IconButton>
+            <SearchButton />
           </Hidden>
           <HeaderLogo>
             <Logo />
@@ -93,22 +68,17 @@ export default class Header extends Component {
           <Hidden smDown implementation="css">
             <SearchField className={classes.searchField} />
           </Hidden>
-          <Hidden smDown implementation="css">
-            {storeFinder}
-          </Hidden>
           <CartButton classes={{ icon: classes.icon }} />
         </AppBar>
         <PromoBanner
           className={classes.promo}
-          src={promo}
+          src={`https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent(
+            '25% OFF EVERYTHING'
+          )}`}
           style={{ height: '64px' }}
           imgProps={{ quality: 50 }}
         />
       </div>
     )
-  }
-
-  onSearchClick = () => {
-    this.props.app.search.toggle(true)
   }
 }
