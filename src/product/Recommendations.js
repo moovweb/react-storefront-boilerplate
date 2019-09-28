@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import { Hbox } from 'react-storefront/Box'
 import ProductItem from '../subcategory/ProductItem'
@@ -36,27 +36,39 @@ const styles = theme => ({
  * A mock component that demonstrates how we can late load and display
  * personalized product recommendations.
  */
-function Recommendations({ product, classes }) {
-  return (
-    <div className={classes.root}>
-      {product.recommendations ? (
-        <Fragment>
-          <Typography variant="subtitle1">Personalized Recommendations for You</Typography>
-          <Hbox className={classes.carousel}>
-            {product.recommendations.map((suggestion, i) => (
-              <ProductItem
-                key={i}
-                product={suggestion}
-                classes={{ root: classes.item, thumb: classes.thumb, info: classes.info }}
-              />
-            ))}
-          </Hbox>
-        </Fragment>
-      ) : (
-        <LoadMask show />
-      )}
-    </div>
-  )
-}
+@withStyles(styles)
+@observer
+export default class Recommendations extends Component {
+  render() {
+    const { product, classes } = this.props
 
-export default withStyles(styles)(observer(Recommendations))
+    return (
+      <div className={classes.root}>
+        {product.recommendations ? (
+          <>
+            <Typography variant="subtitle1">Personalized Recommendations for You</Typography>
+            <Hbox className={classes.carousel}>
+              {product.recommendations.map((suggestion, i) => (
+                <ProductItem
+                  key={i}
+                  product={suggestion}
+                  classes={{ root: classes.item, thumb: classes.thumb, info: classes.info }}
+                />
+              ))}
+            </Hbox>
+          </>
+        ) : (
+          <LoadMask show />
+        )}
+      </div>
+    )
+  }
+
+  componentDidUpdate() {
+    const { product } = this.props
+
+    if (product.recommendations == null) {
+      product.loadPersonalization()
+    }
+  }
+}
