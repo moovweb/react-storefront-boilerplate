@@ -8,6 +8,7 @@ const ProductModel = types.compose(
       // additional product fields go here
       specs: types.maybeNull(types.string),
       reviews: types.optional(types.array(types.string), []),
+      loadingRecommendations: false,
       recommendations: types.maybeNull(types.array(types.late(() => ProductModel)))
     })
     .actions(self => ({
@@ -18,11 +19,17 @@ const ProductModel = types.compose(
        * such as personalized product recommendations should be late loaded here.
        */
       loadPersonalization: flow(function*() {
-        if (self.recommendations == null) {
-          const { recommendations } = yield fetch(`/p/${self.id}/personalization.json`).then(res =>
-            res.json()
-          )
-          self.recommendations = recommendations
+        if (self.recommendations == null && !self.loadingRecommendations) {
+          self.loadingRecommendations = true
+
+          try {
+            const { recommendations } = yield fetch(`/p/${self.id}/personalization.json`).then(
+              res => res.json()
+            )
+            self.recommendations = recommendations
+          } finally {
+            self.loadingRecommendations = false
+          }
         }
       })
     }))
