@@ -63,12 +63,4 @@ export default class Recommendations extends Component {
       </div>
     )
   }
-
-  componentDidUpdate() {
-    const { product } = this.props
-
-    if (product.recommendations == null) {
-      product.loadPersonalization()
-    }
-  }
 }
