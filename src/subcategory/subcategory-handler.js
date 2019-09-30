@@ -86,7 +86,7 @@ export default function subcategoryHandler(
 export function createProducts(
   filters = [],
   page = 0,
-  { categoryId = '1', subcategoryId = '1' } = {}
+  { categoryId = '1', subcategoryId = '1', startId = 1 } = {}
 ) {
   const items = []
 
@@ -99,7 +99,7 @@ export function createProducts(
 
   const count = Math.min(total, pageSize)
 
-  for (let i = 1; i <= count; i++) {
+  for (let i = startId; i < startId + count; i++) {
     const id = page * count + i
     items.push({
       id: id.toString(),
