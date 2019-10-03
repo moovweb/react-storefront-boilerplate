@@ -1,3 +1,9 @@
+/*
+ * This service worker immediately takes control away from  the existing service worker,
+ * then uninstall itself.  Technically it will be running until the next page reload, but it
+ * won't do anything.
+ */
+
 self.addEventListener('install', function(event) {
   self.skipWaiting()
   console.log('[react-storefront] no-op service worker installed')
