@@ -20,6 +20,8 @@
     "/workbox-*": "/workbox-*",
     "/icons/*": "/icons/*",
     "/robots.txt": "/robots.txt",
-    "/favicon.ico": "/icons/favicon.ico"
+    "/favicon.ico": "/icons/favicon.ico",
+    "/uninstall-service-worker.js": "/uninstall-service-worker/uninstall-service-worker.js",
+    "/noop-service-worker.js": "/uninstall-service-worker/noop-service-worker.js"
   }
 }
