@@ -90,13 +90,13 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
         },
         {
           src: `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent(
-            'Product Image 2'
+            `Product ${id}`
           )}`,
           alt: `Product ${id} - 2`
         },
         {
           src: `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent(
-            'Product Image 3'
+            `Product ${id}`
           )}`,
           alt: `Product ${id} - 3`
         },
@@ -115,13 +115,13 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
         },
         {
           src: `https://via.placeholder.com/60x35/cccccc?text=${encodeURIComponent(
-            'Product Image 2'
+            `Product ${id}`
           )}`,
           alt: `Product ${id} - Thumbnail 2`
         },
         {
           src: `https://via.placeholder.com/35x60/cccccc?text=${encodeURIComponent(
-            'Product Image 3'
+            `Product ${id}`
           )}`,
           alt: `Product ${id} - Thumbnail 3`
         },
