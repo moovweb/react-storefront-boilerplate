@@ -107,7 +107,41 @@ export function createProducts(
       name: `Product ${id}`,
       basePrice: 99.99,
       rating: i % 5,
-      thumbnail: `https://via.placeholder.com/256x256?text=${encodeURIComponent(`Product ${id}`)}`
+      thumbnail: `https://via.placeholder.com/256x256?text=${encodeURIComponent(`Product ${id}`)}`,
+      color: {
+        options: [
+          {
+            text: 'Neutral Gray',
+            id: 'cccccc',
+            image: 'https://via.placeholder.com/350/cccccc/cccccc',
+            thumbnail: `/thumbnails/${id}/cccccc`
+          },
+          {
+            text: 'Candy Apple Red',
+            id: 'd32f2f',
+            image: 'https://via.placeholder.com/350/d32f2f/d32f2f',
+            thumbnail: `/thumbnails/${id}/d32f2f`
+          },
+          {
+            text: 'Forest Green',
+            id: '388E3C',
+            image: 'https://via.placeholder.com/350/388E3C/388E3C',
+            thumbnail: `/thumbnails/${id}/388E3C`
+          },
+          {
+            text: 'Azure Blue',
+            id: '1565c0',
+            image: 'https://via.placeholder.com/350/1565c0/1565c0',
+            thumbnail: `/thumbnails/${id}/1565c0`,
+            disabled: true
+          }
+        ],
+        selected: {
+          text: 'Neutral Gray',
+          id: 'cccccc',
+          image: 'https://via.placeholder.com/350/cccccc/cccccc'
+        }
+      }
     })
   }
 
