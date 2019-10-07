@@ -40,7 +40,6 @@ export default new Router()
   // This API method is automatically called and state is updated when the product model's color
   // is changed. Refer to `product/images-handler.js` to see an example implementation of the handler.
   .get('/p/:id/images/:color', cacheHandler, fromServer('./product/images-handler'))
-  .get('/s/:id/images/:color', cacheHandler, fromServer('./product/images-handler'))
   .get('/thumbnail/:id/:color', cacheHandler, fromServer('./product/thumbnail-handler'))
   .get('/cart', fromClient({ page: 'Cart' }), fromServer('./cart/cart-handler'))
   .post('/cart/add-from-amp.json', fromServer('./cart/add-from-amp-handler'))

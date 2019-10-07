@@ -71,7 +71,6 @@ export default class ProductItem extends Component {
                   aspectRatio={100}
                   alt="product"
                   product={product}
-                  thumbnail={product.thumbnail}
                 />
               </ProductLink>
             </Track>
@@ -80,7 +79,7 @@ export default class ProductItem extends Component {
             <Typography variant="subtitle1" className={classes.name}>
               {product.name}
             </Typography>
-            <ProductTileColors showSelectedText strikeThroughDisabled product={product} />
+            <ProductColors showSelectedText strikeThroughDisabled product={product} />
             <Rating product={product} className={classes.rating} />
             <Typography className={classes.price}>{price(product.price)}</Typography>
           </div>
