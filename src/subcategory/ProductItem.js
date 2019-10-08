@@ -17,6 +17,9 @@ import ProductThumbnail from 'react-storefront/ProductThumbnail'
     listStyle: 'none',
     padding: '10px 0'
   },
+  name: {
+    marginBottom: 5
+  },
   thumb: {
     flex: 2,
     display: 'block',
