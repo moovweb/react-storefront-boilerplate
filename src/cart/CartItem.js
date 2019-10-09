@@ -14,9 +14,7 @@ import ProductLink from 'react-storefront/ProductLink'
 @withStyles(theme => ({
   root: {
     flex: 1,
-    padding: `${theme.margins.container}px 40px ${theme.margins.container}px ${
-      theme.margins.container
-    }px`,
+    padding: `${theme.margins.container}px 40px ${theme.margins.container}px ${theme.margins.container}px`,
     marginBottom: `${theme.margins.container}px`,
     position: 'relative'
   },
@@ -41,12 +39,13 @@ import ProductLink from 'react-storefront/ProductLink'
 export default class CartItem extends Component {
   render() {
     const { classes, product } = this.props
+    const { src, alt } = product.images[0]
 
     return (
       <Paper className={classes.root}>
         <Hbox alignItems="flex-start">
           <div className={classes.thumb}>
-            <Image src={product.images[0]} fill aspectRatio={100} quality={50} />
+            <Image src={src} alt={alt} fill aspectRatio={100} optimization={{ width: 100 }} />
           </div>
           <div className={classes.info}>
             <ProductLink product={product}>

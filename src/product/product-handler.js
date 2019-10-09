@@ -1,7 +1,7 @@
 import globalState from '../globalState'
 import { withGlobalState } from 'react-storefront/router'
 
-export default function productHandler({ id, c, s }, request, response) {
+export default function productHandler({ id, c = '1', s = '1' }, request, response) {
   return withGlobalState(request, globalState, {
     title: `React Storefront - Product ${id}`,
     page: 'Product',
