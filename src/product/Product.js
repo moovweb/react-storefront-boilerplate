@@ -20,6 +20,7 @@ import classnames from 'classnames'
 import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import withPersonalization from 'react-storefront/personal/withPersonalization'
 import Recommendations from './Recommendations'
+import Lazy from 'react-storefront/Lazy'
 
 export const styles = theme => ({
   root: {
@@ -99,33 +100,35 @@ export default class Product extends Component {
                   indicators
                 />
                 <div className={classes.selectionControls}>
-                  <Hidden xsDown implementation="css">
-                    <Header product={product} />
-                  </Hidden>
-                  <Row>
-                    <Typography className={classnames(classes.label)}>Color</Typography>
-                    <ButtonSelector
-                      name="color"
-                      model={product.color}
-                      showSelectedText
-                      strikeThroughDisabled
-                    />
-                  </Row>
-                  <Row className={classes.size}>
-                    <Typography className={classnames(classes.label)}>Size</Typography>
-                    <ButtonSelector
-                      name="size"
-                      model={product.size}
-                      strikeThroughDisabled
-                      strikeThroughAngle={32}
-                    />
-                  </Row>
-                  <Row>
-                    <Hbox>
-                      <div style={{ marginRight: '15px' }}>Quantity:</div>
-                      <QuantitySelector name="quantity" product={product} />
-                    </Hbox>
-                  </Row>
+                  <Lazy style={{ minHeight: 295 }} key={product.id}>
+                    <Hidden xsDown implementation="css">
+                      <Header product={product} />
+                    </Hidden>
+                    <Row>
+                      <Typography className={classnames(classes.label)}>Color</Typography>
+                      <ButtonSelector
+                        name="color"
+                        model={product.color}
+                        showSelectedText
+                        strikeThroughDisabled
+                      />
+                    </Row>
+                    <Row className={classes.size}>
+                      <Typography className={classnames(classes.label)}>Size</Typography>
+                      <ButtonSelector
+                        name="size"
+                        model={product.size}
+                        strikeThroughDisabled
+                        strikeThroughAngle={32}
+                      />
+                    </Row>
+                    <Row>
+                      <Hbox>
+                        <div style={{ marginRight: '15px' }}>Quantity:</div>
+                        <QuantitySelector name="quantity" product={product} />
+                      </Hbox>
+                    </Row>
+                  </Lazy>
                   <Hidden implementation="css" smUp>
                     <AddToCartButton
                       product={product}
@@ -142,22 +145,24 @@ export default class Product extends Component {
                 </div>
               </div>
             </Row>
-            <TabPanel>
-              <CmsSlot label="Description">{product.description}</CmsSlot>
-              <CmsSlot label="Specs">{product.specs}</CmsSlot>
-              <div label="Reviews">
-                {product.reviews.map((review, i) => (
-                  <Paper key={i} className={this.props.classes.review}>
-                    {review}
-                  </Paper>
-                ))}
-              </div>
-            </TabPanel>
-            {!amp && (
-              <Row>
-                <Recommendations product={product} />
-              </Row>
-            )}
+            <Lazy style={{ minHeight: 500 }} key={product.id}>
+              <TabPanel>
+                <CmsSlot label="Description">{product.description}</CmsSlot>
+                <CmsSlot label="Specs">{product.specs}</CmsSlot>
+                <div label="Reviews">
+                  {product.reviews.map((review, i) => (
+                    <Paper key={i} className={this.props.classes.review}>
+                      {review}
+                    </Paper>
+                  ))}
+                </div>
+              </TabPanel>
+              {!amp && (
+                <Row>
+                  <Recommendations product={product} />
+                </Row>
+              )}
+            </Lazy>
           </Container>
         </AmpForm>
       </AmpState>

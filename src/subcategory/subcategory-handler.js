@@ -32,7 +32,7 @@ for (let group of facetGroups) {
 }
 
 export default function subcategoryHandler(
-  { c = '0', id = '0', filters, sort = 'rating', page, format },
+  { c = '1', id = '1', filters, sort = 'rating', page, format },
   request,
   response
 ) {
