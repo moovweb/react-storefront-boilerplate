@@ -22,5 +22,5 @@
     "/robots.txt": "/robots.txt",
     "/favicon.ico": "/icons/favicon.ico"
   },
-  "validate_amp": true
+  "validate_amp": false
 }
