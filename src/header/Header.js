@@ -10,6 +10,7 @@ import Menu from 'react-storefront/Menu'
 import PromoBanner from 'react-storefront/PromoBanner'
 import SearchField from 'react-storefront/SearchField'
 import SearchButton from 'react-storefront/SearchButton'
+import AmpHeaderButtons from './AmpHeaderButtons'
 
 @withStyles(theme => ({
   root: {
@@ -52,7 +53,7 @@ import SearchButton from 'react-storefront/SearchButton'
 @observer
 export default class Header extends Component {
   render() {
-    const { classes } = this.props
+    const { app, classes } = this.props
 
     return (
       <div>
@@ -68,7 +69,7 @@ export default class Header extends Component {
           <Hidden smDown implementation="css">
             <SearchField className={classes.searchField} />
           </Hidden>
-          <CartButton classes={{ icon: classes.icon }} />
+          {app.amp ? <AmpHeaderButtons /> : <CartButton classes={{ icon: classes.icon }} />}
         </AppBar>
         <PromoBanner
           className={classes.promo}
