@@ -3,5 +3,5 @@ const { dedupeCookies } = require('react-storefront-extensions/cookies')
 
 module.exports = function() {
   responseHeaderTransform()
-  dedupeCookies()
+  // dedupeCookies()
 }
