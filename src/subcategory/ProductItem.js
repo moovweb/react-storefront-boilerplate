@@ -9,9 +9,6 @@ import { price } from 'react-storefront/format'
 import Track from 'react-storefront/Track'
 import { observer } from 'mobx-react'
 
-import ProductColors from 'react-storefront/ProductColors'
-import ProductThumbnail from 'react-storefront/ProductThumbnail'
-
 @withStyles(theme => ({
   root: {
     listStyle: 'none',
@@ -67,22 +64,17 @@ export default class ProductItem extends Component {
               }}
               product={product}
             >
-              <ProductLink prefetch="visible" className={classes.link} product={product}>
-                <ProductThumbnail
-                  quality={50}
-                  lazy={index >= 4 && index < 10}
-                  aspectRatio={100}
-                  alt="product"
-                  product={product}
-                />
-              </ProductLink>
+              <ProductLink
+                prefetch="visible"
+                className={classes.link}
+                product={product}
+              ></ProductLink>
             </Track>
           </div>
           <div className={classes.info}>
             <Typography variant="subtitle1" className={classes.name}>
               {product.name}
             </Typography>
-            <ProductColors showSelectedText strikeThroughDisabled product={product} />
             <Rating product={product} className={classes.rating} />
             <Typography className={classes.price}>{price(product.price)}</Typography>
           </div>
