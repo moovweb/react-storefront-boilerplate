@@ -70,11 +70,13 @@ export default class SubcategorySkeleton extends Component {
               </Hidden>
               <Vbox flex="1">
                 <BlankRow height="20px" />
-                <Row>
+                <Row height="32px">
                   <Content>
-                    <Typography variant="h6" component="h1" className={classes.header}>
-                      {subcategory.name}
-                    </Typography>
+                    {subcategory.name && (
+                      <Typography variant="h6" component="h1" className={classes.header}>
+                        {subcategory.name}
+                      </Typography>
+                    )}
                   </Content>
                   <Space flex="1" />
                 </Row>
@@ -138,12 +140,16 @@ const Product = ({ classes }) => (
   <div style={{ flex: 1 }}>
     <Content className={classes.productImage} />
     <BlankRow height="10px" />
-    <Content height="16px" />
+    <Content height="20px" />
+    <BlankRow height="10px" />
+    <Content height="25px" />
+    <BlankRow height="10px" />
+    <Content height="12px" />
+    <BlankRow height="10px" />
+    <Content height="12px" />
     <BlankRow height="10px" />
     <Content height="16px" />
-    <BlankRow height="10px" />
-    <Content height="16px" />
-    <BlankRow height="30px" />
+    <BlankRow height="35px" />
   </div>
 )
 
