@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { inject, observer } from 'mobx-react'
 import Typography from '@material-ui/core/Typography'
-import BackToTop from 'react-storefront/BackToTop'
 import Container from 'react-storefront/Container'
 import { withStyles } from '@material-ui/core'
 import ProductItem from './ProductItem'
@@ -53,7 +52,6 @@ export default class Subcategory extends Component {
     return (
       <Fragment>
         <Breadcrumbs />
-        <BackToTop />
         <Container className={classes.root} key={subcategory.id}>
           <Hbox alignItems="flex-start">
             <Hidden xsDown implementation="css">
