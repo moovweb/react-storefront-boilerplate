@@ -36,6 +36,10 @@ export default function subcategoryHandler(
   request,
   response
 ) {
+  if (request.path.startsWith('/search')) {
+    response.redirect('http://localhost:8080/s/1')
+  }
+
   page = page == null ? null : parseInt(page)
 
   if (page != null && format === 'json') {
