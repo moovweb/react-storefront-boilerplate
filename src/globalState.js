@@ -36,7 +36,11 @@ function createMenu() {
             { url: `/c/${c}`, text: `Category ${c}` },
             { text: `Subcategory ${s}` }
           ]
-        })
+        }),
+        items: Array(4).fill(0).map((e, i) => ({
+          text: `Item ${s}/${i}`,
+          url: `/s/${s}?c=${c}&i=${i}`,
+        }))
       })
     }
   }
