@@ -111,6 +111,11 @@ export default class Product extends Component {
                         model={product.color}
                         showSelectedText
                         strikeThroughDisabled
+                        onSelectionChange={(e, item) => {
+                          e.preventDefault()
+                          product.color.setSelected(item)
+                          product.fetchImages()
+                        }}
                       />
                     </Row>
                     <Row className={classes.size}>
