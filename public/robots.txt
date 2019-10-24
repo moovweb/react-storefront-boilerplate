@@ -3,10 +3,9 @@ Disallow: /cart
 
 # Tips:
 
-# - Only crawl your most valuable pages
-# - Don't waste your crawl budget by crawling similar pages
-# - You should not use robots.txt to block pages from search engines
-# - Do not crawl the parts of your site that aren’t displayed to the public
-# - If you have any pages that you don’t want indexed, you can use both disallow and noindex directive
-
-# For example, ecommerce sites should `noindex` the cart, checkout, and account pages
+# Disallow tells a robot not to crawl a page, file, or directory
+# Only crawl your most valuable pages
+# Don't waste your crawl budget by crawling similar pages
+# Do not crawl the parts of your site that aren’t displayed to the public
+# Disallowed pages cannot pass PageRank to anywhere else – so any links on those pages are effectively useless from an SEO perspective, so be careful when writing disallow directives
+# For example, ecommerce sites might `Disallow` the cart, checkout, and account areas
