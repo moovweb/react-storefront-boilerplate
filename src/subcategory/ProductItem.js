@@ -69,6 +69,7 @@ export default class ProductItem extends Component {
             >
               <ProductLink prefetch="visible" className={classes.link} product={product}>
                 <ProductThumbnail
+                  quality={50}
                   lazy={index >= 4 && index < 10}
                   aspectRatio={100}
                   alt="product"
