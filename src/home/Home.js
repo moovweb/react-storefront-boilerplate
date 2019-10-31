@@ -20,7 +20,17 @@ export default class Home extends Component {
         </Row>
         <Row>
           <Typography variant="subtitle1">
-            <CmsSlot>{app.welcomeMessage}</CmsSlot>
+            <picture>
+              <source
+                srcSet="https://cdn-staging.thetiebar.com/heros/homepage_hero_october.jpg"
+                media="(min-width: 601px)"
+              />
+              <img
+                style={{ width: '100%' }}
+                src="https://cdn-staging.thetiebar.com/heros/homepage_hero_october.jpg?w=414&amp;h=292"
+                alt="Shop Sweaters"
+              />
+            </picture>
           </Typography>
         </Row>
       </Container>
