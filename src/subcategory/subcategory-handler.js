@@ -75,6 +75,12 @@ export default function subcategoryHandler(
   }
 }
 
+function thumbnail(color, id) {
+  const contrast = color === 'cccccc' ? '' : '/fff'
+  const text = encodeURIComponent('Product ' + id)
+  return `https://via.placeholder.com/200/${color}${contrast}?text=${text}`
+}
+
 /**
  * Creates mock products for the subcategory view.  You can remove this function in a real app.
  * @param {String[]} filters An array of filter codes
@@ -114,25 +120,25 @@ export function createProducts(
             text: 'Neutral Gray',
             id: 'cccccc',
             image: 'https://via.placeholder.com/350/cccccc/cccccc',
-            thumbnail: `/thumbnails/${id}/cccccc`
+            thumbnail: thumbnail('cccccc', id)
           },
           {
             text: 'Candy Apple Red',
             id: 'd32f2f',
             image: 'https://via.placeholder.com/350/d32f2f/d32f2f',
-            thumbnail: `/thumbnails/${id}/d32f2f`
+            thumbnail: thumbnail('d32f2f', id)
           },
           {
             text: 'Forest Green',
             id: '388E3C',
             image: 'https://via.placeholder.com/350/388E3C/388E3C',
-            thumbnail: `/thumbnails/${id}/388E3C`
+            thumbnail: thumbnail('388E3C', id)
           },
           {
             text: 'Azure Blue',
             id: '1565c0',
             image: 'https://via.placeholder.com/350/1565c0/1565c0',
-            thumbnail: `/thumbnails/${id}/1565c0`,
+            thumbnail: thumbnail('1565c0`', id),
             disabled: true
           }
         ],
