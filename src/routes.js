@@ -37,9 +37,8 @@ export default new Router()
     cache({ client: true }), // cache this only on the client because it's personalized for each user
     fromServer('./product/personalization-handler')
   )
-  // This API method is automatically called and state is updated when the product model's color
-  // is changed. Refer to `product/images-handler.js` to see an example implementation of the handler.
-  .get('/thumbnails/:id/:color', cacheHandler, fromServer('./product/thumbnail-handler'))
+  // This API method is automatically called and state is updated when `fetchImages`
+  // is called  on the product model
   .get('/images/:id/:color', cacheHandler, fromServer('./product/images-handler'))
   .get('/cart', fromClient({ page: 'Cart' }), fromServer('./cart/cart-handler'))
   .get('/cart/add-from-amp.json', fromServer('./cart/add-from-amp-handler'))
