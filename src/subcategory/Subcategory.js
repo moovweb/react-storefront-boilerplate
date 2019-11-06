@@ -22,14 +22,31 @@ import LoadMask from 'react-storefront/LoadMask'
   description: {
     margin: '0 0 20px 0'
   },
+  headerContainer: {
+    justifyContent: 'space-between',
+    padding: '1.85rem 0',
+    borderTop: '1px solid #f1f2f3',
+    borderBottom: '1px solid #f1f2f3'
+  },
   headerButton: {
     [theme.breakpoints.down('xs')]: {
       flex: 1
+    },
+
+    backgroundColor: 'transparent',
+    position: 'relative',
+
+    '&:hover': {
+      backgroundColor: 'transparent'
+    },
+
+    '& ul': {
+      paddingTop: 0,
+      paddingBottom: 0,
     }
   },
   total: {
     margin: '10px 0',
-    flex: 1,
     [theme.breakpoints.down('xs')]: {
       textAlign: 'right'
     }
@@ -61,11 +78,6 @@ export default class Subcategory extends Component {
             </Hidden>
             <Vbox flex="1" style={{ position: 'relative' }}>
               {subcategory.loading && <LoadMask transparent show align="top" />}
-              <Typography variant="h6" component="h1" className={classes.header}>
-                {subcategory.name}
-              </Typography>
-              <Typography className={classes.description}>{subcategory.description}</Typography>
-
               <Hidden smUp implementation="css">
                 <Hbox split>
                   <FilterButton model={subcategory} className={classes.headerButton} />
@@ -74,18 +86,19 @@ export default class Subcategory extends Component {
                 </Hbox>
               </Hidden>
 
-              <Hbox>
-                <Typography variant="caption" className={classes.total}>
-                  {subcategory.total} total items
-                </Typography>
+              <Hbox className={classes.headerContainer}>
                 <Hidden xsDown implementation="css">
                   <SortButton
                     model={subcategory}
                     className={classes.headerButton}
+                    title="Sort by:"
                     variant="menu"
                     style={{ marginLeft: '10px' }}
                   />
                 </Hidden>
+                <Typography variant="caption" className={classes.total}>
+                  Products found: <strong>{subcategory.total}</strong>
+                </Typography>
               </Hbox>
 
               <ResponsiveTiles>

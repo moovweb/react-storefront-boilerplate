@@ -4,18 +4,21 @@ import { withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import ProductLink from 'react-storefront/ProductLink'
 import { Vbox } from 'react-storefront/Box'
-import Rating from 'react-storefront/Rating'
+import ProductRating from './ProductRating'
 import { price } from 'react-storefront/format'
 import Track from 'react-storefront/Track'
 import { observer } from 'mobx-react'
-
-import ProductColors from 'react-storefront/ProductColors'
 import ProductThumbnail from 'react-storefront/ProductThumbnail'
 
 @withStyles(theme => ({
   root: {
     listStyle: 'none',
-    padding: '10px 0'
+    flex: '0 0 25%',
+    padding: '1.25rem',
+    maxWidth: '240px',
+    boxShadow: 'none',
+    position: 'relative',
+    
   },
   name: {
     marginBottom: 5
@@ -33,8 +36,16 @@ import ProductThumbnail from 'react-storefront/ProductThumbnail'
     color: 'inherit'
   },
   price: {
+    fontSize: '1rem',
+    fontFamily: 'Roboto,serif',
+    lineHeight: '1.6',
+    fontWeight: '400',
     color: theme.palette.price.main,
-    marginTop: '5px'
+    marginTop: '5px',
+
+    '@media (min-width: 1024px)': {
+      fontSize: '1.125rem',
+    }
   },
   reviews: {
     marginTop: '5px'
@@ -82,9 +93,8 @@ export default class ProductItem extends Component {
             <Typography variant="subtitle1" className={classes.name}>
               {product.name}
             </Typography>
-            <ProductColors showSelectedText strikeThroughDisabled product={product} />
-            <Rating product={product} className={classes.rating} />
             <Typography className={classes.price}>{price(product.price)}</Typography>
+            <ProductRating product={product} />
           </div>
         </Vbox>
       </div>
