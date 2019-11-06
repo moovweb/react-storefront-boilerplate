@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 import ProductLink from 'react-storefront/ProductLink'
 import { Vbox } from 'react-storefront/Box'
-import ProductRating from './ProductRating'
+import ProductRating from './../shared/ProductRating'
 import { price } from 'react-storefront/format'
 import Track from 'react-storefront/Track'
 import { observer } from 'mobx-react'
@@ -18,7 +18,7 @@ import ProductThumbnail from 'react-storefront/ProductThumbnail'
     maxWidth: '240px',
     boxShadow: 'none',
     position: 'relative',
-    
+
   },
   name: {
     marginBottom: 5

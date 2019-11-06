@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
-import Paper from '@material-ui/core/Paper'
 import Container from 'react-storefront/Container'
+import Paper from '@material-ui/core/Paper'
 import { observer, inject } from 'mobx-react'
 import { withStyles, Hidden } from '@material-ui/core'
-import ImageSwitcher from 'react-storefront/ImageSwitcher'
 import { price } from 'react-storefront/format'
-import QuantitySelector from 'react-storefront/QuantitySelector'
-import AddToCartButton from 'react-storefront/AddToCartButton'
+import AddToCartButton from './components/AddToCartButton'
 import Row from 'react-storefront/Row'
 import { Hbox } from 'react-storefront/Box'
 import AmpState from 'react-storefront/amp/AmpState'
 import AmpForm from 'react-storefront/amp/AmpForm'
-import Rating from 'react-storefront/Rating'
-import ButtonSelector from 'react-storefront/ButtonSelector'
+import ProductRating from './../shared/ProductRating'
+import SizeSelector from './components/SizeSelector'
+import ColorSelector from './components/ColorSelector'
 import TabPanel from 'react-storefront/TabPanel'
 import CmsSlot from 'react-storefront/CmsSlot'
 import classnames from 'classnames'
@@ -21,6 +20,7 @@ import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import withPersonalization from 'react-storefront/personal/withPersonalization'
 import Recommendations from './Recommendations'
 import Lazy from 'react-storefront/Lazy'
+import ProductImages from './components/ProductImages'
 
 export const styles = theme => ({
   root: {
@@ -29,38 +29,43 @@ export const styles = theme => ({
   mainContainer: {
     display: 'flex',
     flexDirection: 'row',
-    [theme.breakpoints.down('xs')]: {
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
       display: 'block'
     }
   },
-  imageSwitcher: {
-    width: '400px',
-    height: '473px',
-    margin: `0 ${theme.margins.container * 2}px 0 0`,
-
+  images: {
     [theme.breakpoints.up('md')]: {
-      width: '500px',
-      height: '573px'
-    },
-
-    [theme.breakpoints.down('xs')]: {
-      margin: `0 -${theme.margins.container}px`,
-      width: '100vw',
-      height: 'calc(100vw + 73px)'
+      width: '450px',
+      margin: '0 30px'
     }
   },
   selectionControls: {
     flex: 0,
-    [theme.breakpoints.up('sm')]: {
-      flex: 1
+    [theme.breakpoints.up('md')]: {
+      margin: '0 30px'
     }
   },
   label: {
-    marginBottom: '10px'
+    marginBottom: '7px'
   },
   review: {
     padding: '10px',
     marginBottom: '10px'
+  },
+  header: {
+    fontSize: '2.25rem'
+  },
+  controlsRow: {
+    marginBottom: 40
+  },
+  lazyContainer: {
+    minHeight: 295,
+    paddingBottom: 40
+  },
+  recommendations: {
+    maxWidth: '790px',
+    margin: '0 auto'
   }
 })
 
@@ -92,21 +97,19 @@ export default class Product extends Component {
             </Hidden>
             <Row>
               <div className={classes.mainContainer}>
-                <ImageSwitcher
-                  classes={{ root: classes.imageSwitcher }}
-                  product={product}
-                  imageProps={{ quality: 80 }}
-                  loadingThumbnailProps={{ quality: 50 }}
-                  indicators
-                />
+                <div className={classes.images}>
+                  <ProductImages product={product} />
+                </div>
                 <div className={classes.selectionControls}>
-                  <Lazy style={{ minHeight: 295 }} key={product.id}>
+                  <Lazy className={classes.lazyContainer} key={product.id}>
                     <Hidden xsDown implementation="css">
                       <Header product={product} />
                     </Hidden>
-                    <Row>
-                      <Typography className={classnames(classes.label)}>Color</Typography>
-                      <ButtonSelector
+                    <Row className={classes.controlsRow}>
+                      <Typography variant="subtitle1" className={classnames(classes.label)}>
+                        Color:
+                      </Typography>
+                      <ColorSelector
                         name="color"
                         model={product.color}
                         showSelectedText
@@ -118,52 +121,36 @@ export default class Product extends Component {
                         }}
                       />
                     </Row>
-                    <Row className={classes.size}>
-                      <Typography className={classnames(classes.label)}>Size</Typography>
-                      <ButtonSelector
-                        name="size"
-                        model={product.size}
-                        strikeThroughDisabled
-                        strikeThroughAngle={32}
-                      />
+                    <Row className={classes.controlsRow}>
+                      <Typography variant="subtitle1" className={classnames(classes.label)}>
+                        Size:
+                      </Typography>
+                      <SizeSelector name="size" model={product.size} strikeThroughDisabled />
                     </Row>
-                    <Row>
-                      <Hbox>
-                        <div style={{ marginRight: '15px' }}>Quantity:</div>
-                        <QuantitySelector name="quantity" product={product} />
-                      </Hbox>
+                    <Row className={classes.controlsRow}>
+                      <TabPanel>
+                        <CmsSlot label="Description">{product.description}</CmsSlot>
+                        <CmsSlot label="Specs">{product.specs}</CmsSlot>
+                        <div label="Reviews">
+                          {product.reviews.map((review, i) => (
+                            <Paper key={i} className={this.props.classes.review}>
+                              {review}
+                            </Paper>
+                          ))}
+                        </div>
+                      </TabPanel>
                     </Row>
                   </Lazy>
-                  <Hidden implementation="css" smUp>
-                    <AddToCartButton
-                      product={product}
-                      docked
-                      confirmation="This item has been added to your cart."
-                    />
-                  </Hidden>
-                  <Hidden implementation="css" xsDown>
-                    <AddToCartButton
-                      product={product}
-                      confirmation="This item has been added to your cart."
-                    />
-                  </Hidden>
+                  <AddToCartButton
+                    product={product}
+                    confirmation="This item has been added to your cart."
+                  />
                 </div>
               </div>
             </Row>
             <Lazy style={{ minHeight: 500 }} key={product.id}>
-              <TabPanel>
-                <CmsSlot label="Description">{product.description}</CmsSlot>
-                <CmsSlot label="Specs">{product.specs}</CmsSlot>
-                <div label="Reviews">
-                  {product.reviews.map((review, i) => (
-                    <Paper key={i} className={this.props.classes.review}>
-                      {review}
-                    </Paper>
-                  ))}
-                </div>
-              </TabPanel>
               {!amp && (
-                <Row>
+                <Row className={classes.recommendations}>
                   <Recommendations product={product} />
                 </Row>
               )}
@@ -177,7 +164,7 @@ export default class Product extends Component {
 
 @withStyles(theme => ({
   title: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginTop: '0'
     }
   },
@@ -193,14 +180,14 @@ export class Header extends Component {
     return (
       <div>
         <Row className={classes.title}>
-          <Typography variant="h6" component="h1">
+          <Typography variant="h4" component="h1">
             {product.name}
           </Typography>
         </Row>
         <Row>
           <Hbox>
             <Typography variant="subtitle1">{price(product.price)}</Typography>
-            <Rating product={product} className={classes.rating} />
+            <ProductRating product={product} className={classes.rating} />
           </Hbox>
         </Row>
       </div>
