@@ -35,7 +35,7 @@ const theme = createTheme({
         fontWeight: 500,
         color: '#1d1f22',
       }
-    }
+    },
   },
   palette: {
     dark: '#1d1f22',
@@ -58,6 +58,43 @@ const theme = createTheme({
   spacing: {
     container: 15,
     row: 15
+  },
+  slideshowGallery: {
+    collection: {
+      marginBottom: '5rem',
+      width: 'min-content',
+      paddingLeft: '36px',
+      fontSize: '.75rem',
+      textTransform: 'uppercase',
+      borderLeft: '1px solid #bebfc4',
+      color: '#bebfc4',
+      textTransform: 'uppercase',
+      fontFamily: FontFamily.Roboto
+    },
+    slogan: {
+      color: '#1d1f22',
+      fontSize: '2.25rem',
+      lineHeight: 1.38,
+      fontFamily: FontFamily.Raleway
+    },
+    button: {
+      padding: '1rem 2.5rem',
+      fontSize: '.875rem',
+      border: 'none',
+      outline: 'none',
+      color: '#fff',
+      backgroundColor: '#5ece7b',
+      fontFamily: FontFamily.Raleway,
+      fontWeight: 400,
+      lineHeight: 1.6,
+      textTransform: 'uppercase',
+      cursor: 'pointer',
+      margin: '0',
+
+      '&:hover': {
+        backgroundColor: '#72d48b',
+      }
+    }
   },
   overrides: {
     RSFLoadMask: {
