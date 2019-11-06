@@ -10,6 +10,8 @@ import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import Offline from 'react-storefront/Offline'
 import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
+import Footer from './shared/Footer'
+import MobileAppBanner from './shared/MobileAppBanner'
 import targets from './analytics'
 
 @withStyles(theme => ({
@@ -71,6 +73,8 @@ export default class App extends Component {
             })}
           />
           <SearchDrawer />
+          <MobileAppBanner />
+          <Footer />
         </div>
       </AnalyticsProvider>
     )
