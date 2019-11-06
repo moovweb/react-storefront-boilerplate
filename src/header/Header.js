@@ -7,7 +7,6 @@ import CartButton from 'react-storefront/CartButton'
 import HeaderLogo from 'react-storefront/HeaderLogo'
 import Hidden from '@material-ui/core/Hidden'
 import Menu from 'react-storefront/Menu'
-import PromoBanner from 'react-storefront/PromoBanner'
 import SearchField from 'react-storefront/SearchField'
 import SearchButton from 'react-storefront/SearchButton'
 
@@ -41,11 +40,18 @@ import SearchButton from 'react-storefront/SearchButton'
 
   searchField: {
     alignSelf: 'center',
-    marginRight: '10px'
+    marginRight: '10px',
+    '& fieldset': {
+      borderRadius: '27px'
+    }
   },
 
   large: {
     fontSize: '28px'
+  },
+
+  logo: {
+    width: 150
   }
 }))
 @inject('app')
@@ -61,7 +67,7 @@ export default class Header extends Component {
           <Hidden mdUp implementation="css">
             <SearchButton />
           </Hidden>
-          <HeaderLogo>
+          <HeaderLogo classes={{ logoWrap: classes.logo }}>
             <Logo />
           </HeaderLogo>
           <div style={{ flex: 1 }} />
@@ -70,14 +76,6 @@ export default class Header extends Component {
           </Hidden>
           <CartButton classes={{ icon: classes.icon }} />
         </AppBar>
-        <PromoBanner
-          className={classes.promo}
-          src={`https://placehold.it/750x128/81d4fa/fff?text=${encodeURIComponent(
-            '25% OFF EVERYTHING'
-          )}`}
-          style={{ height: '64px' }}
-          imgProps={{ quality: 50 }}
-        />
       </div>
     )
   }

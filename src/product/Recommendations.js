@@ -8,6 +8,7 @@ import LoadMask from 'react-storefront/LoadMask'
 
 const styles = theme => ({
   root: {
+    paddingTop: '80px',
     height: '300px',
     position: 'relative'
   },
@@ -29,6 +30,9 @@ const styles = theme => ({
   },
   info: {
     margin: '0 10px'
+  },
+  title: {
+    padding: '20px 0'
   }
 })
 
@@ -46,7 +50,7 @@ export default class Recommendations extends Component {
       <div className={classes.root}>
         {product.recommendations ? (
           <>
-            <Typography variant="subtitle1">Personalized Recommendations for You</Typography>
+            <Typography className={classes.title} variant="h5" align="center">Match it with</Typography>
             <Hbox className={classes.carousel}>
               {product.recommendations.map((suggestion, i) => (
                 <ProductItem

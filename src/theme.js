@@ -39,13 +39,14 @@ const theme = createTheme({
   },
   palette: {
     dark: '#1d1f22',
+    gray: '#fafafC',
     price: {
       main: '#1d1f22'
     },
     secondary: {
-      main: blue[500],
-      light: blue[300],
-      dark: blue[700],
+      main: '#28a4ea',
+      light: '#53b6ee',
+      dark: '#3d3c44',
       contrastText: '#fff'
     },
     price: {
