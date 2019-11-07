@@ -8,7 +8,6 @@ const styles = theme => ({
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)'
   },
   menu: {
-    marginTop: '114px',
     '& a': {
       textDecoration: 'none',
       fontSize: '14px',
