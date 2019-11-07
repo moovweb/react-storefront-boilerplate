@@ -1,4 +1,4 @@
-# React Storefront - headless PWA for any eCommerce
+# React Storefront - eCommerce site boilerplate
 
 <img src="https://divante.com/github/react-storefront/React%20Storefront%20Logo.png" width="430px" ></img>
 
