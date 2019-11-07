@@ -29,13 +29,15 @@ npm install
 
 ## Running locally (Express)
 
-You can also run you app using express:
+To start the locall development process please run the Express.js instance via the following command:
 
 ```
 npm start:express
 ```
 
 ## Running (Moovweb XDN SDK)
+
+React Storefornt applications can be deployed to any hosting env. supporting Node.js. However, the best performance can be achieved on [Moovweb XDN](http://moovweb.com). If you like to use the Moovweb features, please start the app using the following command:
 
 ```
 npm start
@@ -56,7 +58,7 @@ yarn start:windows
 
 ## Creating a new Project
 
-### Clone the repo into a directory
+To create a new project based on this Boilerplate please clone the repository and then switch the git origin to push out the changes into your project's git:
 
 ```
 git clone git@github.com:DivanteLtd/react-storefront-boilerplate.git <project-name>
