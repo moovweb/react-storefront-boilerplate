@@ -9,8 +9,7 @@
     "moov_perf": "1.2.5",
     "moov_rewriter": "^4.0.1",
     "moov_stdlib": "^2.6.33",
-    "react-storefront-middleware": "^6.16.0",
-    "source-map-explorer": "^2.1.0"
+    "react-storefront-middleware": "^6.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
