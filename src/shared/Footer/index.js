@@ -38,27 +38,27 @@ const PromotedCards = ({ classes }) => (
     <Container className={classes.container}>
       <div className={classes.col}>
         <div className={classes.title}>About us</div>
-        <a href="/">Who we are</a>
-        <a href="/">Quality in the details</a>
-        <a href="/">Customer reviews</a>
+        <a href="/static/who-we-are">Who we are</a>
+        <a href="/static/quality">Quality in the details</a>
+        <a href="/static/customer-reviews">Customer reviews</a>
       </div>
       <div className={classes.col}>
         <div className={classes.title}>Departments</div>
-        <a href="/">Women fashion</a>
-        <a href="/">Men fashion</a>
-        <a href="/">Kids wear</a>
+        <a href="/static/women-fashion">Women fashion</a>
+        <a href="/static/men-fashion">Men fashion</a>
+        <a href="/static/kids-wear">Kids wear</a>
         <a href="/">Home</a>
       </div>
       <div className={classes.col}>
         <div className={classes.title}>Help</div>
-        <a href="/">Customer service</a>
-        <a href="/">Size guide</a>
-        <a href="/">Contact us</a>
+        <a href="/static/customer-service">Customer service</a>
+        <a href="/static/size-guide">Size guide</a>
+        <a href="/static/contact-us">Contact us</a>
       </div>
       <div className={classes.col}>
         <div className={classes.title}>Payments & delivery</div>
-        <a href="/">Purchase items</a>
-        <a href="/">Guarantee</a>
+        <a href="/static/purchase-items">Purchase items</a>
+        <a href="/static/guarantee">Guarantee</a>
       </div>
     </Container>
   </div>
