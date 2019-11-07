@@ -96,6 +96,25 @@ const theme = createTheme({
       }
     }
   },
+  section: {
+    title: {
+      fontSize: '1.5rem',
+      fontFamily: FontFamily.Roboto,
+      fontWeight: 500,
+      lineHeight: 1.6,
+      margin: 0,
+      color: '#1d1f22',
+      textAlign: 'center',
+    },
+    description: {
+      fontSize: '1.125rem',
+      marginTop: '5px',
+      fontFamily: FontFamily.Roboto,
+      fontWeight: 300,
+      color: '#1d1f22',
+      textAlign: 'center',
+    }
+  },
   overrides: {
     RSFLoadMask: {
       fullscreen: {
