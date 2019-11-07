@@ -7,6 +7,7 @@ import SlideshowBullets from './SlideshowBullets';
 const styles = theme => ({
   root: {
     overflow: 'hidden',
+    position: 'relative'
   },
   container: {
     width: '100%',

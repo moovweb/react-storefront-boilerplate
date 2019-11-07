@@ -19,7 +19,6 @@ const SlideshowElement = ({ width, height, backgroundImage, classes, renderCompo
 
       setImage(fetchImage)
     } catch (e) {
-      setImage(null)
     }
   }, [backgroundImage])
 
