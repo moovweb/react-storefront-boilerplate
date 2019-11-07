@@ -10,6 +10,8 @@ import SubcategorySkeleton from './subcategory/SubcategorySkeleton'
 import ProductSkeleton from './product/ProductSkeleton'
 import Offline from 'react-storefront/Offline'
 import AnalyticsProvider from 'react-storefront/AnalyticsProvider'
+import Footer from './shared/Footer'
+import MobileAppBanner from './shared/MobileAppBanner'
 import targets from './analytics'
 
 @withStyles(theme => ({
@@ -66,11 +68,14 @@ export default class App extends Component {
               Product: universal(import('./product/Product')),
               Cart: universal(import('./cart/Cart')),
               Checkout: universal(import('./checkout/Checkout')),
+              Static: universal(import('./static/Static')),
               Error: universal(import('./ErrorPage')),
               Offline
             })}
           />
           <SearchDrawer />
+          <MobileAppBanner />
+          <Footer />
         </div>
       </AnalyticsProvider>
     )

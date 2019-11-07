@@ -10,7 +10,8 @@ const styles = theme => ({
 
     [theme.breakpoints.up('md')]: {
       width: '450px',
-      height: '450px'
+      height: '524px',
+
     },
 
     [theme.breakpoints.down('sm')]: {
@@ -40,12 +41,12 @@ const ProductImages = ({ product, classes }) => {
   return (
   <Fragment>
     <Hidden mdDown implementation="css">
-      <Image src={firstImageSrc} alt={product.images[0].alt} classes={{ root: classes.switcherImage }} contain />
+      <Image src={firstImageSrc} alt={product.images[0].alt} classes={{ root: classes.switcherImage }} />
     </Hidden>
     <ImageSwitcher
       classes={{ root: classes.imageSwitcher }}
       product={product}
-      imageProps={{ quality: 80, contain: true, classes: { root: classes.switcherImage } }}
+      imageProps={{ quality: 80, classes: { root: classes.switcherImage } }}
       indicators
     />
   </Fragment>
