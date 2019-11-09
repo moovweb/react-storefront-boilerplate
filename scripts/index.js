@@ -1,7 +1,6 @@
 console.error = console.warn = console.log
 
 module.exports = function() {
-  const profile = require('react-storefront/utils/profile').default
   require('../src/analytics')
 
   const index = require('react-storefront-moov-xdn').default
