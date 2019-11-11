@@ -19,13 +19,17 @@ const ProductModel = types.compose(
        * such as personalized product recommendations should be late loaded here.
        */
       loadPersonalization: flow(function*() {
-        try {
-          const { recommendations } = yield fetch(`/p/${self.id}/personalization.json`).then(res =>
-            res.json()
-          )
-          self.recommendations = recommendations
-        } finally {
-          self.loadingRecommendations = false
+        if (self.recommendations == null && !self.loadingRecommendations) {
+          self.loadingRecommendations = true
+
+          try {
+            const { recommendations } = yield fetch(`/p/${self.id}/personalization.json`).then(
+              res => res.json()
+            )
+            self.recommendations = recommendations
+          } finally {
+            self.loadingRecommendations = false
+          }
         }
       })
     }))
