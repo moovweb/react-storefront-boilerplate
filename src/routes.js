@@ -13,6 +13,7 @@ export default new Router()
     cacheHandler,
     fromServer('./app-shell/app-shell-handler')
   )
+  .get('/header.json', fromServer('./proxy/header-handler'))
   .get('/debug', fromServer('./debug/debug-handler'))
   .get('/', cacheHandler, fromClient({ page: 'Home' }), fromServer('./home/home-handler'))
   .get(
