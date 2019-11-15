@@ -21,6 +21,7 @@ import Breadcrumbs from 'react-storefront/Breadcrumbs'
 import withPersonalization from 'react-storefront/personal/withPersonalization'
 import Recommendations from './Recommendations'
 import Lazy from 'react-storefront/Lazy'
+import Carousel from 'react-storefront/Carousel'
 
 export const styles = theme => ({
   root: {
@@ -61,6 +62,15 @@ export const styles = theme => ({
   review: {
     padding: '10px',
     marginBottom: '10px'
+  },
+  slide: {
+    width: '100%',
+    height: 200,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 32,
+    color: 'white'
   }
 })
 
@@ -100,7 +110,7 @@ export default class Product extends Component {
                   indicators
                 />
                 <div className={classes.selectionControls}>
-                  <Lazy style={{ minHeight: 295 }} key={product.id}>
+                  <Lazy style={{ minHeight: 295 }}>
                     <Hidden xsDown implementation="css">
                       <Header product={product} />
                     </Hidden>
@@ -150,7 +160,7 @@ export default class Product extends Component {
                 </div>
               </div>
             </Row>
-            <Lazy style={{ minHeight: 500 }} key={product.id}>
+            <Lazy style={{ minHeight: 500 }}>
               <TabPanel>
                 <CmsSlot label="Description">{product.description}</CmsSlot>
                 <CmsSlot label="Specs">{product.specs}</CmsSlot>
@@ -167,6 +177,23 @@ export default class Product extends Component {
                   <Recommendations product={product} />
                 </Row>
               )}
+            </Lazy>
+            <Lazy style={{ minHeight: 500 }}>
+              <Typography className={classnames(classes.label)}>Customer Photos</Typography>
+              <Carousel arrows indicators>
+                <div className={classes.slide} style={{ backgroundColor: '#00a8ff' }}>
+                  Photo #1
+                </div>
+                <div className={classes.slide} style={{ backgroundColor: '#9c88ff' }}>
+                  Photo #2
+                </div>
+                <div className={classes.slide} style={{ backgroundColor: '#fbc531' }}>
+                  Photo #3
+                </div>
+                <div className={classes.slide} style={{ backgroundColor: '#4cd137' }}>
+                  Photo #4
+                </div>
+              </Carousel>
             </Lazy>
           </Container>
         </AmpForm>
