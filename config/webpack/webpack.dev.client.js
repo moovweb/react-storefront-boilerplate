@@ -5,7 +5,7 @@ module.exports = dev(path.join(__dirname, '..', '..'), {
   workboxConfig: require('./workbox.config'),
   allowPrefetchThrottling: true,
   entries: {
-    header: './proxy/hydrateHeader'
+    proxy: './proxy/hydratePWAComponents'
   }
   // Adds the eslint loader to webpack.
   // You can use the default Moovweb eslint style guide by running

@@ -5,6 +5,6 @@ module.exports = prod(path.join(__dirname, '..', '..'), {
   workboxConfig: require('./workbox.config'),
   allowPrefetchThrottling: false,
   entries: {
-    header: './proxy/hydrateHeader'
+    header: './proxy/hydratePWAComponents'
   }
 })
