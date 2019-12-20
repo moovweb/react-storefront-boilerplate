@@ -54,5 +54,6 @@ export default new Router()
   )
   .fallback(
     // when no route matches, pull in content from the upstream site
+    // for a working example, go to /help/home
     proxyUpstream('./proxy/proxy-handler')
   )

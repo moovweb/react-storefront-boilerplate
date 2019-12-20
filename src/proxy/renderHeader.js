@@ -3,15 +3,20 @@ import Header from '../header/Header'
 import { render } from 'react-storefront/renderers'
 import AppModel from '../AppModel'
 import theme from '../theme'
+import globalState from '../globalState'
 
 /**
  * Inserts the PWA header into adapt pages.
  * @param {Object} stats Webpack build stats object for the client build
  */
-export default function renderHeader(stats) {
-  const { html } = render({
+export default async function renderHeader(stats) {
+  // Here we create app state including the options for the main menu.
+  // In a real site you'll likely need to derive this from the HTML returned from the upstream site.
+  const state = AppModel.create(globalState())
+
+  const { html } = await render({
     component: <Header />,
-    state: createState(),
+    state,
     theme,
     stats,
     clientChunk: 'header' // the name of the entry injected into config/web.dev.*.js
@@ -22,46 +27,6 @@ export default function renderHeader(stats) {
 
   // add the new header and supporting resources to the document
   const $header = $(tag('div', { class: 'mw-header' })).append(html)
-  $body
-    .find('#page-container')
-    .attr('id', null)
-    .prepend($header)
-}
 
-/**
- * Extracts a menu item from a nav menu element on www.moovweb.com.  The logic here is
- * specific to www.moovweb.com and only serves an example of extracting MenuModel data from
- * the upstream site.
- * @return {AppModel}
- */
-function createState() {
-  function extractMenuItem() {
-    const el = $(this)
-    const link = el.children('a')
-    const href = link.attr('href')
-    const children = el
-      .find('.sub-menu > .menu-item')
-      .map(extractMenuItem)
-      .get()
-
-    return {
-      text: link.text(),
-      url: children.length ? null : href,
-      items: children.length ? children : null
-    }
-  }
-
-  return AppModel.create({
-    menu: {
-      levels: [
-        {
-          root: true,
-          items: $body
-            .find('#top-menu > .menu-item')
-            .map(extractMenuItem)
-            .get()
-        }
-      ]
-    }
-  })
+  $body.prepend($header)
 }

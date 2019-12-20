@@ -6,7 +6,7 @@ export default async function proxyHandler(params, request, response) {
   if (contentType.indexOf('html') > -1) {
     const stats = await getStats()
     fns.init$(body)
-    renderHeader(stats) // reuse the PWA header in legacy pages
+    await renderHeader(stats) // reuse the PWA header in legacy pages
     response.send($.html())
   } else {
     sendResponse({ htmlparsed: false })
