@@ -14,6 +14,7 @@ import Offline from 'react-storefront/Offline'
 import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no-webpack-loader-syntax
 import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
 import targets from './analytics'
+import { inject, observer } from 'mobx-react'
 
 @withStyles(theme => ({
   '@global': {
@@ -28,8 +29,12 @@ import targets from './analytics'
     }
   }
 }))
+@inject('app')
+@observer
 export default class App extends Component {
   render() {
+    const { app } = this.props
+
     return (
       <AnalyticsProvider targets={targets} delayUntilInteractive>
         <TrackPageViews>
@@ -54,18 +59,20 @@ export default class App extends Component {
                 content="Build and deploy sub-second e-commerce progressive web apps in record time."
               />
             </Helmet>
-            <FirebasePerformanceMonitoring
-              firstInputDelayPolyfill={fid}
-              config={{
-                apiKey: 'AIzaSyBaWW0RxrM5_UdVNwmbYJyjKmRL9mnIhBc',
-                authDomain: 'react-storefront-docs.firebaseapp.com',
-                databaseURL: 'https://react-storefront-docs.firebaseio.com',
-                projectId: 'react-storefront-docs',
-                storageBucket: 'react-storefront-docs.appspot.com',
-                messagingSenderId: '33647407204',
-                appId: '1:33647407204:web:d6e49ffdf25c8bce'
-              }}
-            />
+            {!app.location.search.match(/_analytics=0/) && (
+              <FirebasePerformanceMonitoring
+                firstInputDelayPolyfill={fid}
+                config={{
+                  apiKey: 'AIzaSyBaWW0RxrM5_UdVNwmbYJyjKmRL9mnIhBc',
+                  authDomain: 'react-storefront-docs.firebaseapp.com',
+                  databaseURL: 'https://react-storefront-docs.firebaseio.com',
+                  projectId: 'react-storefront-docs',
+                  storageBucket: 'react-storefront-docs.appspot.com',
+                  messagingSenderId: '33647407204',
+                  appId: '1:33647407204:web:d6e49ffdf25c8bce'
+                }}
+              />
+            )}
             <Header />
             <NavTabs />
             <Pages

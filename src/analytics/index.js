@@ -11,6 +11,10 @@ provided by Moovweb.  An example is provided below:
 
 import GoogleAnalyticsTarget from 'react-storefront-extensions/GoogleAnalyticsTarget'
 
-export default () => [
-  new GoogleAnalyticsTarget({ trackingID: 'UA-26739163-21' }).sendForAllEvents()
-]
+export default () => {
+  if (window.location.search.match(/_analytics=0/)) {
+    return []
+  } else {
+    return [new GoogleAnalyticsTarget({ trackingID: 'UA-26739163-21' }).sendForAllEvents()]
+  }
+}
