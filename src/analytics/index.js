@@ -9,12 +9,12 @@ provided by Moovweb.  An example is provided below:
 //   new DebugTarget().sendForAllEvents()
 // )
 
-import GoogleAnalyticsTarget from 'react-storefront-extensions/GoogleAnalyticsTarget'
+import { GATarget, trackingID } from './GoogleAnalytics'
 
 export default () => {
   if (window.location.search.match(/_analytics=0/)) {
     return []
   } else {
-    return [new GoogleAnalyticsTarget({ trackingID: 'UA-26739163-21' }).sendForAllEvents()]
+    return [new GATarget({ trackingID }).sendForAllEvents()]
   }
 }

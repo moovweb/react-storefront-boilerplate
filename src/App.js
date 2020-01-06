@@ -15,6 +15,7 @@ import fid from '!raw-loader!first-input-delay' // eslint-disable-line import/no
 import FirebasePerformanceMonitoring from 'react-storefront-extensions/FirebasePerformanceMonitoring'
 import targets from './analytics'
 import { inject, observer } from 'mobx-react'
+import { GoogleAnalytics } from './analytics/GoogleAnalytics'
 
 @withStyles(theme => ({
   '@global': {
@@ -59,6 +60,7 @@ export default class App extends Component {
                 content="Build and deploy sub-second e-commerce progressive web apps in record time."
               />
             </Helmet>
+            <GoogleAnalytics />
             {!app.location.search.match(/_analytics=0/) && (
               <FirebasePerformanceMonitoring
                 firstInputDelayPolyfill={fid}
