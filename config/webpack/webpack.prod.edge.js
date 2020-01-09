@@ -1,4 +1,4 @@
-const edge = require('react-storefront/webpack/edge')
+const edge = require('react-storefront-edge/webpack')
 const path = require('path')
 
 module.exports = edge(path.join(__dirname, '..', '..'), {
