@@ -5571,6 +5571,11 @@ eventemitter3@^3.1.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
+eventemitter3@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.0.tgz#d65176163887ee59f386d64c82610b696a4a74eb"
+  integrity sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
+
 events@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/events/-/events-3.0.0.tgz#9a0a0dfaf62893d92b875b8f2698ca4114973e88"
@@ -10796,10 +10801,25 @@ p-locate@^3.0.0:
   dependencies:
     p-limit "^2.0.0"
 
+p-queue@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-6.2.1.tgz#809a832046451b2240a0a8e48b4fa18192b22b64"
+  integrity sha512-wV8yC/rkuWpgu9LGKJIb48OynYSrE6lVl2Bx6r8WjbyVKrFAzzQ/QevAvwnDjlD+mLt8xy0LTDOU1freOvMTCg==
+  dependencies:
+    eventemitter3 "^4.0.0"
+    p-timeout "^3.1.0"
+
 p-reduce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-reduce/-/p-reduce-1.0.0.tgz#18c2b0dd936a4690a529f8231f58a0fdb6a47dfa"
   integrity sha1-GMKw3ZNqRpClKfgjH1ig/bakffo=
+
+p-timeout@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-3.2.0.tgz#c7e17abc971d2a7962ef83626b35d635acf23dfe"
+  integrity sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==
+  dependencies:
+    p-finally "^1.0.0"
 
 p-try@^1.0.0:
   version "1.0.0"
@@ -11769,6 +11789,14 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
+react-storefront-edge@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-storefront-edge/-/react-storefront-edge-1.0.0.tgz#873694643d31f9576c1447deb593a183ea5feb29"
+  integrity sha512-nsPkvrCCC+SNiwtY2p8dcJ2n3qb0nEG3NnEIJafNhbf5kKkaRLC0ZX9cwiTptAiecM4W3hT0dwdbzTPUkNg95Q==
+  dependencies:
+    require-from-string "^2.0.2"
+    route-parser "^0.0.5"
+
 react-storefront-extensions@^7.14.0:
   version "7.15.2"
   resolved "https://npm-proxy.fury.io/moovweb/~/up/ver_12d3L7/react-storefront-extensions-7.15.2.tgz#5b578646b159882a61c2e653076fd0c226770b3a"
@@ -11792,25 +11820,25 @@ react-storefront-middleware@^6.59.4:
   resolved "https://registry.yarnpkg.com/react-storefront-middleware/-/react-storefront-middleware-6.61.0.tgz#e23cd5f0b80134cb17d5c0b7d22b82dfafb0d2c2"
   integrity sha512-0Dr+UjCsLDFWwRzQASvA6JDIZNlS82tf4vChpSLOCA93PSRxIGfgP/ekoO4h8cepNu0eSBLBFfI9/P4QCTZnSQ==
 
-react-storefront-moov-xdn@^6.60.2:
-  version "6.61.0"
-  resolved "https://registry.yarnpkg.com/react-storefront-moov-xdn/-/react-storefront-moov-xdn-6.61.0.tgz#1abb5a92b3268a722985107c00160ba1b848e6c7"
-  integrity sha512-q/OZ7/Q/Um8DCbL64orUrhjwcqa0vq7U6Ne9TWe3bERj3SE2X/Qw6IT0RDPJjbAP6JgKtw2AI2hJ2CypDwyGtQ==
+react-storefront-moov-xdn@^6.63.0:
+  version "6.75.0"
+  resolved "https://registry.yarnpkg.com/react-storefront-moov-xdn/-/react-storefront-moov-xdn-6.75.0.tgz#2ee3620cb50d2e7ac1c9cbc58f5a68f80b9c22c6"
+  integrity sha512-YclQXhegobJNYXdnId8tmLneI0HUUGtzO9xdfKna5aFGcAwtZlaGX8cOAIZPmScHX5/0R8oE2hSFOCYCUbOJhg==
   dependencies:
     moov_builder "4.0.0-alpha.1"
     moov_stdlib "^2.6.33"
 
-react-storefront-puppeteer@^6.60.2:
-  version "6.61.0"
-  resolved "https://registry.yarnpkg.com/react-storefront-puppeteer/-/react-storefront-puppeteer-6.61.0.tgz#40530b8f1138ba0aa333f61b8c94f65b72da277a"
-  integrity sha512-GJ31J5CD8sPMKy59NMeGeiwBY/ajVTrSXVzPk4kkPNYz9OVikiIzTEAVO/hMzrTq+Cn5Pb9CpPb0UTuGUwXNRg==
+react-storefront-puppeteer@^6.63.0:
+  version "6.75.0"
+  resolved "https://registry.yarnpkg.com/react-storefront-puppeteer/-/react-storefront-puppeteer-6.75.0.tgz#cb8f232b1f9e7a21930160c3c26785714a7c7998"
+  integrity sha512-TN/TXt7qHZrrYcpL3h8LCeSOqpyIWXb2Y7G6USfhtHzIzP8EmZ5iibWeTOFQWneH0NS3q7U80JkWM4wCNOTw0w==
   dependencies:
     node-fetch "^2.6.0"
 
-react-storefront@^6.61.0:
-  version "6.61.0"
-  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-6.61.0.tgz#b1dade327af554c3b2f0d9d50043d3d0afcc25a5"
-  integrity sha512-ORxfvTH/udErply7zmjaJGvqWPudznfXwbjRYumvRxGCTXzkFw2QDFLdts8z8enyu+Rk5A8O/fa1F7t7rhmlEA==
+react-storefront@^6.63.0:
+  version "6.75.0"
+  resolved "https://registry.yarnpkg.com/react-storefront/-/react-storefront-6.75.0.tgz#da32800a489060a4e89e81478b827f75273da666"
+  integrity sha512-c+ci4td5hxLBe/KgZek0VM8i6npLuGHGTFCLE52gBICL0WVlY83TTbYFn6y8Q0y1OpQY4d2RkH3BB6tTjPd5pA==
   dependencies:
     autoprefixer "^9.6.1"
     babel-eslint "^9.0.0"
@@ -11839,6 +11867,7 @@ react-storefront@^6.61.0:
     md5-file "^4.0.0"
     mst-middlewares "^3.10.0"
     open-browser-webpack-plugin "^0.0.5"
+    p-queue "^6.2.1"
     pako "^1.0.8"
     postcss "^7.0.17"
     proxy-polyfill "^0.3.0"
