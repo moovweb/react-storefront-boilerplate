@@ -103,6 +103,9 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
         {
           src: 'https://pwa.moovweb.com/videos/500x400.mp4',
           video: true,
+          poster: `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
           alt: `Product ${id} - 4`
         }
       ],

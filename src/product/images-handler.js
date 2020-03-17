@@ -8,7 +8,8 @@ export default function imagesHandler({ id, color }) {
     `https://via.placeholder.com/350x600/${color}${contrast}?text=${text}`,
     {
       src: 'https://pwa.moovweb.com/videos/500x400.mp4',
-      video: true
+      poster: `https://via.placeholder.com/600x600/${color}${contrast}?text=${text}`,
+      video: true,
     }
   ]
 
