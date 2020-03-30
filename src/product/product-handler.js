@@ -149,6 +149,12 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
           )}`,
           alt: `Product ${id} - Thumbnail 3`
         },
+        {
+          src: `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          alt: `Product ${id} - Thumbnail 1`
+        },
         { src: 'https://placehold.it/500x400/cccccc/fff', alt: `Product ${id} - Thumbnail 4` }
       ]
     }
