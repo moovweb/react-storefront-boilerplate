@@ -86,24 +86,48 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
           src: `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent(
             `Product ${id}`
           )}`,
+          zoomSrc: `https://via.placeholder.com/1200x1200/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          zoomWidth: 1200,
+          zoomHeight: 1200,
           alt: `Product ${id} - 1`
         },
         {
           src: `https://via.placeholder.com/600x350/cccccc?text=${encodeURIComponent(
             `Product ${id}`
           )}`,
+          zoomSrc: `https://via.placeholder.com/1200x700/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          zoomWidth: 1200,
+          zoomHeight: 700,
           alt: `Product ${id} - 2`
         },
         {
           src: `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent(
             `Product ${id}`
           )}`,
+          zoomSrc: `https://via.placeholder.com/700x1200/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          zoomWidth: 700,
+          zoomHeight: 1200,
           alt: `Product ${id} - 3`
+        },
+        {
+          src: `https://via.placeholder.com/601x601/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          alt: `Product ${id} - 4`
         },
         {
           src: 'https://pwa.moovweb.com/videos/500x400.mp4',
           video: true,
-          alt: `Product ${id} - 4`
+          poster: `https://via.placeholder.com/350x600/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          alt: `Product ${id} - 5`
         }
       ],
       thumbnails: [
@@ -124,6 +148,12 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
             `Product ${id}`
           )}`,
           alt: `Product ${id} - Thumbnail 3`
+        },
+        {
+          src: `https://via.placeholder.com/60x60/cccccc?text=${encodeURIComponent(
+            `Product ${id}`
+          )}`,
+          alt: `Product ${id} - Thumbnail 1`
         },
         { src: 'https://placehold.it/500x400/cccccc/fff', alt: `Product ${id} - Thumbnail 4` }
       ]
