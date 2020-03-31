@@ -116,7 +116,7 @@ export default function productHandler({ id, c = '1', s = '1' }, request, respon
           alt: `Product ${id} - 3`
         },
         {
-          src: `https://via.placeholder.com/600x600/cccccc?text=${encodeURIComponent(
+          src: `https://via.placeholder.com/601x601/cccccc?text=${encodeURIComponent(
             `Product ${id}`
           )}`,
           alt: `Product ${id} - 4`

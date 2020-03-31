@@ -25,7 +25,7 @@ export default function imagesHandler({ id, color }) {
       alt: `${text} - 3`
     },
     {
-      src: `https://via.placeholder.com/600x600/${color}${contrast}?text=${text}`,
+      src: `https://via.placeholder.com/601x601/${color}${contrast}?text=${text}`,
       alt: `${text} - 4`
     },
     {
@@ -40,7 +40,7 @@ export default function imagesHandler({ id, color }) {
     `https://via.placeholder.com/600x600/${color}${contrast}?text=${text}`,
     `https://via.placeholder.com/600x350/${color}${contrast}?text=${text}`,
     `https://via.placeholder.com/350x600/${color}${contrast}?text=${text}`,
-    `https://via.placeholder.com/600x600/${color}${contrast}?text=${text}`,
+    `https://via.placeholder.com/601x601/${color}${contrast}?text=${text}`,
     `https://placehold.it/500x400/${color}${contrast}`
   ]
 
