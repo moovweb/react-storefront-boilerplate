@@ -8,7 +8,7 @@ import LoadMask from 'react-storefront/LoadMask'
 
 const styles = theme => ({
   root: {
-    height: '300px',
+    minHeight: '300px',
     position: 'relative'
   },
   carousel: {

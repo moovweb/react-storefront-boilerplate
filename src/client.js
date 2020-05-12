@@ -10,5 +10,6 @@ launchClient({
   router,
   theme,
   model,
-  errorReporter
+  errorReporter,
+  delayHydrationUntilPageLoad: true
 })
