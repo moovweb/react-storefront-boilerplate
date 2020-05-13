@@ -53,6 +53,7 @@ export default new Router()
     fromClient({ page: 'Subcategory' }),
     fromServer('./subcategory/subcategory-handler')
   )
+  .get('/user', fromServer('./user/user-handler'))
   .fallback(
     // when no route matches, pull in content from the upstream site
     // for a working example, go to /help/home
