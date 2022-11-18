@@ -87,7 +87,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.5",
-    "react-storefront": "^6.59.4",
+    "react-storefront": "^9.0.0",
     "react-storefront-moov-xdn": "^6.59.3",
     "react-storefront-puppeteer": "^6.59.3",
     "react-svg-loader": "^2.1.0",
@@ -98,7 +98,7 @@
     "source-map-loader": "^0.2.4",
     "url-loader": "^1.1.2",
     "webpack": "^4.0.0",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.5.0"
   },
   "scripts": {
