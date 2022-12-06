@@ -80,7 +80,7 @@
     "nodemon": "^1.18.9",
     "prop-types": "^15.6.1",
     "puppeteer": "^1.19.0",
-    "qs": "^6.6.0",
+    "qs": "^6.7.3",
     "raw-loader": "^0.5.1",
     "react": "^16.8.6",
     "react-dev-utils": "^5.0.1",
